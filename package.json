@@ -1,0 +1,21 @@
+{
+  "name": "@vistta/css",
+  "version": "0.0.0",
+  "description": "Vistta CSS Library",
+  "main": "index.js",
+  "style": "index.scss",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://git.vistta.org/vistta/css.git"
+  },
+  "scripts": {
+    "postinstall": ""
+  },
+  "author": "Tiago Terenas Almeida",
+  "license": "CC BY-NC-ND 4.0 DEED",
+  "files": [
+    "LICENSE",
+    "tsconfig.json"
+  ]
+}
