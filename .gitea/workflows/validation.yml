@@ -1,0 +1,51 @@
+name: Project Validation
+on:
+  pull_request:
+    types: [synchronize]
+    branches:    
+      - master
+env:
+  module: [change me]
+jobs:
+  Validation:
+    runs-on: ubuntu-latest
+    container:
+      image: node:22
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: vistta/vistta
+          ref: ${{ gitea.event.pull_request.head.ref }}
+          token: ${{ secrets.GIT_TOKEN }}
+          fetch-depth: 0
+          submodules: true
+      - 
+        name: Checkout Modules
+        run: git submodule update --remote
+      - 
+        name: Setup Node
+        run: npm ci
+      - 
+        name: Module Validation
+        working-directory: ./packages/${{ env.module }}
+        run: npx vistta outdated
+      - 
+        name: Eslint Validation
+        working-directory: ./packages/${{ env.module }}
+        run: npx eslint .
+      - 
+        name: Typescript Validation
+        working-directory: ./packages/${{ env.module }}
+        run: npx tsc
+      - 
+        name: Unit Tests
+        working-directory: ./packages/${{ env.module }}
+        run: npx vistta test
+      - 
+        name: Close Issue
+        uses: ./.gitea/actions/close-issue
+        with:
+          working-directory: ./packages/${{ env.module }}
+          token: ${{ secrets.GIT_TOKEN }}
