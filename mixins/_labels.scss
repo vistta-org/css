@@ -1,0 +1,15 @@
+@use "../settings" as *;
+
+@mixin label($name, $var: false) {
+  @if ($var != null) {
+    @if ($var == false) {
+      $var: $name;
+    }
+
+    label.#{$name},
+    .label-#{$name} {
+      color: var(--#{$var}-contrast-color);
+      background: var(--#{$var}-color);
+    }
+  }
+}

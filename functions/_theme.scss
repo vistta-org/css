@@ -1,0 +1,10 @@
+$theme-map: () !default;
+@use "sass:map";
+@function define($key, $fallback) {
+  $value: map.get($theme-map, $key);
+  @if ($value != null) {
+    @return $value;
+  } @else {
+    @return $fallback;
+  }
+}

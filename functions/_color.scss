@@ -1,0 +1,22 @@
+@use "../settings" as *;
+
+@function contrast($color, $light-color: null, $dark-color: null) {
+  @if ($light-color and $dark-color) {
+    @return if(lightness($color) < $threshold, $light-color, $dark-color);
+  } @else if ($light-color) {
+    @return if(lightness($color) < $threshold, $light-color, darken($color, $contrast));
+  } @else if ($dark-color) {
+    @return if(lightness($color) < $threshold, lighten($color, $contrast), $dark-color);
+  }
+  @return if(lightness($color) < $threshold, lighten($color, $contrast), darken($color, $contrast));
+}
+
+@function transparency($color, $opacity, $type: "default") {
+  @if $type == "add" {
+    @return rgba(red($color), green($color), blue($color), (opacity($color) + $opacity));
+  } @else if $type == "remove" {
+    @return rgba(red($color), green($color), blue($color), (opacity($color) - $opacity));
+  } @else {
+    @return rgba(red($color), green($color), blue($color), $opacity);
+  }
+}

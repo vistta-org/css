@@ -1,0 +1,27 @@
+@use "../settings" as *;
+
+@mixin highlight($name, $var: false, $type: "default") {
+  @if ($var != null) {
+    @if ($var == false) {
+      $var: $name;
+    }
+
+    @if type == "default" {
+      @include highlight($name, $var, "base");
+
+      @for $i from 1 through $variants {
+        @include highlight($name + "-light-" + $i, $var, "base");
+      }
+
+      @for $i from 1 through $variants {
+        @include highlight($name + "-dark-" + $i, $var, "base");
+      }
+    } @else {
+      .highlight-#{$name} {
+        box-shadow:
+          color-mix(in srgb, var(--#{$var}-color) 50%, transparent) 0px 0px 6px 1px,
+          color-mix(in srgb, var(--#{$var}-color) 50%, transparent) 0px 0px 2px 0px;
+      }
+    }
+  }
+}

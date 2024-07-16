@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "description": "Vistta CSS Library",
   "main": "index.js",
-  "style": "index.scss",
   "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./style": "./css.js",
+    "./scss": "./index.scss"
+  },
   "repository": {
     "type": "git",
     "url": "https://git.vistta.org/vistta/css.git"

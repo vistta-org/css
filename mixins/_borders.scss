@@ -1,0 +1,41 @@
+@use "../settings" as *;
+
+@mixin border($name, $var: false, $type: "default") {
+  @if ($var != null) {
+    @if ($var == false) {
+      $var: $name;
+    }
+
+    @if type == "default" {
+      @include border($name, $var, "base");
+
+      @for $i from 1 through $variants {
+        @include border($name + "-light-" + $i, $var, "base");
+      }
+
+      @for $i from 1 through $variants {
+        @include border($name + "-dark-" + $i, $var, "base");
+      }
+    } @else {
+      .border-#{$name} {
+        border: var(--border-size) solid var(--#{$var}-color) !important;
+      }
+
+      .border-#{$name}-top {
+        border-top: var(--border-size) solid var(--#{$var}-color) !important;
+      }
+
+      .border-#{$name}-right {
+        border-right: var(--border-size) solid var(--#{$var}-color) !important;
+      }
+
+      .border-#{$name}-bottom {
+        border-bottom: var(--border-size) solid var(--#{$var}-color) !important;
+      }
+
+      .border-#{$name}-left {
+        border-left: var(--border-size) solid var(--#{$var}-color) !important;
+      }
+    }
+  }
+}

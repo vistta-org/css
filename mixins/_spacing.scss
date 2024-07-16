@@ -1,0 +1,75 @@
+// Margin utility mixin
+@mixin margins($id: 1, $size: null) {
+  $size-str: "";
+  @if $size {
+    $size-str: #{$size}-;
+  }
+
+  .m-#{$size-str}#{$id} {
+    margin: var(--unit-#{$id}) !important;
+  }
+
+  .mb-#{$size-str}#{$id} {
+    margin-bottom: var(--unit-#{$id}) !important;
+  }
+
+  .ml-#{$size-str}#{$id} {
+    margin-left: var(--unit-#{$id}) !important;
+  }
+
+  .mr-#{$size-str}#{$id} {
+    margin-right: var(--unit-#{$id}) !important;
+  }
+
+  .mt-#{$size-str}#{$id} {
+    margin-top: var(--unit-#{$id}) !important;
+  }
+
+  .mx-#{$size-str}#{$id} {
+    margin-left: var(--unit-#{$id}) !important;
+    margin-right: var(--unit-#{$id}) !important;
+  }
+
+  .my-#{$size-str}#{$id} {
+    margin-bottom: var(--unit-#{$id}) !important;
+    margin-top: var(--unit-#{$id}) !important;
+  }
+}
+
+// Padding utility mixin
+@mixin paddings($id: 1, $size: null) {
+  $size-str: "";
+  @if $size {
+    $size-str: #{$size}-;
+  }
+
+  .p-#{$size-str}#{$id} {
+    padding: var(--unit-#{$id}) !important;
+  }
+
+  .pb-#{$size-str}#{$id} {
+    padding-bottom: var(--unit-#{$id}) !important;
+  }
+
+  .pl-#{$size-str}#{$id} {
+    padding-left: var(--unit-#{$id}) !important;
+  }
+
+  .pr-#{$size-str}#{$id} {
+    padding-right: var(--unit-#{$id}) !important;
+  }
+
+  .pt-#{$size-str}#{$id} {
+    padding-top: var(--unit-#{$id}) !important;
+  }
+
+  .px-#{$size-str}#{$id} {
+    padding-left: var(--unit-#{$id}) !important;
+    padding-right: var(--unit-#{$id}) !important;
+  }
+
+  .py-#{$size-str}#{$id} {
+    padding-bottom: var(--unit-#{$id}) !important;
+    padding-top: var(--unit-#{$id}) !important;
+  }
+}
