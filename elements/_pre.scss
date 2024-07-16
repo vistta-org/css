@@ -1,0 +1,25 @@
+pre,
+.code {
+  position: relative;
+  margin: var(--unit-4) 0 var(--unit-8);
+  padding: var(--unit-2);
+  background: var(--back-2-color);
+  border: var(--border-size) solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: clip;
+
+  &[data-lang] {
+    padding: calc(var(--font-size-small) + var(--unit-5)) var(--unit-2)
+      var(--unit-3);
+
+    &::before {
+      position: absolute;
+      content: attr(data-lang);
+      color: var(--neutral-color);
+      font-size: var(--font-size-small);
+      inset: 0 0 auto 0;
+      padding: var(--unit-h) var(--unit-2);
+      border-bottom: var(--border-size) solid var(--border-color);
+    }
+  }
+}

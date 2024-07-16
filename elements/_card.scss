@@ -1,0 +1,30 @@
+@use "../mixins/cards" as *;
+
+card,
+.card,
+[class|="card"] {
+  position: relative;
+  padding: var(--unit-2) var(--unit-4);
+  display: flex;
+  flex-flow: column wrap;
+  border: var(--border-size) solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: var(--back-color);
+  box-shadow: var(--box-shadow);
+}
+
+//
+
+@include card("primary");
+
+@include card("secondary");
+
+@include card("tertiary");
+
+@include card("info");
+
+@include card("success");
+
+@include card("warning");
+
+@include card("error");

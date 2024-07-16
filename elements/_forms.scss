@@ -1,0 +1,103 @@
+@use "../settings" as *;
+
+input,
+textarea,
+.input {
+  padding: var(--unit-2);
+  color: var(--fore-color);
+  background: var(--back-color);
+  border: var(--border-size) solid var(--border-color);
+  border-radius: var(--border-radius);
+  accent-color: var(--primary-color);
+
+  &:disabled {
+    background: color-mix(in srgb, var(--neutral-color) 50%, transparent) !important;
+    border: var(--border-size) solid var(--border-color) !important;
+  }
+
+  &:not(
+      :disabled,
+      [type="file"],
+      [type="color"],
+      [type="submit"],
+      [type="range"],
+      [type="radio"],
+      [type="checkbox"]
+    ):read-only {
+    border-color: transparent !important;
+    border-bottom-color: var(--border-color) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+}
+
+select {
+  padding: var(--unit-2) var(--unit-4);
+  color: var(--fore-color);
+  background: var(--back-color);
+  border: var(--border-size) solid var(--border-color);
+  border-radius: var(--border-radius);
+  accent-color: var(--primary-color);
+  > * {
+    accent-color: var(--primary-color);
+  }
+
+  &:disabled {
+    background: color-mix(in srgb, var(--neutral-color) 50%, transparent) !important;
+    border: var(--border-size) solid var(--border-color) !important;
+  }
+}
+
+input[type="file"] {
+  padding: 0;
+}
+
+input[type="color"] {
+  padding: 0 var(--unit-2);
+}
+
+input[type="submit"] {
+  padding: var(--unit-2) var(--unit-6);
+}
+
+input[type="file"]::file-selector-button {
+  padding: var(--unit-2) var(--unit-4);
+  margin-right: var(--unit-4);
+  color: var(--fore-color);
+  border: var(--border-size) solid transparent;
+  border-right-color: var(--border-color);
+}
+
+input[type="submit"],
+input[type="file"]::file-selector-button {
+  cursor: pointer;
+  background: var(--back-1-color);
+
+  &:disabled {
+    cursor: default !important;
+    color: var(--neutral-dark-4-color) !important;
+    background: var(--neutral-color) !important;
+    border: none !important;
+  }
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  padding: 0;
+  height: var(--unit-2);
+  background: var(--back-color);
+  border: var(--border-size) solid var(--border-color);
+  cursor: pointer;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: var(--unit-4);
+    height: var(--unit-4);
+    border-radius: 100%;
+    background: var(--primary-color);
+    cursor: pointer;
+  }
+}

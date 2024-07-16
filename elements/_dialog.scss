@@ -1,0 +1,72 @@
+dialog {
+  position: absolute;
+  padding: var(--unit-2) var(--unit-4);
+  border: none;
+  color: var(--fore-color);
+  border-radius: var(--border-radius);
+  background: var(--back-color);
+  box-shadow: var(--box-shadow-2);
+  &:not([popover]) {
+    z-index: var(--z-index-2);
+  }
+  opacity: 0;
+  display: none;
+  transition:
+    opacity var(--duration),
+    overlay var(--duration) allow-discrete,
+    display var(--duration) allow-discrete;
+
+  @starting-style {
+    &[popover]:popover-open {
+      opacity: 0;
+    }
+  }
+
+  &[open],
+  &:popover-open {
+    opacity: 1;
+    display: block;
+  }
+
+  &.modal {
+    &:not([popover]) {
+      position: fixed;
+      z-index: var(--z-index-4);
+      background: unset;
+      box-shadow: unset;
+    }
+    &[popover] {
+      box-shadow: var(--box-shadow-4);
+    }
+    min-height: 20rem;
+    min-width: 20rem;
+    inset: 0;
+    margin: auto;
+
+    &::backdrop {
+      backdrop-filter: var(--blur);
+      background: color-mix(in srgb, var(--fore-color), transparent 95%);
+      transition:
+        opacity var(--duration),
+        overlay var(--duration) allow-discrete,
+        display var(--duration) allow-discrete;
+    }
+
+    &:not([popover]):before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background: var(--back-color);
+      box-shadow: var(--box-shadow-4);
+      z-index: -1;
+    }
+
+    &:not([popover]):after {
+      position: fixed;
+      inset: 0;
+      content: "";
+      z-index: -2;
+      backdrop-filter: var(--blur);
+    }
+  }
+}

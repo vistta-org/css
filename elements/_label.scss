@@ -1,0 +1,25 @@
+@use "../mixins/labels" as *;
+
+label,
+.label,
+*[class|="label"] {
+  padding: var(--unit-h) var(--unit-2);
+  color: var(--fore-color);
+  border-radius: var(--border-radius);
+}
+
+//
+
+@include label("primary");
+
+@include label("secondary");
+
+@include label("tertiary");
+
+@include label("info");
+
+@include label("success");
+
+@include label("warning");
+
+@include label("error");

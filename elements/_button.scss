@@ -1,0 +1,120 @@
+@use "../mixins/buttons" as *;
+
+button,
+.button,
+[class|="button"] {
+  position: relative;
+  --_color: var(--back-color);
+  --_background: var(--fore-color);
+  --_border: rgba(0, 0, 0, 0);
+  color: var(--_color);
+  background: var(--_background);
+  padding: var(--unit-2) var(--unit-6);
+  border: var(--border-size) solid var(--_border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition:
+    background var(--duration),
+    color var(--duration),
+    border var(--duration);
+
+  &:not(:disabled):hover {
+    --_color: var(--back-color);
+    --_background: color-mix(in srgb, var(--fore-color) 65%, transparent);
+  }
+
+  &:not(:disabled):active {
+    --_background: color-mix(in srgb, var(--fore-color) 25%, transparent);
+  }
+
+  &:disabled {
+    cursor: default !important;
+    color: var(--neutral-dark-4-color) !important;
+    background: var(--neutral-color) !important;
+    border: none !important;
+  }
+
+  &.small {
+    font-size: var(--font-size-small);
+    padding: var(--unit-1) var(--unit-3);
+  }
+
+  &.large {
+    font-size: var(--font-size-large);
+    padding: var(--unit-3) var(--unit-9);
+  }
+
+  &.action {
+    width: calc(1em * 2.5);
+    aspect-ratio: 1;
+    padding: 0.4rem 0;
+  }
+}
+
+button.raw,
+.button-raw {
+  --_color: var(--fore-color);
+  --_background: rgba(0, 0, 0, 0);
+  --_border: rgba(0, 0, 0, 0);
+
+  &:not(:disabled):hover {
+    --_color: var(--fore-color);
+    --_background: color-mix(in srgb, var(--fore-color) 10%, transparent);
+    --_border: rgba(0, 0, 0, 0);
+  }
+
+  &:not(:disabled):active {
+    --_color: var(--fore-color);
+    --_background: color-mix(in srgb, var(--fore-color) 40%, transparent);
+    --_border: rgba(0, 0, 0, 0);
+  }
+
+  &:disabled {
+    cursor: default !important;
+    color: var(--neutral-color) !important;
+    background: none !important;
+    border: none !important;
+  }
+}
+
+button.outlined,
+.button-outlined {
+  --_color: var(--fore-color);
+  --_background: rgba(0, 0, 0, 0);
+  --_border: var(--fore-color);
+
+  &:not(:disabled):hover {
+    --_color: var(--fore-color);
+    --_background: color-mix(in srgb, var(--fore-color) 10%, transparent);
+    --_border: var(--fore-color);
+  }
+
+  &:not(:disabled):active {
+    --_color: var(--fore-color);
+    --_background: color-mix(in srgb, var(--fore-color) 40%, transparent);
+    --_border: var(--fore-color);
+  }
+
+  &:disabled {
+    cursor: default !important;
+    color: var(--neutral-color) !important;
+    background: none !important;
+    border: var(--border-size) solid var(--neutral-color) !important;
+  }
+}
+
+//
+
+@include button("primary");
+
+@include button("secondary");
+
+@include button("tertiary");
+
+@include button("info");
+
+@include button("success");
+
+@include button("warning");
+
+@include button("error");
