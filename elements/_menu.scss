@@ -1,4 +1,49 @@
 menu,
 ul {
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+  padding: var(--unit-2);
+  border-radius: var(--border-radius);
   list-style-type: none;
+
+  &.card {
+    padding: var(--unit-2);
+  }
+
+  > li {
+    &:not(:first-child) {
+      margin-top: var(--unit-2);
+    }
+
+    &:not(:has(> button, > .button)) {
+      padding: 0 var(--unit-2);
+    }
+
+    > button,
+    > .button {
+      --_color: var(--fore-color);
+      --_background: rgba(0, 0, 0, 0);
+      --_border: rgba(0, 0, 0, 0);
+
+      &:not(:disabled):hover {
+        --_color: var(--fore-color);
+        --_background: color-mix(in srgb, var(--fore-color) 10%, transparent);
+        --_border: rgba(0, 0, 0, 0);
+      }
+
+      &:not(:disabled):active {
+        --_color: var(--fore-color);
+        --_background: color-mix(in srgb, var(--fore-color) 40%, transparent);
+        --_border: rgba(0, 0, 0, 0);
+      }
+
+      &:disabled {
+        cursor: default !important;
+        color: var(--neutral-color) !important;
+        background: none !important;
+        border: none !important;
+      }
+    }
+  }
 }
