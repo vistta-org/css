@@ -1,0 +1,66 @@
+@use "../settings" as *;
+@use "../mixins/borders" as *;
+
+:root {
+  --border-size: #{$border-size};
+  --border-radius: #{$border-radius};
+  @if $border-color == $neutral-color {
+    @if $color-transparency {
+      --border-color: color-mix(in srgb, #{$border-color}, transparent 80%);
+    } @else {
+      --border-color: color-mix(in srgb, #{$border-color}, var(--back-color) 80%);
+    }
+  }
+}
+
+//
+
+.border {
+  border: var(--border-size) solid var(--border-color) !important;
+}
+
+.border-top {
+  border-top: var(--border-size) solid var(--border-color) !important;
+}
+
+.border-right {
+  border-right: var(--border-size) solid var(--border-color) !important;
+}
+
+.border-bottom {
+  border-bottom: var(--border-size) solid var(--border-color) !important;
+}
+
+.border-left {
+  border-left: var(--border-size) solid var(--border-color) !important;
+}
+
+@include border("primary");
+
+@include border("primary-contrast");
+
+@include border("secondary");
+
+@include border("secondary-contrast");
+
+@include border("tertiary");
+
+@include border("tertiary-contrast");
+
+@include border("light");
+
+@include border("dark");
+
+@include border("neutral");
+
+@include border("info");
+
+@include border("success");
+
+@include border("warning");
+
+@include border("error");
+
+.border-none {
+  border: none !important;
+}

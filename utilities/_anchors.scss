@@ -1,0 +1,50 @@
+@use "../settings" as *;
+
+[anchor] {
+  position: fixed;
+  inset-area: bottom;
+}
+
+@for $i from 1 through $anchors {
+  .anchor-#{$i} {
+    anchor-name: --class-anchor-#{$i};
+  }
+
+  .anchor-to-#{$i} {
+    position: fixed;
+    position-anchor: --class-anchor-#{$i};
+    inset-area: bottom;
+  }
+}
+
+.anchor-top {
+  inset-area: top;
+}
+
+.anchor-right {
+  inset-area: right;
+}
+
+.anchor-bottom {
+  inset-area: bottom;
+}
+
+.anchor-left {
+  inset-area: left;
+}
+
+.anchor-top-left {
+  inset-area: top left;
+}
+
+.anchor-top-right {
+  inset-area: top right;
+}
+
+.anchor-bottom-right {
+  inset-area: bottom right;
+}
+
+.anchor-bottom-left {
+  inset-area: bottom left;
+}

@@ -1,0 +1,129 @@
+@use "sass:math";
+@use "../settings" as *;
+@use "../mixins/typography" as *;
+
+// Global
+:root {
+  $maxLessOne: $font-max-breakpoint - 1;
+  $avg: math.div(($font-max-size + $font-size), 2);
+  --font-size-large: #{$font-size-large};
+  --font-size: #{$font-size};
+  --font-size-small: #{$font-size-small};
+  --font-size-h1: #{$font-size-h1};
+  --font-size-h2: #{$font-size-h2};
+  --font-size-h3: #{$font-size-h3};
+  --font-size-h4: #{$font-size-h4};
+  --font-size-h5: #{$font-size-h5};
+  --font-size-h6: #{$font-size-h6};
+
+  @media (min-width: #{$font-min-breakpoint}) and (max-width: #{$font-max-breakpoint}) {
+    --font-size: #{$avg};
+    --font-size: calc(
+      #{$font-size} + (#{$font-max-size} - #{$font-size}) * (100vw - #{$font-min-breakpoint}) / (#{$font-max-breakpoint} - #{$font-min-breakpoint})
+    );
+  }
+
+  @media (min-width: #{$font-max-breakpoint}px) {
+    --font-size: #{$font-max-size};
+  }
+  --font-family: #{$font-family};
+  --line-height: #{$line-height};
+  --letter-spacing: #{$letter-spacing};
+  --icon-size: #{$icon-size};
+}
+
+// Text alignment utilities
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+// Text transform utilities
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+// Font style utilities
+.font-normal {
+  font-weight: normal;
+}
+
+.font-ligher {
+  font-weight: 200;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.font-regular {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-bolder {
+  font-weight: 800;
+}
+
+.font-italic {
+  font-style: italic;
+}
+
+.font-default {
+  font-size: var(--font-size);
+}
+
+.font-large {
+  font-size: var(--font-size-large);
+}
+
+.font-small {
+  font-size: var(--font-size-small);
+}
+
+.font-muted {
+  opacity: 0.8;
+}
+
+// Text overflow utilities
+.text-ellipsis {
+  @include ellipsis();
+}
+
+.text-clip {
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+.text-break {
+  hyphens: auto;
+  word-break: break-word;
+  word-wrap: break-word;
+}

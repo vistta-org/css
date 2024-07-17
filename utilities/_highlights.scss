@@ -1,0 +1,34 @@
+@use "../settings" as *;
+@use "../mixins/highlights" as *;
+
+.highlight {
+  box-shadow:
+    color-mix(in srgb, var(--primary-color) 50%, transparent) 0px 0px 6px 1px,
+    color-mix(in srgb, var(--primary-color) 50%, transparent) 0px 0px 2px 0px;
+}
+
+@include highlight("primary");
+
+@include highlight("primary-contrast");
+
+@include highlight("secondary");
+
+@include highlight("secondary-contrast");
+
+@include highlight("tertiary");
+
+@include highlight("tertiary-contrast");
+
+@include highlight("light");
+
+@include highlight("dark");
+
+@include highlight("neutral");
+
+@include highlight("info");
+
+@include highlight("success");
+
+@include highlight("warning");
+
+@include highlight("error");

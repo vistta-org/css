@@ -1,0 +1,87 @@
+@use "../settings" as *;
+@use "../mixins/tooltips" as *;
+@use "../mixins/colors" as *;
+
+// Global
+:root {
+  --blur: blur(#{$blur});
+  --duration: #{$duration};
+}
+
+[data-tooltip] {
+  position: relative;
+  --_position: auto auto 100% 50%;
+  --_transform: translate(-50%, var(--unit-2));
+  --_transform-hover: translate(-50%, calc(var(--unit-1) * -1));
+  &::after {
+    position: absolute;
+    content: attr(data-tooltip);
+    width: max-content;
+    max-width: 50vw;
+    inset: var(--_position);
+    padding: var(--unit-1) var(--unit-2);
+    color: var(--secondary-contrast-color);
+    font-size: var(--font-size-small);
+    line-height: var(--line-height);
+    white-space: break-spaces;
+    @include background-color("secondary");
+    border-radius: var(--border-radius);
+    opacity: 0;
+    transform: var(--_transform);
+    transition:
+      opacity var(--duration),
+      transform var(--duration);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    z-index: var(--z-index-2);
+    pointer-events: none;
+    display: block;
+  }
+
+  &.tooltip-on-click::after {
+    transition-delay: calc(var(--duration) * 2);
+  }
+
+  &.tooltip-on-click:active::after {
+    transition-delay: 0ms;
+  }
+
+  &:not(.tooltip-on-click):hover,
+  &.tooltip-on-click:active {
+    &::after {
+      opacity: 1;
+      transform: var(--_transform-hover);
+    }
+  }
+
+  &[disabled],
+  &.disabled {
+    pointer-events: auto;
+  }
+}
+
+.tooltip-right {
+  --_position: auto auto 50% 100%;
+  --_transform: translate(calc(var(--unit-1) * -1), 50%);
+  --_transform-hover: translate(var(--unit-1), 50%);
+}
+
+.tooltip-bottom {
+  --_position: 100% auto auto 50%;
+  --_transform: translate(-50%, calc(var(--unit-2) * -1));
+  --_transform-hover: translate(-50%, var(--unit-1));
+}
+
+.tooltip-left {
+  --_position: auto 100% 50% auto;
+  --_transform: translate(var(--unit-2), 50%);
+  --_transform-hover: translate(calc(var(--unit-1) * -1), 50%);
+}
+
+@include tooltip("primary");
+@include tooltip("tertiary");
+@include tooltip("neutral");
+@include tooltip("info");
+@include tooltip("success");
+@include tooltip("warning");
+@include tooltip("error");

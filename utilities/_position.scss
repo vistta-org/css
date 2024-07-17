@@ -1,0 +1,259 @@
+@use "sass:math";
+@use "../settings" as *;
+@use "../mixins/spacing" as *;
+
+// Global
+:root {
+  --unit-auto: auto;
+  --unit-o: #{math.div($base-size, 4)};
+  --unit-h: #{math.div($base-size, 2)};
+  @for $i from 0 through $units {
+    --unit-#{$i}: #{$base-size * $i};
+  }
+  --spacing-small: var(--unit-1);
+  --spacing: var(--unit-2);
+  --spacing-large: var(--unit-4);
+  --z-index: 1;
+  @for $i from 0 through $units {
+    --z-index-#{$i}: #{$i * 10};
+  }
+}
+
+// Position
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.float-left {
+  float: left !important;
+}
+
+.float-right {
+  float: right !important;
+}
+
+.p-relative {
+  position: relative !important;
+}
+
+.p-absolute {
+  position: absolute !important;
+}
+
+.p-fixed {
+  position: fixed !important;
+}
+
+.p-sticky {
+  position: sticky !important;
+}
+
+.p-centered {
+  display: block;
+  float: none;
+  margin: auto;
+}
+
+.p-fullscreen {
+  position: fixed !important;
+  inset: 0 !important;
+}
+
+.p-fullspace {
+  position: absolute !important;
+  inset: 0 !important;
+}
+
+// Spacing - Margin
+@include margins(auto);
+@for $i from 0 through $units {
+  @include margins($i);
+}
+
+// Spacing - Padding
+@for $i from 0 through $units {
+  @include paddings($i);
+}
+
+// Responsive
+@media (min-width: $sm-viewport) {
+  // Position
+  .clearfix-sm::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+
+  .float-left-sm {
+    float: left !important;
+  }
+
+  .float-right-sm {
+    float: right !important;
+  }
+
+  .p-relative-sm {
+    position: relative !important;
+  }
+
+  .p-absolute-sm {
+    position: absolute !important;
+  }
+
+  .p-fixed-sm {
+    position: fixed !important;
+  }
+
+  .p-sticky-sm {
+    position: sticky !important;
+  }
+
+  .p-centered-sm {
+    display: block;
+    float: none;
+    margin: auto;
+  }
+
+  .p-fullscreen-sm {
+    position: fixed !important;
+    inset: 0 !important;
+  }
+
+  .p-fullspace-sm {
+    position: absolute !important;
+    inset: 0 !important;
+  }
+
+  // Spacing - Margin
+  @include margins(auto, "sm");
+  @for $i from 0 through $units {
+    @include margins($i, "sm");
+  }
+
+  // Spacing - Padding
+  @for $i from 0 through $units {
+    @include paddings($i, "sm");
+  }
+}
+
+@media (min-width: $md-viewport) {
+  // Position
+  .clearfix-md::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+
+  .float-left-md {
+    float: left !important;
+  }
+
+  .float-right-md {
+    float: right !important;
+  }
+
+  .p-relative-md {
+    position: relative !important;
+  }
+
+  .p-absolute-md {
+    position: absolute !important;
+  }
+
+  .p-fixed-md {
+    position: fixed !important;
+  }
+
+  .p-sticky-md {
+    position: sticky !important;
+  }
+
+  .p-centered-md {
+    display: block;
+    float: none;
+    margin: auto;
+  }
+
+  .p-fullscreen-md {
+    position: fixed !important;
+    inset: 0 !important;
+  }
+
+  .p-fullspace-md {
+    position: absolute !important;
+    inset: 0 !important;
+  }
+
+  // Spacing - Margin
+  @include margins(auto, "md");
+  @for $i from 0 through $units {
+    @include margins($i, "md");
+  }
+
+  // Spacing - Padding
+  @for $i from 0 through $units {
+    @include paddings($i, "md");
+  }
+}
+
+@media (min-width: $lg-viewport) {
+  // Position
+  .clearfix-lg::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+
+  .float-left-lg {
+    float: left !important;
+  }
+
+  .float-right-lg {
+    float: right !important;
+  }
+
+  .p-relative-lg {
+    position: relative !important;
+  }
+
+  .p-absolute-lg {
+    position: absolute !important;
+  }
+
+  .p-fixed-lg {
+    position: fixed !important;
+  }
+
+  .p-sticky-lg {
+    position: sticky !important;
+  }
+
+  .p-centered-lg {
+    display: block;
+    float: none;
+    margin: auto;
+  }
+
+  .p-fullscreen-lg {
+    position: fixed !important;
+    inset: 0 !important;
+  }
+
+  .p-fullspace-lg {
+    position: absolute !important;
+    inset: 0 !important;
+  }
+
+  // Spacing - Margin
+  @include margins(auto, "lg");
+  @for $i from 0 through $units {
+    @include margins($i, "lg");
+  }
+
+  // Spacing - Padding
+  @for $i from 0 through $units {
+    @include paddings($i, "lg");
+  }
+}

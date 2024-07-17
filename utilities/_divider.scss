@@ -1,0 +1,37 @@
+@use "../mixins/typography" as *;
+
+.divider,
+*[class|="divider"] {
+  position: relative;
+  background: var(--border-color);
+  width: 100%;
+  height: var(--border-size);
+  margin: var(--unit-4) 0;
+  display: block;
+
+  &[data-content]::after {
+    position: absolute;
+    content: attr(data-content);
+    max-width: 90%;
+    left: 50%;
+    padding: 0 var(--unit-2);
+    color: var(--border-color);
+    font-size: var(--font-size-small);
+    @include ellipsis();
+    backdrop-filter: blur(4px);
+    transform: translate(-50%, -50%);
+  }
+}
+
+.divider-vertical {
+  margin: 0 var(--unit-4);
+  width: var(--border-size);
+  height: 100%;
+
+  &[data-content]::after {
+    top: 50%;
+    max-height: 90%;
+    max-width: unset;
+    padding: var(--unit-2) 0;
+  }
+}

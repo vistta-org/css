@@ -1,0 +1,31 @@
+@use "../settings" as *;
+@use "../mixins/colors" as *;
+
+// Global
+:root {
+  --scroll-size: #{$scroll-size};
+  --scroll-radius: #{$scroll-radius};
+  --scroll-color: #{$scroll-color};
+}
+
+*::-webkit-scrollbar {
+  height: var(--scroll-size);
+  width: var(--scroll-size);
+  cursor: pointer;
+}
+
+*::-webkit-scrollbar-thumb {
+  @include background-color("scroll", true, 80%);
+  border: calc(var(--scroll-size) * 0.3) solid rgba(0, 0, 0, 0);
+  border-radius: var(--border-radius);
+  background-clip: padding-box;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+  border: calc(var(--scroll-size) * 0.1) solid rgba(0, 0, 0, 0);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  @include background-color("scroll", true, 40%);
+  border: calc(var(--scroll-size) * 0) solid var(--color);
+}
