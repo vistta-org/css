@@ -1,5 +1,6 @@
 menu,
-ul {
+ul,
+.menu {
   position: relative;
   height: fit-content;
   width: fit-content;
@@ -7,11 +8,21 @@ ul {
   border-radius: var(--border-radius);
   list-style-type: none;
 
-  &.card {
+  &.card,
+  &[class|="card"] {
     padding: var(--unit-2);
   }
 
+  &.card *:is(menu, ul, .menu),
+  &[class|="card"] *:is(menu, ul, .menu) {
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--back-color);
+    box-shadow: var(--box-shadow);
+  }
+
   > li {
+    position: relative;
     &:not(:first-child) {
       margin-top: var(--unit-2);
     }
@@ -44,6 +55,26 @@ ul {
         background: none !important;
         border: none !important;
       }
+    }
+
+    > menu {
+      position: absolute;
+      inset: 0 auto auto 100%;
+      display: none;
+      opacity: 0;
+      transition:
+        opacity var(--duration),
+        display var(--duration) allow-discrete;
+      z-index: var(--z-index);
+    }
+
+    &:hover > menu {
+      @starting-style {
+        opacity: 0;
+      }
+
+      opacity: 1;
+      display: block;
     }
   }
 }
