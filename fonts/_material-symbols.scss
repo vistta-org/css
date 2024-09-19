@@ -1,0 +1,8 @@
+@use "settings" as *;
+
+@if $use-icons {
+  @font-face {
+    font-family: "Material Symbols";
+    src: url("./MaterialSymbols.ttf") format("truetype");
+  }
+}

@@ -1,0 +1,16 @@
+@use "settings" as *;
+
+@if $use-fonts {
+  @font-face {
+    font-family: "Inter";
+    src: url("./Inter.ttf") format("truetype");
+    font-style: normal;
+  }
+
+  /* Italic */
+  @font-face {
+    font-family: "Inter";
+    src: url("./Inter-Italic.ttf") format("truetype");
+    font-style: italic;
+  }
+}

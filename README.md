@@ -1,4 +1,4 @@
-# **Vistta CSS Library**
+# **VISTTA CSS Library**
 
 [Project Name] description
 
@@ -39,9 +39,11 @@ You can use other bundlers importing `@vistta/css/scss`
 #### **Anchors**
 
 Anchors utilities are used for anchoring fixed or absolute elements to other elements.
-You can either use `anchor` html attribute to reference a element id in the future or class `anchor-[1-16]` and `anchor-to-[1-16]`
+You can either use `anchor` html attribute to reference a element id, if you are using `@vistta/js`, or class `anchor-[1-16]` and `anchor-to-[1-16]`
 
 ```html preview
+<p id="anchor-1">anchor</p>
+<div><div anchor="anchor-1">fixed</div></div>
 <p className="anchor-1">anchor</p>
 <div><div className="anchor-to-1">fixed</div></div>
 ```
@@ -49,16 +51,18 @@ You can either use `anchor` html attribute to reference a element id in the futu
 ###### Position
 
 ```html preview
-<p className="anchor-16">anchor</p>
+<p id="anchor-2">anchor</p>
 <div>
-  <div className="anchor-to-16 anchor-top-left">anchor-top-left</div>
-  <div className="anchor-to-16 anchor-top">anchor-top</div>
-  <div className="anchor-to-16 anchor-top-right">anchor-top-right</div>
-  <div className="anchor-to-16 anchor-right">anchor-right</div>
-  <div className="anchor-to-16 anchor-bottom-left">anchor-bottom-left</div>
-  <div className="anchor-to-16 anchor-bottom">anchor-bottom</div>
-  <div className="anchor-to-16 anchor-bottom-right">anchor-bottom-right</div>
-  <div className="anchor-to-16 anchor-left">anchor-left</div>
+  <div anchor="anchor-2" className="anchor-top-left">anchor-top-left</div>
+  <div anchor="anchor-2" className="anchor-top">anchor-top</div>
+  <div anchor="anchor-2" className="anchor-top-right">anchor-top-right</div>
+  <div anchor="anchor-2" className="anchor-right">anchor-right</div>
+  <div anchor="anchor-2" className="anchor-bottom-left">anchor-bottom-left</div>
+  <div anchor="anchor-2" className="anchor-bottom">anchor-bottom</div>
+  <div anchor="anchor-2" className="anchor-bottom-right">
+    anchor-bottom-right
+  </div>
+  <div anchor="anchor-2" className="anchor-left">anchor-left</div>
 </div>
 ```
 
@@ -197,7 +201,7 @@ Divider is used to separate elements.
 ```
 
 ```html preview
-<div className="grid">
+<div className="grid gap-4">
   <p className="py-8">Section 1</p>
   <div className="divider-vertical" data-content="OR"></div>
   <p className="py-8">Section 2</p>
@@ -344,6 +348,47 @@ You can also add `-[1-4]` for more sizes.
 </div>
 ```
 
+#### **Overflow**
+
+Overflow utilities are used for changing element overflow.
+
+```html
+<!-- visible overflow -->
+<div className="overflow"></div>
+<div className="overflow-visible"></div>
+<!-- auto overflow -->
+<div className="overflow-auto"></div>
+<!-- no overflow -->
+<div className="no-overflow"></div>
+<div className="overflow-clip"></div>
+<!-- scroll -->
+<div className="scroll"></div>
+<div className="overflow-scroll"></div>
+```
+
+You can also add `-x` or `-y` to control just one axis.
+
+```html
+<!-- visible overflow -->
+<div className="overflow-x"></div>
+<div className="overflow-y"></div>
+<div className="overflow-x-visible"></div>
+<div className="overflow-y-visible"></div>
+<!-- auto overflow -->
+<div className="overflow-x-auto"></div>
+<div className="overflow-y-auto"></div>
+<!-- no overflow -->
+<div className="no-x-overflow"></div>
+<div className="no-y-overflow"></div>
+<div className="overflow-x-clip"></div>
+<div className="overflow-y-clip"></div>
+<!-- scroll -->
+<div className="scroll-x"></div>
+<div className="scroll-y"></div>
+<div className="overflow-x-scroll"></div>
+<div className="overflow-y-scroll"></div>
+```
+
 #### **Positions**
 
 Position utilities are used for useful layout and position things, including clearfix, float, position and margin/padding utilities.
@@ -361,10 +406,10 @@ Position utilities are used for useful layout and position things, including cle
 <div className="p-sticky"></div>
 <!-- centered block -->
 <div className="p-centered"></div>
-<!-- Occupy relative full space -->
-<div className="p-full"></div>
-<!-- Occupy window full space -->
-<div className="p-full window"></div>
+<!-- occupy full screen -->
+<div className="p-fullscreen"></div>
+<!-- Occupy full relative space -->
+<div className="p-fullspace"></div>
 
 <!-- m-[0-12] margin in all 4 directions -->
 <div className="m-2"></div>
@@ -390,12 +435,18 @@ Position utilities are used for useful layout and position things, including cle
 <div className="py-8"></div>
 ```
 
-#### **Overflow**
-
-Overflow utilities are used for changing element overflow.
+You can also add responsiveness by adding `-sm`, `-md` and `-lg` to the class for small screens, medium screens or large screens respectively.
 
 ```html
+<div className="clearfix-sm"></div>
+<div className="float-left-md"></div>
+<div className="p-relative-lg"></div>
 
+<div className="m-sm-2"></div>
+<div className="mt-md-2"></div>
+
+<div className="p-md-2"></div>
+<div className="py-lg-2"></div>
 ```
 
 #### **Shadows**
@@ -602,7 +653,7 @@ Buttons include simple button styles for actions in different types and sizes.
 
 Cards are flexible content containers.
 
-```html
+```html preview
 <card>card</card>
 ```
 
@@ -629,8 +680,8 @@ Cards are flexible content containers.
 
 ```html preview
 <div>
-  <button className="anchor-2" popovertarget="mypopover1">Open</button>
-  <dialog className="anchor-bottom-2" id="mypopover1" popover>
+  <button id="anchor-3" popovertarget="mypopover1">Open</button>
+  <dialog anchor="anchor-3" id="mypopover1" popover>
     <p>Simple dialog</p>
     <button popovertarget="mypopover1">Close</button>
   </dialog>
@@ -753,8 +804,49 @@ Labels are formatted text tags for highlighted, informative information.
 
 #### **Menu**
 
+Menus are vertical list of items, links or buttons for information, actions and navigation.
+
 ```html preview
-<menu></menu>
+<div>
+  <menu>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li><button>Item 4</button></li>
+  </menu>
+</div>
+```
+
+Menus can have sub-menus included
+
+```html preview
+<div>
+  <menu>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>
+      Item 3
+      <menu>
+        <li>Sub-item 1</li>
+        <li>Sub-item 2</li>
+        <li>Sub-item 3</li>
+      </menu>
+    </li>
+  </menu>
+</div>
+```
+
+You can also combine it with card for a more unique look.
+
+```html preview
+<div>
+  <menu className="card">
+    <li><button>Item 1</button></li>
+    <li><button>Item 2</button></li>
+    <li><button>Item 3</button></li>
+    <li>Item 4</li>
+  </menu>
+</div>
 ```
 
 #### **Meters**

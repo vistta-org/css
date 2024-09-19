@@ -2,7 +2,7 @@
 
 @if $use-icons {
   *[data-icon]::before {
-    font-family: "Material Icons";
+    font-family: "Material Symbols";
     content: attr(data-icon);
     display: block;
     font-size: var(--icon-size);

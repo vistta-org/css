@@ -1,2 +1,2 @@
-import style from "./index.scss" with { type: "config" };
+import style from "./index.scss";
 export default style;

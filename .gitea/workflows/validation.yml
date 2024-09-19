@@ -30,7 +30,7 @@ jobs:
       - 
         name: Module Validation
         working-directory: ./packages/${{ env.module }}
-        run: npx vistta outdated
+        run: npx vistta package outdated
       - 
         name: Eslint Validation
         working-directory: ./packages/${{ env.module }}
