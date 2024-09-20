@@ -5,6 +5,7 @@
     font-family: "Inter";
     src: url("./Inter.ttf") format("truetype");
     font-style: normal;
+    font-display: swap;
   }
 
   /* Italic */
@@ -12,5 +13,6 @@
     font-family: "Inter";
     src: url("./Inter-Italic.ttf") format("truetype");
     font-style: italic;
+    font-display: swap;
   }
 }

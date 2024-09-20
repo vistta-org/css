@@ -28,6 +28,12 @@ jobs:
         name: Setup Node
         run: npm ci
       - 
+        name: Close Issue
+        uses: ./.gitea/actions/close-issue
+        with:
+          working-directory: ./packages/${{ env.module }}
+          token: ${{ secrets.GIT_TOKEN }}
+      - 
         name: Module Validation
         working-directory: ./packages/${{ env.module }}
         run: npx vistta package outdated
@@ -43,9 +49,3 @@ jobs:
         name: Unit Tests
         working-directory: ./packages/${{ env.module }}
         run: npx vistta test
-      - 
-        name: Close Issue
-        uses: ./.gitea/actions/close-issue
-        with:
-          working-directory: ./packages/${{ env.module }}
-          token: ${{ secrets.GIT_TOKEN }}

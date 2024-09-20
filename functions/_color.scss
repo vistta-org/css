@@ -1,22 +1,54 @@
+@use "sass:color";
 @use "../settings" as *;
 
 @function contrast($color, $light-color: null, $dark-color: null) {
   @if ($light-color and $dark-color) {
-    @return if(lightness($color) < $threshold, $light-color, $dark-color);
+    @return if(
+      color.channel($color, "lightness", $space: hsl) < $threshold,
+      $light-color,
+      $dark-color
+    );
   } @else if ($light-color) {
-    @return if(lightness($color) < $threshold, $light-color, darken($color, $contrast));
+    @return if(
+      color.channel($color, "lightness", $space: hsl) < $threshold,
+      $light-color,
+      color.scale($color, $lightness: ($contrast * 1))
+    );
   } @else if ($dark-color) {
-    @return if(lightness($color) < $threshold, lighten($color, $contrast), $dark-color);
+    @return if(
+      color.channel($color, "lightness", $space: hsl) < $threshold,
+      color.scale($color, $lightness: $contrast),
+      $dark-color
+    );
   }
-  @return if(lightness($color) < $threshold, lighten($color, $contrast), darken($color, $contrast));
+  @return if(
+    color.channel($color, "lightness", $space: hsl) < $threshold,
+    color.scale($color, $lightness: $contrast),
+    color.scale($color, $lightness: ($contrast * -1))
+  );
 }
 
 @function transparency($color, $opacity, $type: "default") {
   @if $type == "add" {
-    @return rgba(red($color), green($color), blue($color), (opacity($color) + $opacity));
+    @return rgba(
+      color.channel($color, "red", $space: rgb),
+      color.channel($color, "green", $space: rgb),
+      color.channel($color, "blue", $space: rgb),
+      (opacity($color) + $opacity)
+    );
   } @else if $type == "remove" {
-    @return rgba(red($color), green($color), blue($color), (opacity($color) - $opacity));
+    @return rgba(
+      color.channel($color, "red", $space: rgb),
+      color.channel($color, "green", $space: rgb),
+      color.channel($color, "blue", $space: rgb),
+      (opacity($color) - $opacity)
+    );
   } @else {
-    @return rgba(red($color), green($color), blue($color), $opacity);
+    @return rgba(
+      color.channel($color, "red", $space: rgb),
+      color.channel($color, "green", $space: rgb),
+      color.channel($color, "blue", $space: rgb),
+      $opacity
+    );
   }
 }
