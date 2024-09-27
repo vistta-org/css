@@ -15,10 +15,10 @@ npm install @vistta/css
 Usage with `@vistta/js`:
 
 ```javascript
-import css from "@vistta/css";
+import style from "@vistta/css/style";
 
 export const config = {
-  styles: [css],
+  styles: [style],
 };
 
 // OR
@@ -32,7 +32,7 @@ export default class Page extends Component {
 }
 ```
 
-You can use other bundlers importing `@vistta/css/scss`
+You can use other bundlers importing `@vistta/css`
 
 ### **Utilities**
 
@@ -236,12 +236,14 @@ This project uses <a href="https://fonts.google.com/icons?selected=Material+Icon
 Use the attribute `data-icon` with the value `&#x«code point»;` (HTML) or `\u«code point»;` (JSX)
 
 ```html preview
-<button data-icon="&#xe8b6;" />
-<button data-icon="&#xe88a;" />
-<button data-icon="&#xe853;" />
-<button data-icon="&#xe8b8;" />
-<button data-icon="&#xe876;" />
-<button data-icon="&#xe88e;" />
+<div className="grid gap-4">
+  <button className="action" data-icon="&#xe8b6;" />
+  <button className="action" data-icon="&#xe88a;" />
+  <button className="action" data-icon="&#xe853;" />
+  <button className="action" data-icon="&#xe8b8;" />
+  <button className="action" data-icon="&#xe876;" />
+  <button className="action" data-icon="&#xe88e;" />
+</div>
 ```
 
 ###### Icon Sizes

@@ -5,8 +5,9 @@
   "main": "index.js",
   "type": "module",
   "exports": {
-    ".": "./index.js",
-    "./scss": "./index.scss"
+    ".": "./index.scss",
+    "./style": "./index.js",
+    "./settings": "./settings.scss"
   },
   "repository": {
     "type": "git",

@@ -11,11 +11,16 @@ textarea,
   accent-color: var(--primary-color);
 
   &:disabled {
-    background: color-mix(in srgb, var(--neutral-color) 50%, transparent) !important;
+    background: color-mix(
+      in srgb,
+      var(--neutral-color) 50%,
+      transparent
+    ) !important;
     border: var(--border-size) solid var(--border-color) !important;
   }
 
   &:not(
+      .input,
       :disabled,
       [type="file"],
       [type="color"],
@@ -28,6 +33,10 @@ textarea,
     border-bottom-color: var(--border-color) !important;
     border-radius: 0 !important;
     background: transparent !important;
+  }
+
+  &:focus:not(:disabled, :read-only) {
+    outline: none;
   }
 }
 
@@ -43,7 +52,11 @@ select {
   }
 
   &:disabled {
-    background: color-mix(in srgb, var(--neutral-color) 50%, transparent) !important;
+    background: color-mix(
+      in srgb,
+      var(--neutral-color) 50%,
+      transparent
+    ) !important;
     border: var(--border-size) solid var(--border-color) !important;
   }
 }

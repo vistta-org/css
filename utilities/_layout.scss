@@ -12,6 +12,7 @@
   gap: var(--gap) 0 !important;
   padding: var(--gap);
   background: none;
+  align-items: baseline;
 
   & > * {
     margin: 0 calc(var(--gap) / 2);
@@ -33,6 +34,7 @@
   &.center {
     align-content: center;
     justify-content: center;
+    align-items: center;
   }
 
   &.left {

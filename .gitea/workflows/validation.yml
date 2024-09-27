@@ -28,8 +28,8 @@ jobs:
         name: Setup Node
         run: npm ci
       - 
-        name: Close Issue
-        uses: ./.gitea/actions/close-issue
+        name: Close Issues
+        uses: ./.gitea/actions/close-issues
         with:
           working-directory: ./packages/${{ env.module }}
           token: ${{ secrets.GIT_TOKEN }}
