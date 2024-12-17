@@ -1,6 +1,6 @@
 {
   "name": "@vistta/css",
-  "version": "0.1.0",
+  "version": "0.1.0-snapshot.1",
   "description": "Vistta CSS Library",
   "main": "index.js",
   "type": "module",
