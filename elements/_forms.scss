@@ -1,4 +1,4 @@
-@use "../settings" as *;
+@use "../vars" as *;
 
 input,
 textarea,
@@ -84,11 +84,11 @@ input[type="file"]::file-selector-button {
 input[type="submit"],
 input[type="file"]::file-selector-button {
   cursor: pointer;
-  background: var(--back-1-color);
+  background: var(--back-color-1);
 
   &:disabled {
     cursor: default !important;
-    color: var(--neutral-dark-4-color) !important;
+    color: var(--neutral-color-dark-4) !important;
     background: var(--neutral-color) !important;
     border: none !important;
   }

@@ -1,15 +1,17 @@
-@use "../settings" as *;
+@use "../vars" as *;
 
 // Loading
 .loading,
-*[class|="loading"] {
+.loading\:small,
+.loading\:large {
+  --_size: 3em;
   color: transparent !important;
-  min-height: var(--unit-4);
-  min-width: var(--unit-4);
+  min-height: var(--_size);
+  min-width: var(--_size);
   pointer-events: none;
   position: relative;
   &::after {
-    animation: loading 500ms infinite linear;
+    animation: loading calc(var(--duration) * 2) infinite linear;
     background: transparent;
     border: var(--unit-h) solid var(--primary-color);
     border-radius: 50%;
@@ -18,8 +20,8 @@
     content: "";
     display: block;
     position: absolute;
-    height: var(--unit-4);
-    width: var(--unit-4);
+    height: var(--_size);
+    width: var(--_size);
     top: 0;
     right: 0;
     bottom: 0;
@@ -31,29 +33,12 @@
   }
 }
 
-@for $i from 1 through $variants {
-  .loading-#{$i} {
-    min-height: calc(var(--unit-4) * #{(1 + $i)});
-    min-width: calc(var(--unit-4) * #{(1 + $i)});
-    &::after {
-      height: calc(var(--unit-4) * #{(1 + $i)});
-      width: calc(var(--unit-4) * #{(1 + $i)});
-    }
-  }
+.loading\:small {
+  --_size: 1em;
 }
 
-.loading-screen {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  pointer-events: all;
-  z-index: calc(var(--z-index-1) + 1);
-  &::after {
-    height: calc(var(--unit-#{$units}) * 2);
-    width: calc(var(--unit-#{$units}) * 2);
-  }
+.loading\:large {
+  --_size: 6em;
 }
 
 @keyframes loading {

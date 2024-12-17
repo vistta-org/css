@@ -1,4 +1,4 @@
-@use "../settings" as *;
+@use "../vars" as *;
 
 @mixin label($name, $var: false) {
   @if ($var != null) {

@@ -1,9 +1,9 @@
 @charset "UTF-8";
 $version: "0.0.1";
-$theme: () !default;
+$settings: () !default;
 
-@use "settings" with (
-  $theme: $theme
+@use "vars" with (
+  $settings: $settings
 );
 
 // Fonts
@@ -11,10 +11,12 @@ $theme: () !default;
 @use "fonts/inter";
 
 // Base
+@use "elements/root";
 @use "elements/base";
 
 // Utilities
 @use "utilities/anchors";
+@use "utilities/backgrounds";
 @use "utilities/borders";
 @use "utilities/colors";
 @use "utilities/cursors";
@@ -26,10 +28,12 @@ $theme: () !default;
 @use "utilities/loading";
 @use "utilities/overflow";
 @use "utilities/position";
+@use "utilities/radius";
 @use "utilities/shadows";
-@use "utilities/shapes";
-@use "utilities/tooltips";
+@use "utilities/spacing";
 @use "utilities/text";
+@use "utilities/tooltips";
+@use "utilities/visibility";
 
 // Elements
 @use "elements/button";

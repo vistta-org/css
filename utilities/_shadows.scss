@@ -1,45 +1,9 @@
-@use "../settings" as *;
-@use "../functions/color" as *;
+@use "../vars" as *;
 
-// Global
-:root {
-  @if ($shadow-color != null) {
-    --box-shadow: #{$shadow-offset} #{$shadow-blur} #{$shadow-color};
-
-    @for $i from 1 through $variants {
-      --box-shadow-#{$i}: #{$shadow-offset} #{$shadow-blur + (2px * $i)} #{transparency($shadow-color, (0.04 * $i), "add")};
-    }
-
-    --box-shadow-inset: inset #{$shadow-offset} #{$shadow-blur} #{$shadow-color};
-
-    @for $i from 1 through $variants {
-      --box-shadow-inset-#{$i}: inset
-        #{$shadow-offset}
-        #{$shadow-blur +
-        (2px * $i)}
-        #{transparency($shadow-color, (0.04 * $i), "add")};
-    }
-  }
+.shadow {
+  box-shadow: var(--box-shadow);
 }
 
-@if ($shadow-color != null) {
-  .shadow {
-    box-shadow: var(--box-shadow);
-  }
-
-  @for $i from 1 through $variants {
-    .shadow-#{$i} {
-      box-shadow: var(--box-shadow-#{$i});
-    }
-  }
-
-  .inset-shadow {
-    box-shadow: var(--box-shadow-inset);
-  }
-
-  @for $i from 1 through $variants {
-    .inset-shadow-#{$i} {
-      box-shadow: var(--box-shadow-inset-#{$i});
-    }
-  }
+.shadow\:inset {
+  box-shadow: var(--box-shadow-inset);
 }

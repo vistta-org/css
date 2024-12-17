@@ -34,535 +34,6 @@ export default class Page extends Component {
 
 You can use other bundlers importing `@vistta/css`
 
-### **Utilities**
-
-#### **Anchors**
-
-Anchors utilities are used for anchoring fixed or absolute elements to other elements.
-You can either use `anchor` html attribute to reference a element id, if you are using `@vistta/js`, or class `anchor-[1-16]` and `anchor-to-[1-16]`
-
-```html preview
-<p id="anchor-1">anchor</p>
-<div><div anchor="anchor-1">fixed</div></div>
-<p className="anchor-1">anchor</p>
-<div><div className="anchor-to-1">fixed</div></div>
-```
-
-###### Position
-
-```html preview
-<p id="anchor-2">anchor</p>
-<div>
-  <div anchor="anchor-2" className="anchor-top-left">anchor-top-left</div>
-  <div anchor="anchor-2" className="anchor-top">anchor-top</div>
-  <div anchor="anchor-2" className="anchor-top-right">anchor-top-right</div>
-  <div anchor="anchor-2" className="anchor-right">anchor-right</div>
-  <div anchor="anchor-2" className="anchor-bottom-left">anchor-bottom-left</div>
-  <div anchor="anchor-2" className="anchor-bottom">anchor-bottom</div>
-  <div anchor="anchor-2" className="anchor-bottom-right">
-    anchor-bottom-right
-  </div>
-  <div anchor="anchor-2" className="anchor-left">anchor-left</div>
-</div>
-```
-
-#### **Border**
-
-Border utilities are used for setting border for specific sides and colors.
-You can combine both `border-primary-left`.
-You can also add `-light-[1-4]`, `-dark-[1-4]` to each color option for more customization.
-
-###### Sides
-
-```html preview
-<p className="border">border all sides</p>
-<p className="border-top">border top</p>
-<p className="border-right">border right</p>
-<p className="border-bottom">border bottom</p>
-<p className="border-left">border left</p>
-<p className="border-none">remove border</p>
-```
-
-###### Colors
-
-```html preview
-<p className="border-primary">border primary</p>
-<p className="border-primary-contrast">border primary contrast</p>
-<p className="border-secondary">border secondary</p>
-<p className="border-secondary-contrast">border secondary contrast</p>
-<p className="border-light">border light</p>
-<p className="border-dark">border dark</p>
-<p className="border-neutral">border neutral</p>
-<p className="border-info">border info</p>
-<p className="border-success">border success</p>
-<p className="border-warning">border warning</p>
-<p className="border-error">border error</p>
-```
-
-#### **Colors**
-
-Color utilities are used for changing colors for text, link and background.
-For the default color you can also add `-[1-4]` for more customization, to the other colors you can add `-light-[1-4]` or `-dark-[1-4]`.
-
-###### Text Colors
-
-```html preview
-<p className="text-default">default color</p>
-<p className="text-primary">primary color</p>
-<p className="text-primary-contrast">primary contrast color</p>
-<p className="text-secondary">secondary color</p>
-<p className="text-secondary-contrast">secondary contrast color</p>
-<p className="text-dark">dark color</p>
-<p className="text-neutral">neutral color</p>
-<p className="text-light">light color</p>
-<p className="text-info">info color</p>
-<p className="text-success">success color</p>
-<p className="text-warning">warning color</p>
-<p className="text-error">error color</p>
-```
-
-###### Background Colors
-
-```html preview
-<p className="back-default">default background</p>
-<p className="back-primary">primary background</p>
-<p className="back-primary-contrast">primary contrast background</p>
-<p className="back-secondary">secondary background</p>
-<p className="back-secondary-contrast">secondary contrast background</p>
-<p className="back-dark">dark background</p>
-<p className="back-neutral">neutral background</p>
-<p className="back-light">light background</p>
-<p className="back-info">info background</p>
-<p className="back-success">success background</p>
-<p className="back-warning">warning background</p>
-<p className="back-error">error background</p>
-```
-
-#### **Cursors**
-
-Cursor utilities specify which mouse cursor to display when mouseover.
-
-```html preview
-<p className="c-default">cursor default</p>
-<p className="c-pointer">cursor pointer</p>
-<p className="c-move">cursor move</p>
-<p className="c-zoom-in">cursor zoom-in</p>
-<p className="c-zoom-out">cursor zoom-out</p>
-<p className="c-not-allowed">cursor not-allowed</p>
-<p className="c-auto">cursor auto</p>
-```
-
-#### **Displays**
-
-Display utilities are used for display and hide elements.
-
-```html
-<!-- display: block; -->
-<div className="d-block"></div>
-<!-- display: inline; -->
-<div className="d-inline"></div>
-<!-- display: inline-block; -->
-<div className="d-inline-block"></div>
-<!-- display: flex; -->
-<div className="d-flex"></div>
-<!-- display: inline-flex; -->
-<div className="d-inline-flex"></div>
-<!-- display: none; -->
-<div className="d-none"></div>
-<div className="d-hide"></div>
-<!-- visibility: visible; -->
-<div className="d-visible"></div>
-<!-- visibility: hidden; -->
-<div className="d-invisible"></div>
-<!-- hide text contents -->
-<div className="text-hide"></div>
-<!-- assistive text for screen reader -->
-<div className="text-assistive"></div>
-```
-
-#### **Dividers**
-
-Divider is used to separate elements.
-
-```html preview
-<div>
-  <p>Section 1</p>
-  <div className="divider"></div>
-  <p>Section 2</p>
-</div>
-```
-
-```html preview
-<div>
-  <p>Section 1</p>
-  <div className="divider-horizontal" data-content="OR"></div>
-  <p>Section 2</p>
-</div>
-```
-
-```html preview
-<div className="grid gap-4">
-  <p className="py-8">Section 1</p>
-  <div className="divider-vertical" data-content="OR"></div>
-  <p className="py-8">Section 2</p>
-</div>
-```
-
-#### **Highlights**
-
-Highlight utilities are used to highlight a element.
-You can also add `-light-[1-4]`, `-dark-[1-4]` to each color option for more customization.
-
-###### Highlight Colors
-
-```html preview
-<p className="highlight">highlight default</p>
-<p className="highlight-primary">highlight primary</p>
-<p className="highlight-primary-contrast">highlight primary contrast</p>
-<p className="highlight-secondary">highlight secondary</p>
-<p className="highlight-secondary-contrast">highlight secondary contrast</p>
-<p className="highlight-light">highlight light</p>
-<p className="highlight-dark">highlight dark</p>
-<p className="highlight-neutral">highlight neutral</p>
-<p className="highlight-info">highlight info</p>
-<p className="highlight-success">highlight success</p>
-<p className="highlight-warning">highlight warning</p>
-<p className="highlight-error">highlight error</p>
-```
-
-#### **Icons**
-
-This project uses <a href="https://fonts.google.com/icons?selected=Material+Icons" target="_blank" rel="noreferrer">Google Fonts Material Icons</a>.
-Use the attribute `data-icon` with the value `&#x«code point»;` (HTML) or `\u«code point»;` (JSX)
-
-```html preview
-<div className="grid gap-4">
-  <button className="action" data-icon="&#xe8b6;" />
-  <button className="action" data-icon="&#xe88a;" />
-  <button className="action" data-icon="&#xe853;" />
-  <button className="action" data-icon="&#xe8b8;" />
-  <button className="action" data-icon="&#xe876;" />
-  <button className="action" data-icon="&#xe88e;" />
-</div>
-```
-
-###### Icon Sizes
-
-Use `.font-small`, `.font-large` classes to increase icon sizes. You can set `font-size` to have different icon sizes.
-
-```html preview
-<p className="font-small" data-icon="&#xe87e;"></p>
-<p className="font-large" data-icon="&#xe87e;"></p>
-```
-
-#### **Layouts**
-
-Layout includes flex wrap based responsive grid system with 12 columns.
-Add `.grid` or `.columns` to a container element and add any element you want with the `col/column` to take advantage of it.
-For more sizes you can use `.col-[1-12]` or `.column-[1-12]`. You can also add `-auto` for automatic sizing.
-
-```html preview
-<div className="grid">
-  <div className="col-1">col 1</div>
-  <div className="col-11">col 11</div>
-  <div className="col-2">col 2</div>
-  <div className="col-10">col 10</div>
-  <div className="col-3">col 3</div>
-  <div className="col-9">col 9</div>
-  <div className="col-4">col 4</div>
-  <div className="col-8">col 8</div>
-  <div className="col-5">col 5</div>
-  <div className="col-7">col 7</div>
-  <div className="col-6">col 6</div>
-  <div className="col-6">col 6</div>
-  <div className="col-12">col 12</div>
-</div>
-```
-
-You can also use `.rows` to you layout with every child as a full column.
-
-```html preview
-<div className="rows">
-  <div>full column</div>
-  <div>full column</div>
-</div>
-```
-
-You can also remove the wrap functionality by adding `.oneline`.
-
-```html preview
-<div className="grid oneline">
-  <div className="col-8">col 8</div>
-  <div className="col-8">col 8</div>
-</div>
-```
-
-You can also control the gap size with `.gap-[1-16]` or `.gapless` for no gap.
-
-```html preview
-<div className="grid gapless">
-  <div className="col-6">col 6</div>
-  <div className="col-6">col 6</div>
-</div>
-<div className="grid gap-6">
-  <div className="col-6">col 6</div>
-  <div className="col-6">col 6</div>
-</div>
-<div className="grid gap-12">
-  <div className="col-6">col 6</div>
-  <div className="col-6">col 6</div>
-</div>
-```
-
-You also have multiple options for the grid alignment.
-
-```html preview
-<div className="grid space-around">...</div>
-<div className="grid space-between">...</div>
-<div className="grid space-evenly">...</div>
-<div className="grid top">...</div>
-<div className="grid bottom">...</div>
-<div className="grid center">...</div>
-<div className="grid left">...</div>
-<div className="grid right">...</div>
-<div className="grid top-left">...</div>
-<div className="grid top-right">...</div>
-<div className="grid center-right">...</div>
-<div className="grid bottom-right">...</div>
-<div className="grid bottom-left">...</div>
-<div className="grid center-left">...</div>
-```
-
-#### **Loading**
-
-Loading indicator is used for loading or updating. You can add the `loading` class to a container for loading status.
-You can also add `-[1-4]` for more sizes.
-
-```html preview
-<div className="loading"></div>
-<div className="loading-2"></div>
-<div className="loading-4"></div>
-```
-
-```html preview
-<div className="p-relative p-16">
-  <div className="loading loading-screen"></div>
-</div>
-```
-
-#### **Overflow**
-
-Overflow utilities are used for changing element overflow.
-
-```html
-<!-- visible overflow -->
-<div className="overflow"></div>
-<div className="overflow-visible"></div>
-<!-- auto overflow -->
-<div className="overflow-auto"></div>
-<!-- no overflow -->
-<div className="no-overflow"></div>
-<div className="overflow-clip"></div>
-<!-- scroll -->
-<div className="scroll"></div>
-<div className="overflow-scroll"></div>
-```
-
-You can also add `-x` or `-y` to control just one axis.
-
-```html
-<!-- visible overflow -->
-<div className="overflow-x"></div>
-<div className="overflow-y"></div>
-<div className="overflow-x-visible"></div>
-<div className="overflow-y-visible"></div>
-<!-- auto overflow -->
-<div className="overflow-x-auto"></div>
-<div className="overflow-y-auto"></div>
-<!-- no overflow -->
-<div className="no-x-overflow"></div>
-<div className="no-y-overflow"></div>
-<div className="overflow-x-clip"></div>
-<div className="overflow-y-clip"></div>
-<!-- scroll -->
-<div className="scroll-x"></div>
-<div className="scroll-y"></div>
-<div className="overflow-x-scroll"></div>
-<div className="overflow-y-scroll"></div>
-```
-
-#### **Positions**
-
-Position utilities are used for useful layout and position things, including clearfix, float, position and margin/padding utilities.
-
-```html
-<!-- clear float -->
-<div className="clearfix"></div>
-<!-- float: left and right -->
-<div className="float-left"></div>
-<div className="float-right"></div>
-<!-- position: relative, absolute, fixed and sticky -->
-<div className="p-relative"></div>
-<div className="p-absolute"></div>
-<div className="p-fixed"></div>
-<div className="p-sticky"></div>
-<!-- centered block -->
-<div className="p-centered"></div>
-<!-- occupy full screen -->
-<div className="p-fullscreen"></div>
-<!-- Occupy full relative space -->
-<div className="p-fullspace"></div>
-
-<!-- m-[0-12] margin in all 4 directions -->
-<div className="m-2"></div>
-<div className="m-8"></div>
-<!-- m[t|b|l|r]-[0-12] margin in 1 of 4 directions. [(t)op, (b)ottom, (l)eft, (r)ight] -->
-<div className="mt-2"></div>
-<div className="mt-8"></div>
-<!-- mx-[0-12] margin vertically or my-[0-12] margin horizontally -->
-<div className="mx-2"></div>
-<div className="mx-8"></div>
-<div className="my-2"></div>
-<div className="my-8"></div>
-<!-- p-[0-12] padding in all 4 directions -->
-<div className="p-2"></div>
-<div className="p-8"></div>
-<!-- p[t|b|l|r]-[0-12] padding in 1 of 4 directions. [(t)op, (b)ottom, (l)eft, (r)ight] -->
-<div className="pt-2"></div>
-<div className="pt-8"></div>
-<!-- px-[0-12] padding vertically or py-[0-12] padding horizontally -->
-<div className="px-2"></div>
-<div className="px-9"></div>
-<div className="py-2"></div>
-<div className="py-8"></div>
-```
-
-You can also add responsiveness by adding `-sm`, `-md` and `-lg` to the class for small screens, medium screens or large screens respectively.
-
-```html
-<div className="clearfix-sm"></div>
-<div className="float-left-md"></div>
-<div className="p-relative-lg"></div>
-
-<div className="m-sm-2"></div>
-<div className="mt-md-2"></div>
-
-<div className="p-md-2"></div>
-<div className="py-lg-2"></div>
-```
-
-#### **Shadows**
-
-Shadow utilities are used for adding shadow to elements.
-You can also add `inset-` for inset shadow and `-[1-4]` for more customization.
-
-```html preview
-<div className="shadow">shadow</div>
-<div className="shadow-4">shadow 4</div>
-<div className="inset-shadow">inset shadow</div>
-<div className="inset-shadow-4">inset shadow 4</div>
-```
-
-#### **Shapes**
-
-Shape utilities are used for changing element shapes.
-
-```html preview
-<div className="shape-edged">edged</div>
-<div className="shape-rounded">rounded</div>
-<div className="shape-circle">circle</div>
-```
-
-#### **Text**
-
-Text utilities are used for text alignment, styles and overflow things.
-
-###### Alignment
-
-```html preview
-<div className="text-left">left aligned text</div>
-<div className="text-center">center aligned text</div>
-<div className="text-right">right aligned text</div>
-<div className="justify-right">justified text</div>
-```
-
-###### Transformation
-
-```html preview
-<div className="text-lowercase">Lowercased text</div>
-<div className="text-uppercase">Uppercased text</div>
-<div className="text-capitalize">Capitalized text</div>
-```
-
-###### Weight/Style
-
-```html preview
-<div className="font-normal">Normal weight font</div>
-<div className="font-lighter">Lighter weight font</div>
-<div className="font-light">Light weight font</div>
-<div className="font-regular">Regular weight font</div>
-<div className="font-medium">Medium weight font</div>
-<div className="font-bold">Bold weight font</div>
-<div className="font-bolder">Bolder weight font</div>
-<div className="font-italic">Italicized font</div>
-<div className="font-muted">Muted font</div>
-```
-
-###### Size
-
-```html preview
-<div className="font-default">default font size</div>
-<div className="font-large">Large font size</div>
-<div className="font-small">Small font size</div>
-```
-
-###### Other
-
-```html preview
-<div className="text-ellipsis">Text Ellipsis</div>
-<div className="text-clip">Text Clip</div>
-<div className="text-break">Text Break</div>
-```
-
-#### **Tooltips**
-
-Tooltips provide context information labels that appear on hover and focus. Tooltips component is built entirely in CSS.
-Add the `data-tooltip` attribute with the text that you want to display.
-
-```html preview
-<button data-tooltip="Tooltip Text">tooltip</button>
-```
-
-Or for a different positioning you can add the `tooltip-top`, `tooltip-right`, `tooltip-bottom` or `tooltip-left` class to define the position of a tooltip.
-By default, the tooltip appears above the element.
-
-```html preview
-<button className="tooltip-top" data-tooltip="Top Tooltip Text">
-  top tooltip
-</button>
-<button className="tooltip-right" data-tooltip="Right Tooltip Text">
-  right tooltip
-</button>
-<button className="tooltip-bottom" data-tooltip="Bottom Tooltip Text">
-  bottom tooltip
-</button>
-<button className="tooltip-left" data-tooltip="Left Tooltip Text ">
-  left tooltip
-</button>
-```
-
-###### Multiline tooltips
-
-Add the `\n` string between any text for multiline tooltips.
-
-```html preview
-<button
-  data-tooltip="First Line Tooltip Text\nSecond Line Tooltip Text\nThird Line Tooltip Text"
->
-  tooltip
-</button>
-```
-
 ### **Elements**
 
 #### **Buttons**
@@ -1023,6 +494,606 @@ Typography sets default styles for headings, paragraphs, semantic text, blockquo
   <u>Underline</u>
   <var>x = y + 2</var>
 </div>
+```
+
+### **Utilities**
+
+#### **Anchors**
+
+Anchors utilities are used for anchoring fixed or absolute elements to other elements.
+You can either use `anchor` html attribute to reference a element id, if you are using `@vistta/js`, or class `anchor-[1-16]` and `anchor-to-[1-16]`
+
+```html preview
+<p id="anchor-1">anchor</p>
+<div><div anchor="anchor-1">fixed</div></div>
+<p className="anchor-1">anchor</p>
+<div><div className="anchor-to-1">fixed</div></div>
+```
+
+###### Position
+
+```html preview
+<p id="anchor-2">anchor</p>
+<div>
+  <div anchor="anchor-2" className="anchor-top-left">anchor-top-left</div>
+  <div anchor="anchor-2" className="anchor-top">anchor-top</div>
+  <div anchor="anchor-2" className="anchor-top-right">anchor-top-right</div>
+  <div anchor="anchor-2" className="anchor-right">anchor-right</div>
+  <div anchor="anchor-2" className="anchor-bottom-left">anchor-bottom-left</div>
+  <div anchor="anchor-2" className="anchor-bottom">anchor-bottom</div>
+  <div anchor="anchor-2" className="anchor-bottom-right">
+    anchor-bottom-right
+  </div>
+  <div anchor="anchor-2" className="anchor-left">anchor-left</div>
+</div>
+```
+
+#### **Backgrounds**
+
+Color utilities are used for changing Background colors.
+If color shading is active you can also add `-[100-900]`, `-[100-900]` to each color option for more customization.
+
+###### Background Colors
+
+```html preview
+<p className="background">default background</p>
+<p className="background:primary">primary background</p>
+<p className="background:primary-contrast">primary contrast background</p>
+<p className="background:secondary">secondary background</p>
+<p className="background:secondary-contrast">secondary contrast background</p>
+<p className="background:dark">dark background</p>
+<p className="background:neutral">neutral background</p>
+<p className="background:light">light background</p>
+<p className="background:info">info background</p>
+<p className="background:success">success background</p>
+<p className="background:warning">warning background</p>
+<p className="background:error">error background</p>
+```
+
+###### Remove
+
+```html preview
+<p className="background:none">Remove background</p>
+```
+
+###### Auto
+
+You can also use a more dynamic `background:auto` which adjusts with use.
+
+```html preview
+<div className="background:auto">
+  <div className="background:auto">auto</div>
+</div>
+```
+
+#### **Border**
+
+Border utilities are used for setting border for specific sides and colors.
+You can combine both `border-l:primary`.
+If color shading is active you can also add `-[100-900]`, `-[100-900]` to each color option for more customization.
+
+###### Sides
+
+```html preview
+<p className="border">border all sides</p>
+<p className="border-t">border top</p>
+<p className="border-r">border right</p>
+<p className="border-b">border bottom</p>
+<p className="border-l">border left</p>
+<p className="border-x">border top and bottom</p>
+<p className="border-y">border right and left</p>
+```
+
+###### Colors
+
+```html preview
+<p className="border:primary">border primary</p>
+<p className="border:secondary">border secondary</p>
+<p className="border:light">border light</p>
+<p className="border:dark">border dark</p>
+<p className="border:neutral">border neutral</p>
+<p className="border:info">border info</p>
+<p className="border:success">border success</p>
+<p className="border:warning">border warning</p>
+<p className="border:error">border error</p>
+```
+
+###### Remove
+
+```html preview
+<p className="border border:none">remove border all sides</p>
+<p className="border border-t:none">remove border top</p>
+<p className="border border-r:none">remove border right</p>
+<p className="border border-b:none">remove border bottom</p>
+<p className="border border-l:none">remove border left</p>
+<p className="border border-x:none">remove border top and bottom</p>
+<p className="border border-y:none">remove border right and left</p>
+```
+
+#### **Colors**
+
+Color utilities are used for changing text colors.
+If color shading is active you can also add `-[100-900]`, `-[100-900]` to each color option for more customization.
+
+###### Text Colors
+
+```html preview
+<p className="color">default color</p>
+<p className="color:primary">primary color</p>
+<p className="color:primary-contrast">primary contrast color</p>
+<p className="color:secondary">secondary color</p>
+<p className="color:secondary-contrast">secondary contrast color</p>
+<p className="color:dark">dark color</p>
+<p className="color:neutral">neutral color</p>
+<p className="color:light">light color</p>
+<p className="color:info">info color</p>
+<p className="color:success">success color</p>
+<p className="color:warning">warning color</p>
+<p className="color:error">error color</p>
+```
+
+#### **Cursors**
+
+Cursor utilities specify which mouse cursor to display when mouseover.
+
+```html preview
+<p className="cursor">cursor default</p>
+<p className="cursor:pointer">cursor pointer</p>
+<p className="cursor:move">cursor move</p>
+<p className="cursor:zoom-in">cursor zoom-in</p>
+<p className="cursor:zoom-out">cursor zoom-out</p>
+<p className="cursor:not-allowed">cursor not-allowed</p>
+<p className="cursor:help">cursor help</p>
+<p className="cursor:auto">cursor auto</p>
+```
+
+#### **Displays**
+
+Display utilities are used for display and hide elements.
+Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:`, `xl:`, or `xxl:` to target specific screen sizes.
+
+```html
+<!-- display: block; -->
+<div className="block"></div>
+<!-- display: inline; -->
+<div className="inline"></div>
+<!-- display: inline-block; -->
+<div className="inline-block"></div>
+<!-- display: flex; -->
+<div className="flex"></div>
+<!-- display: inline-flex; -->
+<div className="inline-flex"></div>
+<!-- display: table; -->
+<div className="table"></div>
+<!-- display: inline-table; -->
+<div className="inline-table"></div>
+<!-- display: grid; -->
+<div className="grid"></div>
+<!-- display: inline-grid; -->
+<div className="inline-grid"></div>
+<!-- display: contents; -->
+<div className="contents"></div>
+<!-- display: list-item; -->
+<div className="list-item"></div>
+<!-- display: none; -->
+<div className="hidden"></div>
+```
+
+#### **Dividers**
+
+Divider is used to separate elements.
+Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:`, `xl:`, or `xxl:` to target specific screen sizes.
+
+```html preview
+<div>
+  <p>Section 1</p>
+  <div className="divider"></div>
+  <p>Section 2</p>
+</div>
+```
+
+```html preview
+<div>
+  <p>Section 1</p>
+  <div className="divider:horizontal" data-content="OR"></div>
+  <p>Section 2</p>
+</div>
+```
+
+```html preview
+<div className="grid gap-4">
+  <p className="py-8">Section 1</p>
+  <div className="divider:vertical" data-content="OR"></div>
+  <p className="py-8">Section 2</p>
+</div>
+```
+
+#### **Highlights**
+
+Highlight utilities are used to highlight a element.
+You can combine both `highlight:primary`.
+If color shading is active you can also add `-[100-900]`, `-[100-900]` to each color option for more customization.
+
+###### Highlight Colors
+
+```html preview
+<p className="highlight">highlight default</p>
+<p className="highlight:primary">highlight primary</p>
+<p className="highlight:secondary">highlight secondary</p>
+<p className="highlight:info">highlight info</p>
+<p className="highlight:success">highlight success</p>
+<p className="highlight:warning">highlight warning</p>
+<p className="highlight:error">highlight error</p>
+```
+
+#### **Icons**
+
+This project uses <a href="https://fonts.google.com/icons?selected=Material+Icons" target="_blank" rel="noreferrer">Google Fonts Material Icons</a>.
+Use the attribute `data-icon` with the value `&#x«code point»;` (HTML) or `\u«code point»;` (JSX)
+
+```html preview
+<div className="grid gap-4">
+  <button className="action" data-icon="&#xe8b6;" />
+  <button className="action" data-icon="&#xe88a;" />
+  <button className="action" data-icon="&#xe853;" />
+  <button className="action" data-icon="&#xe8b8;" />
+  <button className="action" data-icon="&#xe876;" />
+  <button className="action" data-icon="&#xe88e;" />
+</div>
+```
+
+###### Icon Sizes
+
+Use `.font-s`, `.font-large` classes to increase icon sizes. You can set `font-size` to have different icon sizes.
+
+```html preview
+<p className="font-s" data-icon="&#xe87e;"></p>
+<p className="font-large" data-icon="&#xe87e;"></p>
+```
+
+#### **Layouts**
+
+Layout includes auto flex/grid wrap based responsive layout system with 12 columns.
+Add `layout` to a container element and add any element you want with the `col` to take advantage of it.
+For more sizes you can use `col:[1-12]`. You can also add `:auto` for automatic sizing.
+
+```html preview
+<div className="layout">
+  <div className="background:auto col:1">col 1</div>
+  <div className="background:auto col:11">col 11</div>
+  <div className="background:auto col:2">col 2</div>
+  <div className="background:auto col:10">col 10</div>
+  <div className="background:auto col:3">col 3</div>
+  <div className="background:auto col:9">col 9</div>
+  <div className="background:auto col:4">col 4</div>
+  <div className="background:auto col:8">col 8</div>
+  <div className="background:auto col:5">col 5</div>
+  <div className="background:auto col:7">col 7</div>
+  <div className="background:auto col:6">col 6</div>
+  <div className="background:auto col:6">col 6</div>
+  <div className="background:auto col:12">col 12</div>
+</div>
+```
+
+You can also remove the wrap functionality by adding any overflow option.
+
+```html preview
+<div className="layout overflow">
+  <div className="col:8">col 8</div>
+  <div className="col:8">col 8</div>
+</div>
+```
+
+You can also control the gap size with `gap:[o/h/0-16]`.
+
+```html preview
+<div className="layout gap:0">
+  <div className="col:6 background:auto">col 6</div>
+  <div className="col:6 background:auto">col 6</div>
+</div>
+<div className="layout gap:6">
+  <div className="col:6 background:auto">col 6</div>
+  <div className="col:6 background:auto">col 6</div>
+</div>
+<div className="layout gap:12">
+  <div className="col:6 background:auto">col 6</div>
+  <div className="col:6 background:auto">col 6</div>
+</div>
+```
+
+You have multiple options for grid alignment using the `items:<horizontal>:<vertical>` class.
+Horizontal alignment options include `top`, `center`, `bottom`, `space-around`, `space-between`, and `space-evenly`.
+Vertical alignment options include `left`, `center`, `right`, `space-around`, `space-between`, and `space-evenly`.
+Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:`, `xl:`, or `xxl:` to target specific screen sizes.
+
+```html preview
+<div className="layout items:top:left background:auto" style="height: var(--unit-16);">
+  <div class="col:auto background:primary p:1 rounded">top:left</div>
+</div>
+<div className="layout items:center background:auto" style="height: var(--unit-16);">
+  <div class="col:auto background:primary p:1 rounded">center</div>
+</div>
+<div className="layout items:bottom:right background:auto" style="height: var(--unit-16);">
+  <div class="col:auto background:primary p:1 rounded">bottom:right</div>
+</div>
+<div className="layout items:space-evenly background:auto" style="height: var(--unit-16);">
+  <div class="col:auto background:primary p:1 rounded">space</div>
+  <div class="col:auto background:primary p:1 rounded">evenly</div>
+</div>
+```
+
+#### **Loading**
+
+Loading indicator is used for loading or updating. You can add the `loading` class to a container for loading status.
+You can also add `:[small/large]` for more sizes.
+
+```html preview
+<div className="loading"></div>
+<div className="loading:small"></div>
+<div className="loading:large"></div>
+```
+
+#### **Overflow**
+
+Overflow utilities are used for changing element overflow.
+
+```html
+<!-- auto overflow -->
+<div className="overflow"></div>
+<div className="overflow:auto"></div>
+<!-- visible overflow -->
+<div className="overflow:visible"></div>
+<!-- no overflow -->
+<div className="overflow:none"></div>
+<div className="overflow:clip"></div>
+<!-- scroll -->
+<div className="scroll"></div>
+<div className="overflow:scroll"></div>
+```
+
+You can also add `-x` or `-y` to control just one axis.
+
+```html
+<!-- visible overflow -->
+<div className="overflow-x"></div>
+<div className="overflow-y"></div>
+<div className="overflow-x:visible"></div>
+<div className="overflow-y:visible"></div>
+<!-- auto overflow -->
+<div className="overflow-x:auto"></div>
+<div className="overflow-y:auto"></div>
+<!-- no overflow -->
+<div className="overflow-x:none"></div>
+<div className="overflow-y:none"></div>
+<div className="overflow-x:clip"></div>
+<div className="overflow-y:clip"></div>
+<!-- scroll -->
+<div className="scroll-x"></div>
+<div className="scroll-y"></div>
+<div className="overflow-x:scroll"></div>
+<div className="overflow-y:scroll"></div>
+```
+
+#### **Positions**
+
+Position utilities are used for defining float, position and inset/top/right/bottom/left utilities.
+You can add `:auto`, `:o`, `:h` and `:0` to `:16` for units on inset/top/right/bottom/left utilities.
+
+```html
+<!-- clear float -->
+<div className="clearfix"></div>
+<!-- float: left and right -->
+<div className="float:start"></div>
+<div className="float:end"></div>
+<div className="float:left"></div>
+<div className="float:right"></div>
+<div className="float:center"></div>
+<!-- position: relative, absolute, fixed and sticky -->
+<div className="relative"></div>
+<div className="absolute"></div>
+<div className="fixed"></div>
+<div className="sticky"></div>
+<!-- inset/top/right/bottom/left -->
+<div className="inset"></div>
+<div className="inset:3"></div>
+<div className="top"></div>
+<div className="top:6"></div>
+<div className="right"></div>
+<div className="right:9"></div>
+<div className="bottom"></div>
+<div className="bottom:12"></div>
+<div className="left"></div>
+<div className="left:15"></div>
+```
+
+Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:`, `xl:`, or `xxl:` to target specific screen sizes.
+
+```html
+<div className="sm:clearfix"></div>
+<div className="md:float:left"></div>
+<div className="lg:relative"></div>
+<div className="sm:inset"></div>
+<div className="md:top:4"></div>
+<div className="lg:right:8"></div>
+<div className="xl:bottom:12"></div>
+<div className="xxl:left:16"></div>
+```
+
+#### **Radius**
+
+Radius utilities are used for changing element radius.
+
+```html preview
+<div>
+  <div className="background:neutral edged">edged</div>
+  <div className="background:neutral radius:edged">edged</div>
+  <div className="background:neutral rounded">rounded</div>
+  <div className="background:neutral radius:rounded">rounded</div>
+  <div className="background:neutral circle">circle</div>
+  <div className="background:neutral radius:circle">circle</div>
+</div>
+```
+
+You can also use a more dynamic `radius:auto` which adjusts with use.
+
+```html preview
+<div className="background:neutral radius:auto">
+  <div className="background:dark radius:auto">auto</div>
+</div>
+```
+
+#### **Shadows**
+
+Shadow utilities are used for adding shadow to elements.
+
+```html preview
+<div className="shadow">shadow</div>
+<div className="shadow:inset">inset shadow</div>
+```
+
+#### **Spacing**
+
+Spacing utilities are used for defining margin/padding spacing.
+You can add `t`, `r`, `b`, `l`, `x` an `y` for directions and `:auto`, `:o`, `:h` and `:0` to `:16` for units.
+
+```html
+<!-- margin -->
+<div className="m:auto"></div>
+<div className="pt:o"></div>
+<div className="mr:h"></div>
+<div className="pl:3"></div>
+<div className="mb:6"></div>
+<div className="px:12"></div>
+<div className="my:16"></div>
+```
+
+Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:`, `xl:`, or `xxl:` to target specific screen sizes.
+
+```html
+<div className="sm:mt:0"></div>
+<div className="md:pr:4"></div>
+<div className="lg:pb:8"></div>
+<div className="xl:ml:12"></div>
+<div className="xxl:mx:16"></div>
+```
+
+#### **Text**
+
+Text utilities are used for text alignment, styles and overflow things.
+
+###### Alignment
+
+```html preview
+<div className="text:left">left aligned text</div>
+<div className="text:center">center aligned text</div>
+<div className="text:right">right aligned text</div>
+<div className="text:justify">justified text</div>
+```
+
+Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:`, `xl:`, or `xxl:` to target specific screen sizes.
+
+###### Transformation
+
+```html preview
+<div className="text:lowercase">Lowercased text</div>
+<div className="text:uppercase">Uppercased text</div>
+<div className="text:capitalize">Capitalized text</div>
+```
+
+###### Size
+
+```html preview
+<div className="font:default">default font size</div>
+<div className="font:large">Large font size</div>
+<div className="font:small">Small font size</div>
+```
+
+Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:`, `xl:`, or `xxl:` to target specific screen sizes.
+
+###### Weight/Style
+
+```html preview
+<div className="font:normal">Normal weight font</div>
+<div className="font:lighter">Lighter weight font</div>
+<div className="font:light">Light weight font</div>
+<div className="font:regular">Regular weight font</div>
+<div className="font:medium">Medium weight font</div>
+<div className="font:bold">Bold weight font</div>
+<div className="font:bolder">Bolder weight font</div>
+<div className="font:italic">Italicized font</div>
+<div className="font:muted">Muted font</div>
+```
+
+###### Other
+
+```html preview
+<div className="ellipsis">Text Ellipsis</div>
+<div className="clip">Text Clip</div>
+<div className="break">Text Break</div>
+```
+
+Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:`, `xl:`, or `xxl:` to target specific screen sizes.
+
+#### **Tooltips**
+
+Tooltips provide context information labels that appear on hover and focus. Tooltips component is built entirely in CSS.
+Add the `data-tooltip` attribute with the text that you want to display.
+
+```html preview
+<button data-tooltip="Tooltip Text">tooltip</button>
+```
+
+Or for a different positioning you can add the `tooltip:top`, `tooltip:right`, `tooltip:bottom` or `tooltip:left` class to define the position of a tooltip.
+By default, the tooltip appears above the element.
+
+```html preview
+<button className="tooltip:top" data-tooltip="Top Tooltip Text">
+  top tooltip
+</button>
+<button className="tooltip:right" data-tooltip="Right Tooltip Text">
+  right tooltip
+</button>
+<button className="tooltip:bottom" data-tooltip="Bottom Tooltip Text">
+  bottom tooltip
+</button>
+<button className="tooltip:left" data-tooltip="Left Tooltip Text ">
+  left tooltip
+</button>
+```
+
+###### Multiline tooltips
+
+Add the `\n` string between any text for multiline tooltips.
+
+```html preview
+<button
+  data-tooltip="First Line Tooltip Text\nSecond Line Tooltip Text\nThird Line Tooltip Text"
+>
+  tooltip
+</button>
+```
+
+#### **Visibility**
+
+Display utilities are used for display and hide elements.
+
+```html
+<!-- visibility: visible; -->
+<div className="visible"></div>
+<!-- visibility: hidden; -->
+<div className="invisible"></div>
+<!-- visibility: collpase; -->
+<div className="collpase"></div>
+```
+
+Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:`, `xl:`, or `xxl:` to target specific screen sizes.
+
+```html
+<div className="sm:visible"></div>
+<div className="md:invisible"></div>
+<div className="lg:collpase"></div>
+<div className="xl:visible"></div>
+<div className="xxl:invisible"></div>
 ```
 
 ## **License**

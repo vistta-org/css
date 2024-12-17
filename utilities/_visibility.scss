@@ -1,0 +1,15 @@
+@use "../mixins/responsive" as *;
+
+@include responsive-media using ($viewport) {
+    .#{$viewport}visible {
+      visibility: visible;
+    }
+    
+    .#{$viewport}invisible {
+      visibility: hidden;
+    }
+    
+    .#{$viewport}collapse {
+      visibility: collapse;
+    }
+}

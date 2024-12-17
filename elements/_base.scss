@@ -34,13 +34,13 @@ html {
 
 body {
   margin: 0;
-  background: var(--back-color);
   overflow-y: overlay;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
+  background: var(--back-color);
 }
 
-a:not([class|="button"], .button) {
+a:not([class|="button"], .button, [class|="label"], .label) {
   background-color: transparent;
   color: var(--link-color);
   text-decoration: none;
@@ -49,7 +49,7 @@ a:not([class|="button"], .button) {
   &:hover,
   &:active,
   &.active {
-    color: var(--info-dark-color);
+    color: var(--info-color-dark-1);
     text-decoration: underline;
   }
 

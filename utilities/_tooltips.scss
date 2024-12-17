@@ -1,12 +1,5 @@
-@use "../settings" as *;
-@use "../mixins/tooltips" as *;
-@use "../mixins/colors" as *;
-
-// Global
-:root {
-  --blur: blur(#{$blur});
-  --duration: #{$duration};
-}
+@use "../vars" as *;
+@use "../mixins/responsive" as *;
 
 [data-tooltip] {
   position: relative;
@@ -24,7 +17,8 @@
     font-size: var(--font-size-small);
     line-height: var(--line-height);
     white-space: break-spaces;
-    @include background-color("secondary");
+    background: color-mix(in srgb, transparent get("color-transparency"), var(--secondary-color));
+    backdrop-filter: blur(var(--blur));
     border-radius: var(--border-radius);
     opacity: 0;
     transform: var(--_transform);
@@ -38,16 +32,16 @@
     display: block;
   }
 
-  &.tooltip-on-click::after {
+  &.tooltip\:onclick::after {
     transition-delay: calc(var(--duration) * 2);
   }
 
-  &.tooltip-on-click:active::after {
+  &.tooltip\:onclick:active::after {
     transition-delay: 0ms;
   }
 
-  &:not(.tooltip-on-click):hover,
-  &.tooltip-on-click:active {
+  &:not(.tooltip\:onclick):hover,
+  &.tooltip\:onclick:active {
     &::after {
       opacity: 1;
       transform: var(--_transform-hover);
@@ -60,28 +54,28 @@
   }
 }
 
-.tooltip-right {
-  --_position: auto auto 50% 100%;
-  --_transform: translate(calc(var(--unit-1) * -1), 50%);
-  --_transform-hover: translate(var(--unit-1), 50%);
-}
+@include responsive-media using ($viewport) {
+  .#{$viewport}tooltip\:top {
+    --_position: auto auto 100% 50%;
+    --_transform: translate(-50%, var(--unit-2));
+    --_transform-hover: translate(-50%, calc(var(--unit-1) * -1));
+  }
 
-.tooltip-bottom {
-  --_position: 100% auto auto 50%;
-  --_transform: translate(-50%, calc(var(--unit-2) * -1));
-  --_transform-hover: translate(-50%, var(--unit-1));
-}
+  .#{$viewport}tooltip\:right {
+    --_position: auto auto 50% 100%;
+    --_transform: translate(calc(var(--unit-1) * -1), 50%);
+    --_transform-hover: translate(var(--unit-1), 50%);
+  }
 
-.tooltip-left {
-  --_position: auto 100% 50% auto;
-  --_transform: translate(var(--unit-2), 50%);
-  --_transform-hover: translate(calc(var(--unit-1) * -1), 50%);
-}
+  .#{$viewport}tooltip\:bottom {
+    --_position: 100% auto auto 50%;
+    --_transform: translate(-50%, calc(var(--unit-2) * -1));
+    --_transform-hover: translate(-50%, var(--unit-1));
+  }
 
-@include tooltip("primary");
-@include tooltip("tertiary");
-@include tooltip("neutral");
-@include tooltip("info");
-@include tooltip("success");
-@include tooltip("warning");
-@include tooltip("error");
+  .#{$viewport}tooltip\:left {
+    --_position: auto 100% 50% auto;
+    --_transform: translate(var(--unit-2), 50%);
+    --_transform-hover: translate(calc(var(--unit-1) * -1), 50%);
+  }
+}

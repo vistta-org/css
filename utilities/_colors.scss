@@ -1,105 +1,54 @@
-@use "../settings" as *;
-@use "../mixins/colors" as *;
+@use "../vars" as *;
 
-// Global
-:root {
-  @if $color-scheme == "auto" {
-    @include color("fore", $dark-color, "dark");
-    @include color("back", $light-color, "light");
-    color-scheme: light;
-    @media (prefers-color-scheme: dark) {
-      @include color("fore", $light-color, "light");
-      @include color("back", $dark-color, "dark");
-      color-scheme: dark;
+@mixin color($color: false, $shade: "") {
+  $var: "fore-color";
+  $name: "";
+  @if ($color != false) {
+    $var: $color + "-color" + $shade;
+    $name: "\\\:" + $color  + $shade;
+  }
+  
+  @if (get($var) != null or $color == false) {
+    .color#{$name} {
+      color: var(--#{$var});
     }
-  } @else if $color-scheme == "light" {
-    @include color("fore", $dark-color, "dark");
-    @include color("back", $light-color, "light");
-    color-scheme: light;
-  } @else if $color-scheme == "dark" {
-    @include color("fore", $light-color, "light");
-    @include color("back", $dark-color, "dark");
-    color-scheme: dark;
-  }
-  &[data-theme="light"] {
-    @include color("fore", $dark-color, "dark");
-    @include color("back", $light-color, "light");
-    color-scheme: light;
-  }
-  &[data-theme="dark"] {
-    @include color("fore", $light-color, "light");
-    @include color("back", $dark-color, "dark");
-    color-scheme: dark;
-  }
 
-  @include color("neutral", mix($dark-color, $light-color, 50%));
-  @include color("primary", $primary-color, "contrast");
-  @include color("secondary", $secondary-color, "contrast");
-  @include color("tertiary", $tertiary-color, "contrast");
-  @include color("success", $success-color);
-  @include color("warning", $warning-color);
-  @include color("error", $error-color);
-  @include color("info", $info-color);
+    @if $color != false and get("color-shades") {
+      @each $shade in $shades {
+        @include color($color, "-" + $shade);
+      }
+    }
+  }
 }
 
-// Text colors
-@include text-color("default", "fore");
+@include color();
 
-@include text-color("primary");
+@include color("primary");
 
-@include text-color("primary-contrast");
+@include color("primary-contrast");
 
-@include text-color("secondary");
+@include color("secondary");
 
-@include text-color("secondary-contrast");
+@include color("secondary-contrast");
 
-@include text-color("tertiary");
+@include color("tertiary");
 
-@include text-color("tertiary-contrast");
+@include color("tertiary-contrast");
 
-@include text-color("light");
+@include color("light");
 
-@include text-color("dark");
+@include color("dark");
 
-@include text-color("neutral");
+@include color("neutral");
 
-@include text-color("info");
+@include color("info");
 
-@include text-color("success");
+@include color("success");
 
-@include text-color("warning");
+@include color("warning");
 
-@include text-color("error");
+@include color("error");
 
-// Background colors
-@include back-color("default", "back");
-
-@include back-color("primary");
-
-@include back-color("primary-contrast");
-
-@include back-color("secondary");
-
-@include back-color("secondary-contrast");
-
-@include back-color("tertiary");
-
-@include back-color("tertiary-contrast");
-
-@include back-color("light");
-
-@include back-color("dark");
-
-@include back-color("neutral");
-
-@include back-color("info");
-
-@include back-color("success");
-
-@include back-color("warning");
-
-@include back-color("error");
-
-.back-none {
-  background: none !important;
+.color\:none {
+  color: none !important;
 }

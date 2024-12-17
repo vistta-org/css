@@ -1,51 +1,53 @@
-@use "../settings" as *;
-@use "../mixins/borders" as *;
+@use "../vars" as *;
 
-:root {
-  --border-size: #{$border-size};
-  --border-radius: #{$border-radius};
-  @if $border-color == $neutral-color {
-    @if $color-transparency {
-      --border-color: color-mix(in srgb, #{$border-color}, transparent 80%);
-    } @else {
-      --border-color: color-mix(in srgb, #{$border-color}, var(--back-color) 80%);
+@mixin border($color: false, $shade: "") {
+  $var: "border-color";
+  $name: "";
+  @if ($color != false) {
+    $var: $color + "-color" + $shade;
+    $name: "\\\:" + $color  + $shade;
+  }
+  
+  @if (get($var) != null) {
+    .border#{$name} {
+      border: var(--border-size) solid var(--#{$var});
+    }
+
+    .border-t#{$name},
+    .border-x#{$name} {
+      border-top: var(--border-size) solid var(--#{$var});
+    }
+
+    .border-r#{$name},
+    .border-y#{$name} {
+      border-right: var(--border-size) solid var(--#{$var});
+    }
+
+    .border-b#{$name},
+    .border-x#{$name} {
+      border-bottom: var(--border-size) solid var(--#{$var});
+    }
+
+    .border-l#{$name},
+    .border-y#{$name} {
+      border-left: var(--border-size) solid var(--#{$var});
+    }
+
+    @if $color != false and get("color-shades") {
+      @each $shade in $shades {
+        @include border($color, "-" + $shade);
+      }
     }
   }
 }
 
-//
-
-.border {
-  border: var(--border-size) solid var(--border-color) !important;
-}
-
-.border-top {
-  border-top: var(--border-size) solid var(--border-color) !important;
-}
-
-.border-right {
-  border-right: var(--border-size) solid var(--border-color) !important;
-}
-
-.border-bottom {
-  border-bottom: var(--border-size) solid var(--border-color) !important;
-}
-
-.border-left {
-  border-left: var(--border-size) solid var(--border-color) !important;
-}
+@include border();
 
 @include border("primary");
 
-@include border("primary-contrast");
-
 @include border("secondary");
 
-@include border("secondary-contrast");
-
 @include border("tertiary");
-
-@include border("tertiary-contrast");
 
 @include border("light");
 
@@ -61,6 +63,26 @@
 
 @include border("error");
 
-.border-none {
+.border\:none {
   border: none !important;
+}
+
+.border-t\:none,
+.border-x\:none {
+  border-top: none !important;
+}
+
+.border-r\:none,
+.border-y\:none {
+  border-right: none !important;
+}
+
+.border-b\:none,
+.border-x\:none {
+  border-bottom: none !important;
+}
+
+.border-l\:none,
+.border-y\:none {
+  border-left: none !important;
 }

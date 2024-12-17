@@ -1,4 +1,4 @@
-@use "../settings" as *;
+@use "../vars" as *;
 
 @mixin card($name, $var: false) {
   @if ($var != null) {
@@ -8,7 +8,9 @@
 
     card.#{$name},
     .card-#{$name} {
-      border-left: calc(var(--border-size) * 4) solid var(--#{$var}-color) !important;
+      border-left: calc(var(--border-size) * 4)
+        solid
+        var(--#{$var}-color) !important;
     }
   }
 }

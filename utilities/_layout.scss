@@ -1,150 +1,288 @@
 @use "sass:math";
-@use "../settings" as *;
+@use "../vars" as *;
+@use "../mixins/responsive" as *;
+@use "../mixins/vars" as *;
 
-.grid,
-.rows,
-.columns {
+@function all-row-selector() {
+    $selectors: "> .row, > .row\\\:auto";
+    @for $i from 1 through get("layout") {
+        $selectors: append($selectors, "> .row\\\:#{$i}", comma);
+    }
+    @return $selectors;
+}
+
+.layout {
+  --gap: var(--unit-2);
   width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  --gap: var(--unit-2);
-  gap: var(--gap) 0 !important;
-  padding: var(--gap);
-  background: none;
-  align-items: baseline;
+  gap: var(--gap);
+  align-content: baseline;
 
-  & > * {
-    margin: 0 calc(var(--gap) / 2);
-  }
-
-  &.oneline,
-  &.nowrap {
-    flex-wrap: nowrap;
-  }
-
-  &.top {
-    align-content: flex-start;
-  }
-
-  &.bottom {
-    align-content: flex-end;
-  }
-
-  &.center {
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &.left {
-    justify-content: flex-start;
-  }
-
-  &.right {
-    justify-content: flex-end;
-  }
-
-  &.top-left {
-    align-content: flex-start;
-    justify-content: flex-start;
-  }
-
-  &.top-right {
-    align-content: flex-start;
-    justify-content: flex-end;
-  }
-
-  &.center-right {
-    align-content: center;
-    justify-content: flex-end;
-  }
-
-  &.bottom-right {
-    align-content: flex-end;
-    justify-content: flex-end;
-  }
-
-  &.bottom-left {
-    align-content: flex-end;
-    justify-content: flex-start;
-  }
-
-  &.center-left {
-    align-content: center;
-    justify-content: flex-start;
-  }
-
-  &.space-around {
-    align-content: space-around;
-    justify-content: space-around;
-  }
-
-  &.space-between {
-    align-content: space-between;
-    justify-content: space-between;
-  }
-
-  &.space-evenly {
-    align-content: space-evenly;
-    justify-content: space-evenly;
-  }
-
-  &.rows,
-  &:has(> .row, > [class|="row"]) {
+  &:has(#{all-row-selector()}) {
     height: 100%;
     flex-direction: column;
     flex-wrap: nowrap;
 
-    &.wrap {
-      flex-wrap: wrap;
-    }
+    @include responsive-media using ($viewport) {
 
-    &.top {
-      align-content: unset;
-      justify-content: flex-start;
-    }
+      &.#{$viewport}items\:top,
+      &.#{$viewport}items\:top\:left,
+      &.#{$viewport}items\:top\:center,
+      &.#{$viewport}items\:top\:right,
+      &.#{$viewport}items\:top\:space-around,
+      &.#{$viewport}items\:top\:space-between,
+      &.#{$viewport}items\:top\:space-evenly {
+        justify-content: flex-start;
+      }
 
-    &.bottom {
-      align-content: unset;
-      justify-content: flex-end;
-    }
+      &.#{$viewport}items\:center,
+      &.#{$viewport}items\:center\:left,
+      &.#{$viewport}items\:center\:right,
+      &.#{$viewport}items\:center\:center,
+      &.#{$viewport}items\:center\:space-around,
+      &.#{$viewport}items\:center\:space-between,
+      &.#{$viewport}items\:center\:space-evenly {
+        justify-content: center;
+      }
 
-    &.center {
-      align-content: unset;
-      justify-content: center;
-    }
+      &.#{$viewport}items\:bottom,
+      &.#{$viewport}items\:bottom\:left,
+      &.#{$viewport}items\:bottom\:center,
+      &.#{$viewport}items\:bottom\:right,
+      &.#{$viewport}items\:bottom\:space-around,
+      &.#{$viewport}items\:bottom\:space-between,
+      &.#{$viewport}items\:bottom\:space-evenly {
+        justify-content: flex-end;
+      }
 
-    &.space-around {
-      align-content: unset;
-      justify-content: space-around;
-    }
+      &.#{$viewport}items\:space-around,
+      &.#{$viewport}items\:space-around\:left,
+      &.#{$viewport}items\:space-around\:center,
+      &.#{$viewport}items\:space-around\:right,
+      &.#{$viewport}items\:space-around\:space-around,
+      &.#{$viewport}items\:space-around\:space-between, 
+      &.#{$viewport}items\:space-around\:space-evenly {
+        justify-content: space-around;
+      }
 
-    &.space-between {
-      align-content: unset;
-      justify-content: space-between;
-    }
+      &.#{$viewport}items\:space-between,
+      &.#{$viewport}items\:space-between\:left,
+      &.#{$viewport}items\:space-between\:center,
+      &.#{$viewport}items\:space-between\:right,
+      &.#{$viewport}items\:space-between\:space-around,
+      &.#{$viewport}items\:space-between\:space-between, 
+      &.#{$viewport}items\:space-between\:space-evenly {
+        justify-content: space-between;
+      }
 
-    &.space-evenly {
-      align-content: unset;
-      justify-content: space-evenly;
+      &.#{$viewport}items\:space-evenly,
+      &.#{$viewport}items\:space-evenly\:left,
+      &.#{$viewport}items\:space-evenly\:center,
+      &.#{$viewport}items\:space-evenly\:right,
+      &.#{$viewport}items\:space-evenly\:space-around,
+      &.#{$viewport}items\:space-evenly\:space-between,
+      &.#{$viewport}items\:space-evenly\:space-evenly {
+        justify-content: space-evenly;
+      }
+
+      &.#{$viewport}items\:left,
+      &.#{$viewport}items\:top\:left,
+      &.#{$viewport}items\:center\:left,
+      &.#{$viewport}items\:bottom\:left,
+      &.#{$viewport}items\:space-around\:left,
+      &.#{$viewport}items\:space-between\:left,
+      &.#{$viewport}items\:space-evenly\:left {
+        align-items: flex-start;
+      }
+
+      &.#{$viewport}items\:center,
+      &.#{$viewport}items\:center\:center,
+      &.#{$viewport}items\:top\:center,
+      &.#{$viewport}items\:bottom\:center,
+      &.#{$viewport}items\:space-around\:center, 
+      &.#{$viewport}items\:space-between\:center, 
+      &.#{$viewport}items\:space-evenly\:center {
+        align-items: center;
+      }
+
+      &.#{$viewport}items\:right,
+      &.#{$viewport}items\:top\:right,
+      &.#{$viewport}items\:center\:right,
+      &.#{$viewport}items\:bottom\:right,
+      &.#{$viewport}items\:space-around:right,
+      &.#{$viewport}items\:space-between:right,
+      &.#{$viewport}items\:space-evenly:right {
+        align-items: flex-end;
+      }
+
+      &.#{$viewport}items\:space-around,
+      &.#{$viewport}items\:top\:space-around,
+      &.#{$viewport}items\:center\:space-around,
+      &.#{$viewport}items\:bottom\:space-around,
+      &.#{$viewport}items\:space-around\:space-around,
+      &.#{$viewport}items\:space-between\:space-around,
+      &.#{$viewport}items\:space-evenly\:space-around {
+        align-items: space-around;
+      }
+
+      &.#{$viewport}items\:space-between,
+      &.#{$viewport}items\:top\:space-between,
+      &.#{$viewport}items\:bottom\:space-between,
+      &.#{$viewport}items\:space-around\:space-between,
+      &.#{$viewport}items\:space-between\:space-between,
+      &.#{$viewport}items\:space-evenly\:space-between {
+        align-items: space-between;
+      }
+
+      &.#{$viewport}items\:space-evenly,
+      &.#{$viewport}items\:top\:space-evenly,
+      &.#{$viewport}items\:center\:space-evenly,
+      &.#{$viewport}items\:bottom\:space-evenly,
+      &.#{$viewport}items\:space-around\:space-evenly,
+      &.#{$viewport}items\:space-between\:space-evenly,
+      &.#{$viewport}items\:space-evenly\:space-evenly {
+        align-items: space-evenly;
+      }
     }
   }
 
-  & .rows {
-    height: unset;
+  &:not(:has(#{all-row-selector()})) {
+    @include responsive-media using ($viewport) {
+      &.#{$viewport}overflow,
+      &.#{$viewport}overflow\:auto,
+      &.#{$viewport}overflow\:visible,
+      &.#{$viewport}overflow\:clip,
+      &.#{$viewport}overflow\:none,
+      &.#{$viewport}scroll,
+      &.#{$viewport}overflow\:scroll {
+          flex-wrap: nowrap;
+      }
+
+      &.#{$viewport}items\:top,
+      &.#{$viewport}items\:top\:left,
+      &.#{$viewport}items\:top\:center,
+      &.#{$viewport}items\:top\:right,
+      &.#{$viewport}items\:top\:space-around,
+      &.#{$viewport}items\:top\:space-between,
+      &.#{$viewport}items\:top\:space-evenly {
+        align-content: flex-start;
+      }
+
+      &.#{$viewport}items\:center,
+      &.#{$viewport}items\:center\:left,
+      &.#{$viewport}items\:center\:right,
+      &.#{$viewport}items\:center\:center,
+      &.#{$viewport}items\:center\:space-around,
+      &.#{$viewport}items\:center\:space-between,
+      &.#{$viewport}items\:center\:space-evenly {
+        align-content: center;
+      }
+
+      &.#{$viewport}items\:bottom,
+      &.#{$viewport}items\:bottom\:left,
+      &.#{$viewport}items\:bottom\:center,
+      &.#{$viewport}items\:bottom\:right,
+      &.#{$viewport}items\:bottom\:space-around,
+      &.#{$viewport}items\:bottom\:space-between,
+      &.#{$viewport}items\:bottom\:space-evenly {
+        align-content: flex-end;
+      }
+
+      &.#{$viewport}items\:space-around,
+      &.#{$viewport}items\:space-around\:left,
+      &.#{$viewport}items\:space-around\:center,
+      &.#{$viewport}items\:space-around\:right,
+      &.#{$viewport}items\:space-around\:space-around,
+      &.#{$viewport}items\:space-around\:space-between, 
+      &.#{$viewport}items\:space-around\:space-evenly {
+        align-content: space-around;
+      }
+
+      &.#{$viewport}items\:space-between,
+      &.#{$viewport}items\:space-between\:left,
+      &.#{$viewport}items\:space-between\:center,
+      &.#{$viewport}items\:space-between\:right,
+      &.#{$viewport}items\:space-between\:space-around,
+      &.#{$viewport}items\:space-between\:space-between, 
+      &.#{$viewport}items\:space-between\:space-evenly {
+        align-content: space-between;
+      }
+
+      &.#{$viewport}items\:space-evenly,
+      &.#{$viewport}items\:space-evenly\:left,
+      &.#{$viewport}items\:space-evenly\:center,
+      &.#{$viewport}items\:space-evenly\:right,
+      &.#{$viewport}items\:space-evenly\:space-around,
+      &.#{$viewport}items\:space-evenly\:space-between,
+      &.#{$viewport}items\:space-evenly\:space-evenly {
+        align-content: space-evenly;
+      }
+
+      &.#{$viewport}items\:left,
+      &.#{$viewport}items\:top\:left,
+      &.#{$viewport}items\:center\:left,
+      &.#{$viewport}items\:bottom\:left,
+      &.#{$viewport}items\:space-around\:left,
+      &.#{$viewport}items\:space-between\:left,
+      &.#{$viewport}items\:space-evenly\:left {
+        justify-content: flex-start;
+      }
+
+      &.#{$viewport}items\:center,
+      &.#{$viewport}items\:center\:center,
+      &.#{$viewport}items\:top\:center,
+      &.#{$viewport}items\:bottom\:center,
+      &.#{$viewport}items\:space-around\:center, 
+      &.#{$viewport}items\:space-between\:center, 
+      &.#{$viewport}items\:space-evenly\:center {
+        justify-content: center;
+      }
+
+      &.#{$viewport}items\:right,
+      &.#{$viewport}items\:top\:right,
+      &.#{$viewport}items\:center\:right,
+      &.#{$viewport}items\:bottom\:right,
+      &.#{$viewport}items\:space-around:right,
+      &.#{$viewport}items\:space-between:right,
+      &.#{$viewport}items\:space-evenly:right {
+        justify-content: flex-end;
+      }
+
+      &.#{$viewport}items\:space-around,
+      &.#{$viewport}items\:top\:space-around,
+      &.#{$viewport}items\:center\:space-around,
+      &.#{$viewport}items\:bottom\:space-around,
+      &.#{$viewport}items\:space-around\:space-around,
+      &.#{$viewport}items\:space-between\:space-around,
+      &.#{$viewport}items\:space-evenly\:space-around {
+        justify-content: space-around;
+      }
+
+      &.#{$viewport}items\:space-between,
+      &.#{$viewport}items\:top\:space-between,
+      &.#{$viewport}items\:bottom\:space-between,
+      &.#{$viewport}items\:space-around\:space-between,
+      &.#{$viewport}items\:space-between\:space-between,
+      &.#{$viewport}items\:space-evenly\:space-between {
+        justify-content: space-between;
+      }
+
+      &.#{$viewport}items\:space-evenly,
+      &.#{$viewport}items\:top\:space-evenly,
+      &.#{$viewport}items\:center\:space-evenly,
+      &.#{$viewport}items\:bottom\:space-evenly,
+      &.#{$viewport}items\:space-around\:space-evenly,
+      &.#{$viewport}items\:space-between\:space-evenly,
+      &.#{$viewport}items\:space-evenly\:space-evenly {
+        justify-content: space-evenly;
+      }
+    }
   }
 }
 
-@for $i from 0 through $units {
-  .gap-#{$i} {
-    --gap: var(--unit-#{$i});
-    gap: var(--gap) 0;
-  }
-}
-
-.col,
-.column {
+.col {
   flex: 1;
   margin: 0;
   max-width: 100%;
@@ -156,72 +294,41 @@
   max-height: 100%;
 }
 
-@for $i from 1 through $grid {
-  .col-#{$i},
-  .column-#{$i} {
-    flex: none;
-    width: calc(#{math.div(100% * $i, 12)} - var(--gap));
-  }
-  .row-#{$i} {
-    flex: none;
-    height: calc(#{math.div(100% * $i, 12)} - var(--gap));
-  }
-}
-
-.col-auto,
-.column-auto {
-  flex: none;
-  width: auto;
-}
-
-.row-auto {
-  flex: none;
-  height: auto;
-}
-
-// Responsive
-@media (min-width: $md-viewport) {
-  @for $i from 0 through $units {
-    .gap-md-#{$i} {
-      --gap: var(--unit-#{$i});
-      gap: var(--gap) 0;
-    }
-  }
-
-  @for $i from 1 through $grid {
-    .col-md-#{$i},
-    .column-md-#{$i} {
+@include responsive-media using ($viewport) {
+    .#{$viewport}col\:auto {
       flex: none;
-      width: calc(#{math.div(100% * $i, 12)} - var(--gap));
+      width: auto;
     }
-  }
-
-  .col-md-auto,
-  .column-md-auto {
-    flex: none;
-    width: auto;
-  }
-}
-
-@media (min-width: $lg-viewport) {
-  @for $i from 0 through $units {
-    .gap-md-#{$i} {
-      --gap: var(--unit-#{$i});
-      gap: var(--gap) 0;
-    }
-  }
-
-  @for $i from 1 through $grid {
-    .col-md-#{$i},
-    .column-md-#{$i} {
+    
+    .#{$viewport}row\:auto {
       flex: none;
-      width: calc(#{math.div(100% * $i, 12)} - var(--gap));
+      height: auto;
     }
-  }
 
-  .col-md-auto,
-  .column-md-auto {
-    flex: none;
-    width: auto;
-  }
+    $length: get("layout");
+    @for $i from 1 through $length {
+        .#{$viewport}col\:#{$i} {
+          flex: none;
+          @if $i == $length {
+            width: 100%;
+          } @else {
+            width: calc(math.div(100% * $i, $length) - ((var(--gap) * $i) / $length));
+          }
+        }
+        .#{$viewport}row\:#{$i} {
+          flex: none;
+          @if $i == $length {
+            height: 100%;
+          } @else {
+            height: calc(math.div(100% * $i, $length) - ((var(--gap) * $i) / $length));
+          }
+        }
+    }
+
+    @include for-units using ($key, $value) {
+        .#{$viewport}gap\:#{$key} {
+            --gap: #{$value};
+            gap: var(--gap);
+        }
+    }
 }

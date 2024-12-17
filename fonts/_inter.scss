@@ -1,6 +1,6 @@
-@use "../settings" as *;
+@use "../vars" as *;
 
-@if $use-fonts {
+@if get("font-family") == "Inter" {
   @font-face {
     font-family: "Inter";
     src: url("./Inter.ttf") format("truetype");

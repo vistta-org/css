@@ -1,23 +1,19 @@
-@use "../settings" as *;
-
-@if $use-icons {
-  *[data-icon]::before {
-    font-family: "Material Symbols";
-    content: attr(data-icon);
-    display: block;
-    font-size: var(--icon-size);
-    font-weight: normal;
-    font-style: normal;
-    line-height: 100%;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: normal;
-    white-space: nowrap;
-    direction: ltr;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: "liga";
-    pointer-events: none;
-  }
+[data-icon]::before {
+  font-family: var(--icon-family);
+  content: attr(data-icon);
+  display: block;
+  font-size: var(--icon-size);
+  font-weight: normal;
+  font-style: normal;
+  line-height: 100%;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-soothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-soothing: grayscale;
+  font-feature-settings: "liga";
+  pointer-events: none;
 }

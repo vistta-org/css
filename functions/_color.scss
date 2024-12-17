@@ -1,7 +1,11 @@
 @use "sass:color";
-@use "../settings" as *;
 
 @function contrast($color, $light-color: null, $dark-color: null) {
+  @if $color == null {
+    @return null;
+  }
+  $contrast: 100%;
+  $threshold: 55%;
   @if ($light-color and $dark-color) {
     @return if(
       color.channel($color, "lightness", $space: hsl) < $threshold,

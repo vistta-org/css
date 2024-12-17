@@ -1,0 +1,12 @@
+@use "../vars" as *;
+
+@mixin responsive-media($ignoreDefault: false) {
+    @if not $ignoreDefault {
+        @content("");
+    }
+    @each $viewport, $value in get("viewports") {
+        @media (min-width: #{$value}) {
+            @content($viewport + "\\\:");
+        }
+    }
+}

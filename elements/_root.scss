@@ -1,0 +1,58 @@
+@use "../vars" as *;
+@use "sass:map";
+@use "sass:math";
+
+:root {
+  @each $name, $current in $vars {
+    @if map.get($current, "public") {
+      --#{$name}: #{map.get($current, "value")};
+    }
+  }
+  // Dynamic color
+  @if get("color-scheme") == "auto" {
+    --fore-color: var(--dark-color);
+    --back-color: var(--light-color);
+    --accent: black;
+    color-scheme: light;
+    @media (prefers-color-scheme: dark) {
+      --fore-color: var(--light-color);
+      --back-color: var(--dark-color);
+      --accent: white;
+      color-scheme: dark;
+    }
+  } @else if get("color-scheme") == "light" {
+    --fore-color: var(--dark-color);
+    --back-color: var(--light-color);
+    --accent: black;
+    color-scheme: light;
+  } @else if get("color-scheme") == "dark" {
+    --fore-color: var(--light-color);
+    --back-color: var(--dark-color);
+    --accent: white;
+    color-scheme: dark;
+  }
+  &[theme="light"] {
+    --fore-color: var(--dark-color);
+    --back-color: var(--light-color);
+    --accent: black;
+    color-scheme: light;
+  }
+  &[theme="dark"] {
+    --fore-color: var(--light-color);
+    --back-color: var(--dark-color);
+    --accent: white;
+    color-scheme: dark;
+  }
+  // Dynamic font size
+  @media (min-width: #{get("font-min-breakpoint")}) and (max-width: #{get("font-max-breakpoint")}) {
+    --font-size: #{math.div((get("font-max-size") + get("font-size")), 2)};
+    --font-size: calc(
+      #{get("font-size")} + (#{get("font-max-size")} - #{get("font-size")}) * (
+          100vw - #{get("font-min-breakpoint")}
+        ) / (#{get("font-max-breakpoint")} - #{get("font-min-breakpoint")})
+    );
+  }
+  @media (min-width: #{get("font-max-breakpoint")}px) {
+    --font-size: #{get("font-max-size")};
+  }
+}

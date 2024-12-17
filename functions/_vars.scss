@@ -1,0 +1,113 @@
+$vars: () !default;
+$settings-map: () !default;
+$shades: (100, 200, 300, 400, 500, 600, 700, 800, 900);
+@use "sass:map";
+@use "sass:math";
+@use "sass:color";
+
+@function internal($map, $key, $value, $public: false) {
+  @if map.has-key($map, $key) {
+    $value: map.get($settings-map, $key);
+  }
+  @return map.set(
+    $map,
+    $key,
+    (
+      "value": $value,
+      "public": $public,
+    )
+  );
+}
+
+@function define($key, $value, $public: false) {
+  @return internal($vars, $key, $value, $public);
+}
+
+@function define-units($public: true) {
+  $temp: internal((), "unit-auto", auto, $public);
+  $temp: internal($temp, "unit-o", math.div(get("size"), 4), $public);
+  $temp: internal($temp, "unit-h", math.div(get("size"), 2), $public);
+  @for $i from 0 through get("units") {
+    $temp: internal($temp, "unit-#{$i}", (get("size") * $i), $public);
+  }
+  @return map.merge($vars, $temp);
+}
+
+@function define-z-indexes($public: true) {
+  $temp: internal((), "z-index", 1, $public);
+  @for $i from 0 through get("size") {
+    $temp: internal($temp, "z-index-#{$i}", #{$i * 10}, $public);
+  }
+  @return map.merge($vars, $temp);
+}
+
+@function define-box-shadows($option: null, $public: true) {
+  $key: "box-shadow";
+  $inset: null;
+  $variance: math.div(get("shadow-variance"), 100%);
+  @if $option == "inset" {
+    $key: "box-shadow-inset";
+    $inset: inset;
+  }
+  $temp: internal(
+    (),
+    $key,
+    $inset get("shadow-offset") get("shadow-blur") get("shadow-color"),
+    $public
+  );
+  @for $i from 1 through get("shadow-variants") {
+    $temp: internal(
+      $temp,
+      "#{$key}-#{$i}",
+      $inset
+        get("shadow-offset")
+        (get("shadow-blur") + (($variance * $i) + 1))
+        transparency(get("shadow-color"), ($variance * $i), "add"),
+      $public
+    );
+  }
+  @return map.merge($vars, $temp);
+}
+
+@function define-system-colors($public: true) {
+  $temp: ();
+  @if get("color-scheme") == "dark" {
+    $temp: internal((), "fore-color", var(--light-color), $public);
+    $temp: internal((), "back-color", var(--dark-color), $public);
+    $temp: internal((), "accent", white, $public);
+  }
+  @else {
+    $temp: internal((), "fore-color", var(--dark-color), $public);
+    $temp: internal((), "back-color", var(--light-color), $public);
+    $temp: internal((), "accent", black, $public);
+  }
+  @return map.merge($vars, $temp);
+}
+
+@function define-color($name, $value: null, $public: true) {
+  @if $value == null {
+    @return $vars;
+  }
+  $temp: internal((), "#{$name}-color", $value, $public);
+  $value: map.get($temp, "#{$name}-color", "value");
+  @if get("color-shades") {
+    @each $shade in $shades {
+      @if $shade == 500 {
+        $temp: internal($temp, "#{$name}-color-#{$shade}", $value, $public);
+      } @else if $shade < 500 {
+        $temp: internal($temp, "#{$name}-color-#{$shade}", color.scale($value, $lightness: ((500 - $shade) * 0.1%)), $public);
+      } @else {
+        $temp: internal($temp, "#{$name}-color-#{$shade}", color.scale($value, $lightness: (($shade - 500) * -0.1%)), $public);
+      }
+    }
+  }
+  @return map.merge($vars, $temp);
+}
+
+@function get($key) {
+  @return map.get($vars, $key, "value");
+}
+
+@function use($key) {
+  @return var(--#{$key}, #{get($key)});
+}

@@ -1,0 +1,70 @@
+name: Development Pipeline
+on:
+  pull_request:
+    types: [synchronize]
+    branches:    
+      - master
+env:
+  module: css
+jobs:
+  Validation:
+    runs-on: ubuntu-latest
+    container:
+      image: node:latest
+    steps:
+      - 
+        name: Checkout
+        uses: tiagomta/checkout@v1
+        with:
+          repository: vistta/vistta
+          ref: ${{ gitea.event.pull_request.head.ref }}
+          token: ${{ secrets.GIT_TOKEN }}
+          fetch-depth: 0
+          submodules: true
+      - 
+        name: Close Issues
+        uses: tiagomta/gitea@v1
+        with:
+          token: ${{ secrets.GIT_TOKEN }}
+          working-directory: ./packages/${{ env.module }}
+          command: issues close --fromCommit --milestone ${{ gitea.event.pull_request.milestone.id }}
+      - 
+        name: Setup Node
+        run: npm ci
+      - 
+        name: Module Validation
+        working-directory: ./packages/${{ env.module }}
+        run: npx vistta outdated
+      - 
+        name: Eslint Validation
+        working-directory: ./packages/${{ env.module }}
+        run: npx eslint .
+      - 
+        name: Typescript Validation
+        working-directory: ./packages/${{ env.module }}
+        run: npx tsc
+      - 
+        name: Unit Tests
+        working-directory: ./packages/${{ env.module }}
+        run: npx vistta test
+        
+  Snapshot:
+    needs: Validation
+    runs-on: ubuntu-latest
+    container:
+      image: node:latest
+    steps:
+      - 
+        name: Checkout
+        uses: tiagomta/checkout@v1
+      - 
+        name: Snapshot Release
+        uses: tiagomta/npm@v1
+        with:
+          command: version snapshot --email devops@vistta.org
+      - 
+        name: Publish Package (Gitea)
+        uses: tiagomta/npm@v1
+        with:
+          command: publish --scope vistta --registry https://git.vistta.org/api/packages/vistta/npm/ --tag snapshot
+          token: ${{ secrets.GIT_TOKEN }}

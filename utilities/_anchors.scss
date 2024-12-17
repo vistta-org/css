@@ -1,20 +1,8 @@
-@use "../settings" as *;
+@use "../vars" as *;
 
 [anchor] {
   position: fixed;
   inset-area: bottom;
-}
-
-@for $i from 1 through $anchors {
-  .anchor-#{$i} {
-    anchor-name: --class-anchor-#{$i};
-  }
-
-  .anchor-to-#{$i} {
-    position: fixed;
-    position-anchor: --class-anchor-#{$i};
-    inset-area: bottom;
-  }
 }
 
 .anchor-top {

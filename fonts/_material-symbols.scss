@@ -1,6 +1,6 @@
-@use "../settings" as *;
+@use "../vars" as *;
 
-@if $use-icons {
+@if get("icon-family") == "Material Symbols" {
   @font-face {
     font-family: "Material Symbols";
     src: url("./MaterialSymbols.ttf") format("truetype");

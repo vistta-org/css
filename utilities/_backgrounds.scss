@@ -1,0 +1,61 @@
+@use "../vars" as *;
+@use "../mixins/vars" as *;
+
+@mixin background($color: false, $shade: "") {
+  $var: "back-color";
+  $name: "";
+  @if ($color != false) {
+    $var: $color + "-color" + $shade;
+    $name: "\\\:" + $color  + $shade;
+  }
+  
+  @if (get($var) != null or $color == false) {
+    .background#{$name} {
+      background: var(--#{$var});
+    }
+
+    @if $shade == "" {
+      .background\:auto#{$name} {
+        @include auto-background($color);
+      }
+    }
+
+    @if $color != false and get("color-shades") {
+      @each $shade in $shades {
+        @include background($color, "-" + $shade);
+      }
+    }
+  }
+}
+
+@include background();
+
+@include background("primary");
+
+@include background("primary-contrast");
+
+@include background("secondary");
+
+@include background("secondary-contrast");
+
+@include background("tertiary");
+
+@include background("tertiary-contrast");
+
+@include background("light");
+
+@include background("dark");
+
+@include background("neutral");
+
+@include background("info");
+
+@include background("success");
+
+@include background("warning");
+
+@include background("error");
+
+.background\:none {
+  background: none !important;
+}
