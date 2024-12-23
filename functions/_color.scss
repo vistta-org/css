@@ -38,14 +38,14 @@
       color.channel($color, "red", $space: rgb),
       color.channel($color, "green", $space: rgb),
       color.channel($color, "blue", $space: rgb),
-      (opacity($color) + $opacity)
+      (color.opacity($color) + $opacity)
     );
   } @else if $type == "remove" {
     @return rgba(
       color.channel($color, "red", $space: rgb),
       color.channel($color, "green", $space: rgb),
       color.channel($color, "blue", $space: rgb),
-      (opacity($color) - $opacity)
+      (color.opacity($color) - $opacity)
     );
   } @else {
     @return rgba(

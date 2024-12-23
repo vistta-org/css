@@ -1,5 +1,5 @@
 $settings: () !default;
-@use "sass:math";
+@use 'sass:color';
 @use "functions/vars" as * with (
   $settings-map: $settings
 );
@@ -39,7 +39,7 @@ $vars: define("color-shades", false);
 $vars: define-system-colors();
 $vars: define-color("dark", #181818);
 $vars: define-color("light", #f5f5f5);
-$vars: define-color("neutral", mix(get("dark-color"), get("light-color"), 50%));
+$vars: define-color("neutral", color.mix(get("dark-color"), get("light-color"), 50%));
 $vars: define-color("primary", #c68346);
 $vars: define-color("primary-contrast", contrast(get("primary-color")));
 $vars: define-color("secondary", #3d3d3d);

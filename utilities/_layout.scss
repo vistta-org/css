@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:list";
 @use "../vars" as *;
 @use "../mixins/responsive" as *;
 @use "../mixins/vars" as *;
@@ -6,7 +7,7 @@
 @function all-row-selector() {
     $selectors: "> .row, > .row\\\:auto";
     @for $i from 1 through get("layout") {
-        $selectors: append($selectors, "> .row\\\:#{$i}", comma);
+        $selectors: list.append($selectors, "> .row\\\:#{$i}", comma);
     }
     @return $selectors;
 }
