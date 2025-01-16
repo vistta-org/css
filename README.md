@@ -576,10 +576,10 @@ If color shading is active you can also add `-[100-900]`, `-[100-900]` to each c
 
 ```html preview
 <p className="border">border all sides</p>
-<p className="border-t">border top</p>
-<p className="border-r">border right</p>
-<p className="border-b">border bottom</p>
-<p className="border-l">border left</p>
+<p className="border-top">border top</p>
+<p className="border-right">border right</p>
+<p className="border-bottom">border bottom</p>
+<p className="border-left">border left</p>
 <p className="border-x">border top and bottom</p>
 <p className="border-y">border right and left</p>
 ```
@@ -602,10 +602,10 @@ If color shading is active you can also add `-[100-900]`, `-[100-900]` to each c
 
 ```html preview
 <p className="border border:none">remove border all sides</p>
-<p className="border border-t:none">remove border top</p>
-<p className="border border-r:none">remove border right</p>
-<p className="border border-b:none">remove border bottom</p>
-<p className="border border-l:none">remove border left</p>
+<p className="border border-top:none">remove border top</p>
+<p className="border border-right:none">remove border right</p>
+<p className="border border-bottom:none">remove border bottom</p>
+<p className="border border-left:none">remove border left</p>
 <p className="border border-x:none">remove border top and bottom</p>
 <p className="border border-y:none">remove border right and left</p>
 ```
