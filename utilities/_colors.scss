@@ -2,7 +2,7 @@
 
 @mixin color($color: false, $shade: "") {
   $var: "fore-color";
-  $name: "";
+  $name: "\\\:default";
   @if ($color != false) {
     $var: $color + "-color" + $shade;
     $name: "\\\:" + $color  + $shade;

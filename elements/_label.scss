@@ -1,8 +1,16 @@
-@use "../mixins/labels" as *;
+@use "../vars" as *;
+@use "../utils/class" as class;
 
-label,
-.label,
-*[class|="label"] {
+@mixin label($var: false) {
+  @if ($var != false and get($var + "-color") != null) {
+    label.#{$var}, .label\:#{$var} {
+      color: var(--#{$var}-contrast-color);
+      background: var(--#{$var}-color);
+    }
+  }
+}
+
+label, #{class.startsWith("label")} {
   padding: var(--unit-h) var(--unit-2);
   color: var(--fore-color);
   border-radius: var(--border-radius);

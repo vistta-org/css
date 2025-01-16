@@ -3,280 +3,201 @@
 @use "../vars" as *;
 @use "../mixins/responsive" as *;
 @use "../mixins/vars" as *;
+@use "../utils/class" as class;
 
-@function all-row-selector() {
-    $selectors: "> .row, > .row\\\:auto";
-    @for $i from 1 through get("layout") {
-        $selectors: list.append($selectors, "> .row\\\:#{$i}", comma);
-    }
-    @return $selectors;
-}
-
-.layout {
+#{class.startsWith("container")} {
   --gap: var(--unit-2);
-  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: var(--gap);
   align-content: baseline;
-
-  &:has(#{all-row-selector()}) {
-    height: 100%;
+  &.container\:fill {
+    width: 100%;
+  }
+  
+  &:has(#{class.startsWith("row")}) {
+    &.container\:fill {
+      height: 100%;
+    }
     flex-direction: column;
     flex-wrap: nowrap;
 
     @include responsive-media using ($viewport) {
-
-      &.#{$viewport}items\:top,
-      &.#{$viewport}items\:top\:left,
-      &.#{$viewport}items\:top\:center,
-      &.#{$viewport}items\:top\:right,
-      &.#{$viewport}items\:top\:space-around,
-      &.#{$viewport}items\:top\:space-between,
-      &.#{$viewport}items\:top\:space-evenly {
+      &#{class.startsWith($viewport + "align\\\:top")},
+      &#{class.startsWith($viewport + "align\\\:default")} {
         justify-content: flex-start;
       }
 
-      &.#{$viewport}items\:center,
-      &.#{$viewport}items\:center\:left,
-      &.#{$viewport}items\:center\:right,
-      &.#{$viewport}items\:center\:center,
-      &.#{$viewport}items\:center\:space-around,
-      &.#{$viewport}items\:center\:space-between,
-      &.#{$viewport}items\:center\:space-evenly {
+      &#{class.startsWith($viewport + "align\\\:center")} {
         justify-content: center;
       }
 
-      &.#{$viewport}items\:bottom,
-      &.#{$viewport}items\:bottom\:left,
-      &.#{$viewport}items\:bottom\:center,
-      &.#{$viewport}items\:bottom\:right,
-      &.#{$viewport}items\:bottom\:space-around,
-      &.#{$viewport}items\:bottom\:space-between,
-      &.#{$viewport}items\:bottom\:space-evenly {
+      &#{class.startsWith($viewport + "align\\\:bottom")} {
         justify-content: flex-end;
       }
 
-      &.#{$viewport}items\:space-around,
-      &.#{$viewport}items\:space-around\:left,
-      &.#{$viewport}items\:space-around\:center,
-      &.#{$viewport}items\:space-around\:right,
-      &.#{$viewport}items\:space-around\:space-around,
-      &.#{$viewport}items\:space-around\:space-between, 
-      &.#{$viewport}items\:space-around\:space-evenly {
+      &#{class.startsWith($viewport + "align\\\:space-around")} {
         justify-content: space-around;
       }
 
-      &.#{$viewport}items\:space-between,
-      &.#{$viewport}items\:space-between\:left,
-      &.#{$viewport}items\:space-between\:center,
-      &.#{$viewport}items\:space-between\:right,
-      &.#{$viewport}items\:space-between\:space-around,
-      &.#{$viewport}items\:space-between\:space-between, 
-      &.#{$viewport}items\:space-between\:space-evenly {
+      &#{class.startsWith($viewport + "align\\\:space-between")} {
         justify-content: space-between;
       }
 
-      &.#{$viewport}items\:space-evenly,
-      &.#{$viewport}items\:space-evenly\:left,
-      &.#{$viewport}items\:space-evenly\:center,
-      &.#{$viewport}items\:space-evenly\:right,
-      &.#{$viewport}items\:space-evenly\:space-around,
-      &.#{$viewport}items\:space-evenly\:space-between,
-      &.#{$viewport}items\:space-evenly\:space-evenly {
+      &#{class.startsWith($viewport + "align\\\:space-evenly")} {
         justify-content: space-evenly;
       }
 
-      &.#{$viewport}items\:left,
-      &.#{$viewport}items\:top\:left,
-      &.#{$viewport}items\:center\:left,
-      &.#{$viewport}items\:bottom\:left,
-      &.#{$viewport}items\:space-around\:left,
-      &.#{$viewport}items\:space-between\:left,
-      &.#{$viewport}items\:space-evenly\:left {
+      &.#{$viewport}align\:left,
+      &.#{$viewport}align\:top\:left,
+      &.#{$viewport}align\:center\:left,
+      &.#{$viewport}align\:bottom\:left,
+      &.#{$viewport}align\:space-around\:left,
+      &.#{$viewport}align\:space-between\:left,
+      &.#{$viewport}align\:space-evenly\:left {
         align-items: flex-start;
       }
 
-      &.#{$viewport}items\:center,
-      &.#{$viewport}items\:center\:center,
-      &.#{$viewport}items\:top\:center,
-      &.#{$viewport}items\:bottom\:center,
-      &.#{$viewport}items\:space-around\:center, 
-      &.#{$viewport}items\:space-between\:center, 
-      &.#{$viewport}items\:space-evenly\:center {
+      &.#{$viewport}align\:center,
+      &.#{$viewport}align\:center\:center,
+      &.#{$viewport}align\:top\:center,
+      &.#{$viewport}align\:bottom\:center,
+      &.#{$viewport}align\:space-around\:center, 
+      &.#{$viewport}align\:space-between\:center, 
+      &.#{$viewport}align\:space-evenly\:center {
         align-items: center;
       }
 
-      &.#{$viewport}items\:right,
-      &.#{$viewport}items\:top\:right,
-      &.#{$viewport}items\:center\:right,
-      &.#{$viewport}items\:bottom\:right,
-      &.#{$viewport}items\:space-around:right,
-      &.#{$viewport}items\:space-between:right,
-      &.#{$viewport}items\:space-evenly:right {
+      &.#{$viewport}align\:right,
+      &.#{$viewport}align\:top\:right,
+      &.#{$viewport}align\:center\:right,
+      &.#{$viewport}align\:bottom\:right,
+      &.#{$viewport}align\:space-around\:right,
+      &.#{$viewport}align\:space-between\:right,
+      &.#{$viewport}align\:space-evenly\:right {
         align-items: flex-end;
       }
 
-      &.#{$viewport}items\:space-around,
-      &.#{$viewport}items\:top\:space-around,
-      &.#{$viewport}items\:center\:space-around,
-      &.#{$viewport}items\:bottom\:space-around,
-      &.#{$viewport}items\:space-around\:space-around,
-      &.#{$viewport}items\:space-between\:space-around,
-      &.#{$viewport}items\:space-evenly\:space-around {
+      &.#{$viewport}align\:space-around,
+      &.#{$viewport}align\:top\:space-around,
+      &.#{$viewport}align\:center\:space-around,
+      &.#{$viewport}align\:bottom\:space-around,
+      &.#{$viewport}align\:space-around\:space-around,
+      &.#{$viewport}align\:space-between\:space-around,
+      &.#{$viewport}align\:space-evenly\:space-around {
         align-items: space-around;
       }
 
-      &.#{$viewport}items\:space-between,
-      &.#{$viewport}items\:top\:space-between,
-      &.#{$viewport}items\:bottom\:space-between,
-      &.#{$viewport}items\:space-around\:space-between,
-      &.#{$viewport}items\:space-between\:space-between,
-      &.#{$viewport}items\:space-evenly\:space-between {
+      &.#{$viewport}align\:space-between,
+      &.#{$viewport}align\:top\:space-between,
+      &.#{$viewport}align\:bottom\:space-between,
+      &.#{$viewport}align\:space-around\:space-between,
+      &.#{$viewport}align\:space-between\:space-between,
+      &.#{$viewport}align\:space-evenly\:space-between {
         align-items: space-between;
       }
 
-      &.#{$viewport}items\:space-evenly,
-      &.#{$viewport}items\:top\:space-evenly,
-      &.#{$viewport}items\:center\:space-evenly,
-      &.#{$viewport}items\:bottom\:space-evenly,
-      &.#{$viewport}items\:space-around\:space-evenly,
-      &.#{$viewport}items\:space-between\:space-evenly,
-      &.#{$viewport}items\:space-evenly\:space-evenly {
+      &.#{$viewport}align\:space-evenly,
+      &.#{$viewport}align\:top\:space-evenly,
+      &.#{$viewport}align\:center\:space-evenly,
+      &.#{$viewport}align\:bottom\:space-evenly,
+      &.#{$viewport}align\:space-around\:space-evenly,
+      &.#{$viewport}align\:space-between\:space-evenly,
+      &.#{$viewport}align\:space-evenly\:space-evenly {
         align-items: space-evenly;
       }
     }
   }
 
-  &:not(:has(#{all-row-selector()})) {
+  &:not(:has(#{class.startsWith("row")})) {
     @include responsive-media using ($viewport) {
-      &.#{$viewport}overflow,
-      &.#{$viewport}overflow\:auto,
-      &.#{$viewport}overflow\:visible,
-      &.#{$viewport}overflow\:clip,
-      &.#{$viewport}overflow\:none,
       &.#{$viewport}scroll,
-      &.#{$viewport}overflow\:scroll {
+      &#{class.startsWith($viewport + "overflow")} {
           flex-wrap: nowrap;
       }
 
-      &.#{$viewport}items\:top,
-      &.#{$viewport}items\:top\:left,
-      &.#{$viewport}items\:top\:center,
-      &.#{$viewport}items\:top\:right,
-      &.#{$viewport}items\:top\:space-around,
-      &.#{$viewport}items\:top\:space-between,
-      &.#{$viewport}items\:top\:space-evenly {
+      &#{class.startsWith($viewport + "align\\\:top")},
+      &#{class.startsWith($viewport + "align\\\:default")} {
         align-content: flex-start;
       }
 
-      &.#{$viewport}items\:center,
-      &.#{$viewport}items\:center\:left,
-      &.#{$viewport}items\:center\:right,
-      &.#{$viewport}items\:center\:center,
-      &.#{$viewport}items\:center\:space-around,
-      &.#{$viewport}items\:center\:space-between,
-      &.#{$viewport}items\:center\:space-evenly {
+      &#{class.startsWith($viewport + "align\\\:center")} {
         align-content: center;
       }
 
-      &.#{$viewport}items\:bottom,
-      &.#{$viewport}items\:bottom\:left,
-      &.#{$viewport}items\:bottom\:center,
-      &.#{$viewport}items\:bottom\:right,
-      &.#{$viewport}items\:bottom\:space-around,
-      &.#{$viewport}items\:bottom\:space-between,
-      &.#{$viewport}items\:bottom\:space-evenly {
+      &#{class.startsWith($viewport + "align\\\:bottom")} {
         align-content: flex-end;
       }
 
-      &.#{$viewport}items\:space-around,
-      &.#{$viewport}items\:space-around\:left,
-      &.#{$viewport}items\:space-around\:center,
-      &.#{$viewport}items\:space-around\:right,
-      &.#{$viewport}items\:space-around\:space-around,
-      &.#{$viewport}items\:space-around\:space-between, 
-      &.#{$viewport}items\:space-around\:space-evenly {
+      &#{class.startsWith($viewport + "align\\\:space-around")} {
         align-content: space-around;
       }
 
-      &.#{$viewport}items\:space-between,
-      &.#{$viewport}items\:space-between\:left,
-      &.#{$viewport}items\:space-between\:center,
-      &.#{$viewport}items\:space-between\:right,
-      &.#{$viewport}items\:space-between\:space-around,
-      &.#{$viewport}items\:space-between\:space-between, 
-      &.#{$viewport}items\:space-between\:space-evenly {
+      &#{class.startsWith($viewport + "align\\\:space-between")} {
         align-content: space-between;
       }
 
-      &.#{$viewport}items\:space-evenly,
-      &.#{$viewport}items\:space-evenly\:left,
-      &.#{$viewport}items\:space-evenly\:center,
-      &.#{$viewport}items\:space-evenly\:right,
-      &.#{$viewport}items\:space-evenly\:space-around,
-      &.#{$viewport}items\:space-evenly\:space-between,
-      &.#{$viewport}items\:space-evenly\:space-evenly {
+      &#{class.startsWith($viewport + "align\\\:space-evenly")} {
         align-content: space-evenly;
       }
 
-      &.#{$viewport}items\:left,
-      &.#{$viewport}items\:top\:left,
-      &.#{$viewport}items\:center\:left,
-      &.#{$viewport}items\:bottom\:left,
-      &.#{$viewport}items\:space-around\:left,
-      &.#{$viewport}items\:space-between\:left,
-      &.#{$viewport}items\:space-evenly\:left {
+      &.#{$viewport}align\:left,
+      &.#{$viewport}align\:top\:left,
+      &.#{$viewport}align\:center\:left,
+      &.#{$viewport}align\:bottom\:left,
+      &.#{$viewport}align\:space-around\:left,
+      &.#{$viewport}align\:space-between\:left,
+      &.#{$viewport}align\:space-evenly\:left {
         justify-content: flex-start;
       }
 
-      &.#{$viewport}items\:center,
-      &.#{$viewport}items\:center\:center,
-      &.#{$viewport}items\:top\:center,
-      &.#{$viewport}items\:bottom\:center,
-      &.#{$viewport}items\:space-around\:center, 
-      &.#{$viewport}items\:space-between\:center, 
-      &.#{$viewport}items\:space-evenly\:center {
+      &.#{$viewport}align\:center,
+      &.#{$viewport}align\:center\:center,
+      &.#{$viewport}align\:top\:center,
+      &.#{$viewport}align\:bottom\:center,
+      &.#{$viewport}align\:space-around\:center, 
+      &.#{$viewport}align\:space-between\:center, 
+      &.#{$viewport}align\:space-evenly\:center {
         justify-content: center;
       }
 
-      &.#{$viewport}items\:right,
-      &.#{$viewport}items\:top\:right,
-      &.#{$viewport}items\:center\:right,
-      &.#{$viewport}items\:bottom\:right,
-      &.#{$viewport}items\:space-around:right,
-      &.#{$viewport}items\:space-between:right,
-      &.#{$viewport}items\:space-evenly:right {
+      &.#{$viewport}align\:right,
+      &.#{$viewport}align\:top\:right,
+      &.#{$viewport}align\:center\:right,
+      &.#{$viewport}align\:bottom\:right,
+      &.#{$viewport}align\:space-around\:right,
+      &.#{$viewport}align\:space-between\:right,
+      &.#{$viewport}align\:space-evenly\:right {
         justify-content: flex-end;
       }
 
-      &.#{$viewport}items\:space-around,
-      &.#{$viewport}items\:top\:space-around,
-      &.#{$viewport}items\:center\:space-around,
-      &.#{$viewport}items\:bottom\:space-around,
-      &.#{$viewport}items\:space-around\:space-around,
-      &.#{$viewport}items\:space-between\:space-around,
-      &.#{$viewport}items\:space-evenly\:space-around {
+      &.#{$viewport}align\:space-around,
+      &.#{$viewport}align\:top\:space-around,
+      &.#{$viewport}align\:center\:space-around,
+      &.#{$viewport}align\:bottom\:space-around,
+      &.#{$viewport}align\:space-around\:space-around,
+      &.#{$viewport}align\:space-between\:space-around,
+      &.#{$viewport}align\:space-evenly\:space-around {
         justify-content: space-around;
       }
 
-      &.#{$viewport}items\:space-between,
-      &.#{$viewport}items\:top\:space-between,
-      &.#{$viewport}items\:bottom\:space-between,
-      &.#{$viewport}items\:space-around\:space-between,
-      &.#{$viewport}items\:space-between\:space-between,
-      &.#{$viewport}items\:space-evenly\:space-between {
+      &.#{$viewport}align\:space-between,
+      &.#{$viewport}align\:top\:space-between,
+      &.#{$viewport}align\:bottom\:space-between,
+      &.#{$viewport}align\:space-around\:space-between,
+      &.#{$viewport}align\:space-between\:space-between,
+      &.#{$viewport}align\:space-evenly\:space-between {
         justify-content: space-between;
       }
 
-      &.#{$viewport}items\:space-evenly,
-      &.#{$viewport}items\:top\:space-evenly,
-      &.#{$viewport}items\:center\:space-evenly,
-      &.#{$viewport}items\:bottom\:space-evenly,
-      &.#{$viewport}items\:space-around\:space-evenly,
-      &.#{$viewport}items\:space-between\:space-evenly,
-      &.#{$viewport}items\:space-evenly\:space-evenly {
+      &.#{$viewport}align\:space-evenly,
+      &.#{$viewport}align\:top\:space-evenly,
+      &.#{$viewport}align\:center\:space-evenly,
+      &.#{$viewport}align\:bottom\:space-evenly,
+      &.#{$viewport}align\:space-around\:space-evenly,
+      &.#{$viewport}align\:space-between\:space-evenly,
+      &.#{$viewport}align\:space-evenly\:space-evenly {
         justify-content: space-evenly;
       }
     }

@@ -1,8 +1,7 @@
 @use "../mixins/buttons" as *;
+@use "../utils/class" as class;
 
-button,
-.button,
-[class|="button"] {
+button, #{class.startsWith("button")} {
   position: relative;
   --_color: var(--back-color);
   --_background: var(--fore-color);
@@ -23,7 +22,7 @@ button,
     --_background: color-mix(in srgb, var(--fore-color) 65%, transparent);
   }
 
-  &:not(:disabled):active {
+  &:not(:disabled):active, &:not(:disabled).active {
     --_background: color-mix(in srgb, var(--fore-color) 25%, transparent);
   }
 

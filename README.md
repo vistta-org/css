@@ -473,7 +473,7 @@ Typography sets default styles for headings, paragraphs, semantic text, blockquo
 ###### Semantic text elements
 
 ```html preview
-<div className="grid gap-6">
+<div className="container gap-6">
   <abbr>I18N</abbr>
   <strong>Bold</strong>
   <b>Bold</b>
@@ -536,7 +536,7 @@ If color shading is active you can also add `-[100-900]`, `-[100-900]` to each c
 ###### Background Colors
 
 ```html preview
-<p className="background">default background</p>
+<p className="background:default">default background</p>
 <p className="background:primary">primary background</p>
 <p className="background:primary-contrast">primary contrast background</p>
 <p className="background:secondary">secondary background</p>
@@ -558,11 +558,11 @@ If color shading is active you can also add `-[100-900]`, `-[100-900]` to each c
 
 ###### Auto
 
-You can also use a more dynamic `background:auto` which adjusts with use.
+You can also use a more dynamic `background` or `background:auto` which adjusts with use.
 
 ```html preview
-<div className="background:auto">
-  <div className="background:auto">auto</div>
+<div className="background">
+  <div className="background">auto</div>
 </div>
 ```
 
@@ -701,10 +701,22 @@ Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:
 ```
 
 ```html preview
-<div className="grid gap-4">
+<div className="container gap-4">
   <p className="py-8">Section 1</p>
   <div className="divider:vertical" data-content="OR"></div>
   <p className="py-8">Section 2</p>
+</div>
+```
+
+#### **Group**
+
+Group is used to join elements.
+
+```html preview
+<div className="group">
+  <input type="search" />
+  <button className="raw action" data-icon="&#xe8b6;" />
+  <button className="raw action" data-icon="&#xe88e;" />
 </div>
 ```
 
@@ -732,7 +744,7 @@ This project uses <a href="https://fonts.google.com/icons?selected=Material+Icon
 Use the attribute `data-icon` with the value `&#x«code point»;` (HTML) or `\u«code point»;` (JSX)
 
 ```html preview
-<div className="grid gap-4">
+<div className="container gap-4">
   <button className="action" data-icon="&#xe8b6;" />
   <button className="action" data-icon="&#xe88a;" />
   <button className="action" data-icon="&#xe853;" />
@@ -754,11 +766,11 @@ Use `.font-s`, `.font-large` classes to increase icon sizes. You can set `font-s
 #### **Layouts**
 
 Layout includes auto flex/grid wrap based responsive layout system with 12 columns.
-Add `layout` to a container element and add any element you want with the `col` to take advantage of it.
+Add `container` to a container element and add any element you want with the `col` to take advantage of it.
 For more sizes you can use `col:[1-12]`. You can also add `:auto` for automatic sizing.
 
 ```html preview
-<div className="layout">
+<div className="container">
   <div className="background:auto col:1">col 1</div>
   <div className="background:auto col:11">col 11</div>
   <div className="background:auto col:2">col 2</div>
@@ -778,7 +790,7 @@ For more sizes you can use `col:[1-12]`. You can also add `:auto` for automatic 
 You can also remove the wrap functionality by adding any overflow option.
 
 ```html preview
-<div className="layout overflow">
+<div className="container overflow">
   <div className="col:8">col 8</div>
   <div className="col:8">col 8</div>
 </div>
@@ -787,36 +799,36 @@ You can also remove the wrap functionality by adding any overflow option.
 You can also control the gap size with `gap:[o/h/0-16]`.
 
 ```html preview
-<div className="layout gap:0">
+<div className="container gap:0">
   <div className="col:6 background:auto">col 6</div>
   <div className="col:6 background:auto">col 6</div>
 </div>
-<div className="layout gap:6">
+<div className="container gap:6">
   <div className="col:6 background:auto">col 6</div>
   <div className="col:6 background:auto">col 6</div>
 </div>
-<div className="layout gap:12">
+<div className="container gap:12">
   <div className="col:6 background:auto">col 6</div>
   <div className="col:6 background:auto">col 6</div>
 </div>
 ```
 
-You have multiple options for grid alignment using the `items:<horizontal>:<vertical>` class.
+You have multiple options for grid alignment using the `align:<horizontal>:<vertical>` class.
 Horizontal alignment options include `top`, `center`, `bottom`, `space-around`, `space-between`, and `space-evenly`.
 Vertical alignment options include `left`, `center`, `right`, `space-around`, `space-between`, and `space-evenly`.
 Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:`, `xl:`, or `xxl:` to target specific screen sizes.
 
 ```html preview
-<div className="layout items:top:left background:auto" style="height: var(--unit-16);">
+<div className="container align:top:left background:auto" style="height: var(--unit-16);">
   <div class="col:auto background:primary p:1 rounded">top:left</div>
 </div>
-<div className="layout items:center background:auto" style="height: var(--unit-16);">
+<div className="container align:center background:auto" style="height: var(--unit-16);">
   <div class="col:auto background:primary p:1 rounded">center</div>
 </div>
-<div className="layout items:bottom:right background:auto" style="height: var(--unit-16);">
+<div className="container align:bottom:right background:auto" style="height: var(--unit-16);">
   <div class="col:auto background:primary p:1 rounded">bottom:right</div>
 </div>
-<div className="layout items:space-evenly background:auto" style="height: var(--unit-16);">
+<div className="container align:space-evenly background:auto" style="height: var(--unit-16);">
   <div class="col:auto background:primary p:1 rounded">space</div>
   <div class="col:auto background:primary p:1 rounded">evenly</div>
 </div>

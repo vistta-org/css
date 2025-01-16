@@ -1,12 +1,9 @@
 @use "../mixins/cards" as *;
+@use "../utils/class" as class;
 
-card,
-.card,
-[class|="card"] {
+card, #{class.startsWith("card")} {
   position: relative;
   padding: var(--unit-2) var(--unit-4);
-  display: flex;
-  flex-flow: column wrap;
   border: var(--border-size) solid var(--border-color);
   border-radius: var(--border-radius);
   background: var(--back-color);

@@ -1,0 +1,3 @@
+@function startsWith($class) {
+    @return "[class~=\"#{$class}\"], [class^=\"#{$class}:\"], [class*=\" #{$class}:\"]";
+}

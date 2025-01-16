@@ -1,9 +1,9 @@
 $settings: () !default;
 @use 'sass:color';
-@use "functions/vars" as * with (
+@use "utils/vars" as * with (
   $settings-map: $settings
 );
-@use "functions/color" as *;
+@use "utils/color" as *;
 
 // Basic Settings
 $vars: define("layout", 12);
@@ -92,11 +92,11 @@ $vars: define("shadow-variants", get("variants"));
 $vars: define("shadow-variance", get("variance"));
 
 // Shadows Settings
-$vars: define("shadow-color", #0000003d, true);
+$vars: define("shadow-color", rgba(0, 0, 0, 0.24), true);
 $vars: define("shadow-blur", get("blur"), true);
-$vars: define("shadow-offset", 0px 3px, true);
-$vars: define("box-shadow", var(--shadow-color) var(--shadow-blur) var(--shadow-offset), true);
-$vars: define("box-shadow-inset", inset var(--shadow-color) var(--shadow-blur) var(--shadow-offset), true);
+$vars: define("shadow-offset", 0px 4px, true);
+$vars: define("box-shadow", var(--shadow-color) var(--shadow-offset) var(--shadow-blur) 0px, true);
+$vars: define("box-shadow-inset", inset var(--shadow-color) var(--shadow-offset) var(--shadow-blur) 0px, true);
 
 // Export
-@forward "functions/vars";
+@forward "utils/vars";

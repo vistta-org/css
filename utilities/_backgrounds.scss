@@ -3,7 +3,7 @@
 
 @mixin background($color: false, $shade: "") {
   $var: "back-color";
-  $name: "";
+  $name: "\\\:default";
   @if ($color != false) {
     $var: $color + "-color" + $shade;
     $name: "\\\:" + $color  + $shade;
@@ -14,18 +14,20 @@
       background: var(--#{$var});
     }
 
-    @if $shade == "" {
-      .background\:auto#{$name} {
-        @include auto-background($color);
-      }
-    }
-
     @if $color != false and get("color-shades") {
       @each $shade in $shades {
         @include background($color, "-" + $shade);
       }
     }
   }
+}
+
+.background\:none {
+  background: none !important;
+}
+
+.background, .background\:auto {
+  @include auto-background("back");
 }
 
 @include background();
@@ -55,7 +57,3 @@
 @include background("warning");
 
 @include background("error");
-
-.background\:none {
-  background: none !important;
-}

@@ -1,3 +1,5 @@
+@use "../utils/class" as class;
+
 menu,
 ul,
 .menu {
@@ -8,17 +10,16 @@ ul,
   border-radius: var(--border-radius);
   list-style-type: none;
 
-  &.card,
-  &[class|="card"] {
+  card, #{class.startsWith("card")} {
     padding: var(--unit-2);
-  }
 
-  &.card *:is(menu, ul, .menu),
-  &[class|="card"] *:is(menu, ul, .menu) {
-    border: var(--border-size) solid var(--border-color);
-    border-radius: var(--border-radius);
-    background: var(--back-color);
-    box-shadow: var(--box-shadow);
+    & *:is(menu, ul, .menu),
+    & *:is(menu, ul, .menu) {
+      border: var(--border-size) solid var(--border-color);
+      border-radius: var(--border-radius);
+      background: var(--back-color);
+      box-shadow: var(--box-shadow);
+    }
   }
 
   > li {
