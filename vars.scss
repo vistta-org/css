@@ -86,6 +86,7 @@ $vars: define(
 $vars: define("scroll-radius", get("border-radius"), true);
 $vars: define("scroll-size", get("size") * 3, true);
 $vars: define("scroll-color", get("neutral-color"), true);
+$vars: define("scroll-contrast-color", contrast(get("neutral-color")), true);
 
 // Shadows Settings
 $vars: define("shadow-variants", get("variants"));

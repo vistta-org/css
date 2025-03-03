@@ -53,7 +53,7 @@ Buttons include simple button styles for actions in different types and sizes.
 ```html preview
 <button className="raw">raw</button>
 <button className="raw" disabled>disabled</button>
-<a className="button-raw">a.button</a>
+<a className="button:raw">a.button</a>
 ```
 
 ###### Outlined
@@ -61,7 +61,7 @@ Buttons include simple button styles for actions in different types and sizes.
 ```html preview
 <button className="outlined">outlined</button>
 <button className="outlined" disabled>disabled</button>
-<a className="button-outlined">a.button</a>
+<a className="button:outlined">a.button</a>
 ```
 
 ###### Size Variants
@@ -75,51 +75,51 @@ Buttons include simple button styles for actions in different types and sizes.
 
 ```html preview
 <button className="primary">primary</button>
-<a className="button-primary">a.primary</a>
+<a className="button:primary">a.primary</a>
 <button className="secondary">secondary</button>
-<a className="button-secondary">a.secondary</a>
+<a className="button:secondary">a.secondary</a>
 <button className="info">info</button>
-<a className="button-info">a.info</a>
+<a className="button:info">a.info</a>
 <button className="success">success</button>
-<a className="button-success">a.success</a>
+<a className="button:success">a.success</a>
 <button className="warning">error</button>
-<a className="button-warning">a.error</a>
+<a className="button:warning">a.error</a>
 <button className="error">error</button>
-<a className="button-error">a.error</a>
+<a className="button:error">a.error</a>
 ```
 
 ###### Raw Style Variants
 
 ```html preview
 <button className="raw primary">primary</button>
-<a className="button-raw-primary">a.primary</a>
+<a className="button:raw:primary">a.primary</a>
 <button className="raw secondary">secondary</button>
-<a className="button-raw-secondary">a.secondary</a>
+<a className="button:raw:secondary">a.secondary</a>
 <button className="raw info">info</button>
-<a className="button-raw-info">a.info</a>
+<a className="button:raw:info">a.info</a>
 <button className="raw success">success</button>
-<a className="button-raw-success">a.success</a>
+<a className="button:raw:success">a.success</a>
 <button className="raw warning">error</button>
-<a className="button-raw-warning">a.error</a>
+<a className="button:raw:warning">a.error</a>
 <button className="raw error">error</button>
-<a className="button-raw-error">a.error</a>
+<a className="button:raw:error">a.error</a>
 ```
 
 ###### Outlined Style Variants
 
 ```html preview
 <button className="outlined primary">primary</button>
-<a className="button-outlined-primary">a.primary</a>
-<button className="outlined secondary">outlined</button>
-<a className="button-outlined-secondary">a.secondary</a>
+<a className="button:outlined:primary">a.primary</a>
+<button className="outlined secondary">secondary</button>
+<a className="button:outlined:secondary">a.secondary</a>
 <button className="info outlined">info</button>
-<a className="button-outlined-info">a.info</a>
+<a className="button:outlined:info">a.info</a>
 <button className="success outlined">success</button>
-<a className="button-outlined-success">a.success</a>
+<a className="button:outlined:success">a.success</a>
 <button className="warning outlined">error</button>
-<a className="button-outlined-warning">a.error</a>
+<a className="button:outlined:warning">a.error</a>
 <button className="error outlined">error</button>
-<a className="button-outlined-error">a.error</a>
+<a className="button:outlined:error">a.error</a>
 ```
 
 #### **Cards**

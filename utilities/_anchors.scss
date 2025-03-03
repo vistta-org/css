@@ -1,38 +1,26 @@
 @use "../vars" as *;
+@use "../utils/class" as class;
 
 [anchor] {
   position: fixed;
-  inset-area: bottom;
 }
 
-.anchor-top {
-  inset-area: top;
+#{class.startsWith("anchor:top")} {
+  bottom: calc(anchor(top) + var(--unit-2));
+  justify-self: anchor-center;
 }
 
-.anchor-right {
-  inset-area: right;
+#{class.startsWith("anchor:bottom")} {
+  top: calc(anchor(bottom) + var(--unit-2));
+  justify-self: anchor-center;
 }
 
-.anchor-bottom {
-  inset-area: bottom;
+#{class.startsWith("anchor:left")} {
+  right: calc(anchor(left) + var(--unit-2));
+  align-self: anchor-center;
 }
 
-.anchor-left {
-  inset-area: left;
-}
-
-.anchor-top-left {
-  inset-area: top left;
-}
-
-.anchor-top-right {
-  inset-area: top right;
-}
-
-.anchor-bottom-right {
-  inset-area: bottom right;
-}
-
-.anchor-bottom-left {
-  inset-area: bottom left;
+#{class.startsWith("anchor:right")} {
+  left: calc(anchor(right) + var(--unit-2));
+  align-self: anchor-center;
 }

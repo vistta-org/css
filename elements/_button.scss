@@ -3,13 +3,10 @@
 
 button, #{class.startsWith("button")} {
   position: relative;
-  --_color: var(--back-color);
-  --_background: var(--fore-color);
-  --_border: rgba(0, 0, 0, 0);
-  color: var(--_color);
-  background: var(--_background);
+  color: var(--back-color);
+  background: var(--fore-color);
   padding: var(--unit-2) var(--unit-6);
-  border: var(--border-size) solid var(--_border);
+  border: var(--border-size) solid rgba(0, 0, 0, 0);
   border-radius: var(--border-radius);
   cursor: pointer;
   transition:
@@ -18,12 +15,19 @@ button, #{class.startsWith("button")} {
     border var(--duration);
 
   &:not(:disabled):hover {
-    --_color: var(--back-color);
-    --_background: color-mix(in srgb, var(--fore-color) 65%, transparent);
+    background: color-mix(
+      in srgb,
+      var(--fore-color) 65%,
+      transparent
+    );
   }
 
-  &:not(:disabled):active, &:not(:disabled).active {
-    --_background: color-mix(in srgb, var(--fore-color) 25%, transparent);
+  &:not(:disabled):active {
+    background: color-mix(
+      in srgb,
+      var(--fore-color) 25%,
+      transparent
+    );
   }
 
   &:disabled {
@@ -51,21 +55,16 @@ button, #{class.startsWith("button")} {
 }
 
 button.raw,
-.button-raw {
-  --_color: var(--fore-color);
-  --_background: rgba(0, 0, 0, 0);
-  --_border: rgba(0, 0, 0, 0);
+.button\:raw {
+  color: var(--fore-color);
+  background: rgba(0, 0, 0, 0);
 
   &:not(:disabled):hover {
-    --_color: var(--fore-color);
-    --_background: color-mix(in srgb, var(--fore-color) 10%, transparent);
-    --_border: rgba(0, 0, 0, 0);
+    background: color-mix(in srgb, var(--fore-color) 10%, transparent);
   }
 
   &:not(:disabled):active {
-    --_color: var(--fore-color);
-    --_background: color-mix(in srgb, var(--fore-color) 40%, transparent);
-    --_border: rgba(0, 0, 0, 0);
+    background: color-mix(in srgb, var(--fore-color) 40%, transparent);
   }
 
   &:disabled {
@@ -77,21 +76,17 @@ button.raw,
 }
 
 button.outlined,
-.button-outlined {
-  --_color: var(--fore-color);
-  --_background: rgba(0, 0, 0, 0);
-  --_border: var(--fore-color);
+.button\:outlined {
+  color: var(--fore-color);
+  background: rgba(0, 0, 0, 0);
+  border: var(--border-size) solid var(--fore-color);
 
   &:not(:disabled):hover {
-    --_color: var(--fore-color);
-    --_background: color-mix(in srgb, var(--fore-color) 10%, transparent);
-    --_border: var(--fore-color);
+    background: color-mix(in srgb, var(--fore-color) 10%, transparent);
   }
 
   &:not(:disabled):active {
-    --_color: var(--fore-color);
-    --_background: color-mix(in srgb, var(--fore-color) 40%, transparent);
-    --_border: var(--fore-color);
+    background: color-mix(in srgb, var(--fore-color) 40%, transparent);
   }
 
   &:disabled {

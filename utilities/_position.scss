@@ -61,4 +61,17 @@
       }
     }
   }
+
+
+  // Z
+
+  .#{$viewport}z {
+    z-index: var(--z-index);
+  }
+
+  @include for-units(false, "z-index") using ($key, $value) {
+    .#{$viewport}z\:#{$key} {
+      z-index: #{$value};
+    }
+  }
 }

@@ -1,13 +1,15 @@
 @use "../vars" as *;
 
-@mixin for-units($auto: false) {
+@mixin for-units($auto: false, $prefix: "unit") {
   @if $auto {
       @content("auto", "auto");
   }
-  @content("o", "o");
-  @content("h", "h");
+  @if $prefix == "unit" {
+    @content("o", "var(--unit-o)");
+    @content("h", "var(--unit-h)");
+  }
   @for $i from 0 through get("units") {
-      @content($i, "var(--unit-#{$i})");
+      @content($i, "var(--#{$prefix}-#{$i})");
   }
 }
 

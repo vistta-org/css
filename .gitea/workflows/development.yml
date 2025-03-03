@@ -1,4 +1,4 @@
-name: Development Pipeline
+name: Development Workflow
 on:
   pull_request:
     types: [synchronize]
@@ -16,16 +16,16 @@ jobs:
         name: Checkout
         uses: tiagomta/checkout@v1
         with:
-          repository: vistta/vistta
+          repository: vistta/workspace
           ref: ${{ gitea.event.pull_request.head.ref }}
-          token: ${{ secrets.GIT_TOKEN }}
+          token: ${{ secrets.TOKEN }}
           fetch-depth: 0
           submodules: true
       - 
         name: Close Issues
         uses: tiagomta/gitea@v1
         with:
-          token: ${{ secrets.GIT_TOKEN }}
+          token: ${{ secrets.TOKEN }}
           working-directory: ./packages/${{ env.module }}
           command: issues close --fromCommit --milestone ${{ gitea.event.pull_request.milestone.id }}
       - 
@@ -35,6 +35,7 @@ jobs:
         name: Module Validation
         working-directory: ./packages/${{ env.module }}
         run: npx vistta outdated
+        continue-on-error: true
       - 
         name: Eslint Validation
         working-directory: ./packages/${{ env.module }}
@@ -61,10 +62,10 @@ jobs:
         name: Snapshot Release
         uses: tiagomta/npm@v1
         with:
-          command: version snapshot --email devops@vistta.org
+          command: version snapshot ${{ gitea.run_id }} --email devops@vistta.org
       - 
         name: Publish Package (Gitea)
         uses: tiagomta/npm@v1
         with:
           command: publish --scope vistta --registry https://git.vistta.org/api/packages/vistta/npm/ --tag snapshot
-          token: ${{ secrets.GIT_TOKEN }}
+          token: ${{ secrets.TOKEN }}

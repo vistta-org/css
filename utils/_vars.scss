@@ -6,7 +6,7 @@ $shades: (100, 200, 300, 400, 500, 600, 700, 800, 900);
 @use "sass:color";
 
 @function internal($map, $key, $value, $public: false) {
-  @if map.has-key($map, $key) {
+  @if map.has-key($settings-map, $key) {
     $value: map.get($settings-map, $key);
   }
   @return map.set(
@@ -35,8 +35,8 @@ $shades: (100, 200, 300, 400, 500, 600, 700, 800, 900);
 
 @function define-z-indexes($public: true) {
   $temp: internal((), "z-index", 1, $public);
-  @for $i from 0 through get("size") {
-    $temp: internal($temp, "z-index-#{$i}", #{$i * 10}, $public);
+  @for $i from 0 through get("units") {
+    $temp: internal($temp, "z-index-#{$i}", #{$i * 100}, $public);
   }
   @return map.merge($vars, $temp);
 }

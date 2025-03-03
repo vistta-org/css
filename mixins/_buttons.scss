@@ -7,14 +7,12 @@
     }
 
     button.#{$name},
-    .button-#{$name} {
-      --_color: var(--#{$var}-contrast-color);
-      --_background: var(--#{$var}-color);
-      --_border: rgba(0, 0, 0, 0);
+    .button\:#{$name} {
+      color: var(--#{$var}-contrast-color);
+      background: var(--#{$var}-color);
 
       &:not(:disabled):hover {
-        --_color: var(--#{$var}-contrast-color);
-        --_background: color-mix(
+        background: color-mix(
           in srgb,
           var(--#{$var}-color) 65%,
           transparent
@@ -22,7 +20,7 @@
       }
 
       &:not(:disabled):active {
-        --_background: color-mix(
+        background: color-mix(
           in srgb,
           var(--#{$var}-color) 25%,
           transparent
@@ -31,58 +29,52 @@
     }
 
     button.raw.#{$name},
-    .button-raw-#{$name},
-    .button-#{$name}-raw {
-      --_color: var(--#{$var}-color);
-      --_background: rgba(0, 0, 0, 0);
-      --_border: rgba(0, 0, 0, 0);
+    .button\:raw\:#{$name},
+    .button\:#{$name}\:raw {
+      color: var(--#{$var}-color);
+      background: rgba(0, 0, 0, 0);
 
       &:not(:disabled):hover {
-        --_color: var(--#{$var}-color);
-        --_background: color-mix(
+        color: var(--#{$var}-color);
+        background: color-mix(
           in srgb,
           var(--#{$var}-color) 10%,
           transparent
         );
-        --_border: rgba(0, 0, 0, 0);
       }
 
       &:not(:disabled):active {
-        --_color: var(--#{$var}-contrast-color);
-        --_background: color-mix(
+        color: var(--#{$var}-contrast-color);
+        background: color-mix(
           in srgb,
           var(--#{$var}-color) 40%,
           transparent
         );
-        --_border: rgba(0, 0, 0, 0);
       }
     }
 
     button.outlined.#{$name},
-    .button-outlined-#{$name},
-    .button-#{$name}-outlined {
-      --_color: var(--#{$var}-color);
-      --_background: rgba(0, 0, 0, 0);
-      --_border: var(--#{$var}-color);
+    .button\:outlined\:#{$name},
+    .button\:#{$name}\:outlined {
+      color: var(--#{$var}-color);
+      background: rgba(0, 0, 0, 0);
+      border: var(--#{$var}-color);
 
       &:not(:disabled):hover {
-        --_color: var(--#{$var}-color);
-        --_background: color-mix(
+        background: color-mix(
           in srgb,
           var(--#{$var}-color) 10%,
           transparent
         );
-        --_border: var(--#{$var}-color);
       }
 
       &:not(:disabled):active {
-        --_color: var(--#{$var}-contrast-color);
-        --_background: color-mix(
+        color: var(--#{$var}-contrast-color);
+        background: color-mix(
           in srgb,
           var(--#{$var}-color) 40%,
           transparent
         );
-        --_border: var(--#{$var}-color);
       }
     }
   }

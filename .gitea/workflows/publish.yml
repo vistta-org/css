@@ -19,7 +19,7 @@ jobs:
         uses: tiagomta/npm@v1
         with:
           command: publish --scope vistta --registry https://git.vistta.org/api/packages/vistta/npm/
-          token: ${{ secrets.GIT_TOKEN }}
+          token: ${{ secrets.TOKEN }}
       - 
         name: Tag
         id: tag

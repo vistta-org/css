@@ -16,7 +16,7 @@
     width: 100%;
   }
   
-  &:has(#{class.startsWith("row")}) {
+  &:has(> [class~="row"],> [class^="row"],> [class*=" row:"]) {
     &.container\:fill {
       height: 100%;
     }
@@ -24,28 +24,28 @@
     flex-wrap: nowrap;
 
     @include responsive-media using ($viewport) {
-      &#{class.startsWith($viewport + "align\\\:top")},
-      &#{class.startsWith($viewport + "align\\\:default")} {
+      &:is(#{class.startsWith($viewport + "align:top")}),
+      &:is(#{class.startsWith($viewport + "align:default")}) {
         justify-content: flex-start;
       }
 
-      &#{class.startsWith($viewport + "align\\\:center")} {
+      &:is(#{class.startsWith($viewport + "align:center")}) {
         justify-content: center;
       }
 
-      &#{class.startsWith($viewport + "align\\\:bottom")} {
+      &:is(#{class.startsWith($viewport + "align:bottom")}) {
         justify-content: flex-end;
       }
 
-      &#{class.startsWith($viewport + "align\\\:space-around")} {
+      &:is(#{class.startsWith($viewport + "align:space-around")}) {
         justify-content: space-around;
       }
 
-      &#{class.startsWith($viewport + "align\\\:space-between")} {
+      &:is(#{class.startsWith($viewport + "align:space-between")}) {
         justify-content: space-between;
       }
 
-      &#{class.startsWith($viewport + "align\\\:space-evenly")} {
+      &:is(#{class.startsWith($viewport + "align:space-evenly")}) {
         justify-content: space-evenly;
       }
 
@@ -110,35 +110,35 @@
     }
   }
 
-  &:not(:has(#{class.startsWith("row")})) {
+  &:not(:has(> [class~="row"],> [class^="row"],> [class*=" row:"])) {
     @include responsive-media using ($viewport) {
       &.#{$viewport}scroll,
-      &#{class.startsWith($viewport + "overflow")} {
-          flex-wrap: nowrap;
+      &:is(#{class.startsWith($viewport + "overflow")}) {
+        flex-wrap: nowrap;
       }
 
-      &#{class.startsWith($viewport + "align\\\:top")},
-      &#{class.startsWith($viewport + "align\\\:default")} {
+      &:is(#{class.startsWith($viewport + "align:top")}),
+      &:is(#{class.startsWith($viewport + "align:default")}) {
         align-content: flex-start;
       }
 
-      &#{class.startsWith($viewport + "align\\\:center")} {
+      &:is(#{class.startsWith($viewport + "align:center")}) {
         align-content: center;
       }
 
-      &#{class.startsWith($viewport + "align\\\:bottom")} {
+      &:is(#{class.startsWith($viewport + "align:bottom")}) {
         align-content: flex-end;
       }
 
-      &#{class.startsWith($viewport + "align\\\:space-around")} {
+      &:is(#{class.startsWith($viewport + "align:space-around")}) {
         align-content: space-around;
       }
 
-      &#{class.startsWith($viewport + "align\\\:space-between")} {
+      &:is(#{class.startsWith($viewport + "align:space-between")}) {
         align-content: space-between;
       }
 
-      &#{class.startsWith($viewport + "align\\\:space-evenly")} {
+      &:is(#{class.startsWith($viewport + "align:space-evenly")}) {
         align-content: space-evenly;
       }
 

@@ -9,6 +9,7 @@
   .#{$viewport}overflow#{$direction},
   .#{$viewport}overflow#{$direction}\:auto {
     overflow#{$direction}: auto;
+    scrollbar-gutter: stable both-edges;
   }
   
   .#{$viewport}overflow#{$direction}\:visible {
@@ -24,6 +25,7 @@
   .#{$viewport}scroll#{$direction},
   .#{$viewport}overflow#{$direction}\:scroll {
     overflow#{$direction}: scroll;
+    scrollbar-gutter: stable both-edges;
   }
 }
 

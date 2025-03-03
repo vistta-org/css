@@ -1,4 +1,6 @@
 // Base
+@use "../vars" as *;
+@use "../utils/class" as class;
 
 *,
 *::before,
@@ -6,6 +8,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-color: var(--scroll-color) transparent;
+  scrollbar-width: thin;
 }
 
 *:focus:not(:focus-visible):not(:focus-within) {
@@ -19,11 +23,15 @@ body {
   line-height: var(--line-height);
   letter-spacing: var(--letter-spacing);
   font-family: var(--font-family), "Trebuchet MS", sans-serif;
-  position: fixed;
+  position: absolute;
   height: 100dvh;
   width: 100vw;
   inset: 0;
+  overflow-y: auto;
+  overflow-x: clip;
   background: none;
+  scrollbar-color: var(--scroll-color) var(--scroll-contrast-color);
+  scrollbar-width: thin;
 }
 
 html {
@@ -34,13 +42,11 @@ html {
 
 body {
   margin: 0;
-  overflow-y: overlay;
-  overflow-x: hidden;
   text-rendering: optimizeLegibility;
   background: var(--back-color);
 }
 
-a:not([class|="button"], .button, [class|="label"], .label) {
+a:not(#{class.startsWith("button")}, #{class.startsWith("label")}) {
   background-color: transparent;
   color: var(--link-color);
   text-decoration: none;

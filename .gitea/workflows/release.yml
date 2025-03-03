@@ -1,0 +1,48 @@
+name: Release Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      type:
+        description: 'Release Type'
+        required: true
+        type: choice
+        options:
+          - Patch
+          - Minor
+          - Major
+
+env:
+  ref: refs/heads/development
+jobs:
+  Release:
+    runs-on: ubuntu-latest
+    container:
+      image: node:latest
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master'
+    steps:
+      - 
+        name: Checkout
+        uses: tiagomta/checkout@v1
+        with:
+          ref: ${{ env.ref }}
+          token: ${{ secrets.TOKEN }}
+      - 
+        name: NPM Release
+        id: npm
+        uses: tiagomta/npm@v1
+        with:
+          command: version ${{ inputs.type }} --email devops@vistta.org --commit
+          token: ${{ secrets.TOKEN }}
+      - 
+        name: Create Milestone
+        id: milestone
+        uses: tiagomta/gitea@v1
+        with:
+          command: milestone create "${{ inputs.type }} (v${{ steps.npm.outputs.result }})"
+          token: ${{ secrets.TOKEN }}
+      - 
+        name: Create PR
+        uses: tiagomta/gitea@v1
+        with:
+          command: pr create "${{ inputs.type }} (v${{ steps.npm.outputs.result }})" ${{ github.ref }} ${{ env.ref }} --milestone ${{ steps.milestone.outputs.result }} --labels "Project/Release ${{ inputs.type }}"
+          token: ${{ secrets.TOKEN }}

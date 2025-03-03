@@ -47,6 +47,8 @@ select {
   border: var(--border-size) solid var(--border-color);
   border-radius: var(--border-radius);
   accent-color: var(--primary-color);
+  cursor: pointer;
+
   > option {
     accent-color: var(--primary-color);
     color: var(--fore-color);
