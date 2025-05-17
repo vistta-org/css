@@ -5,13 +5,23 @@
 @use "../mixins/vars" as *;
 @use "../utils/class" as class;
 
+@property --logo-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #c0ffee;
+}
+
 #{class.startsWith("container")} {
-  --gap: var(--unit-2);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: var(--gap);
+  gap: var(--unit-2);
   align-content: baseline;
+
+  > * {
+    --gap: var(--unit-2);
+  }
+
   &.container\:fill {
     width: 100%;
   }
@@ -202,55 +212,57 @@
       }
     }
   }
-}
 
-.col {
-  flex: 1;
-  margin: 0;
-  max-width: 100%;
-}
+  > .col {
+    flex: 1;
+    margin: 0;
+    max-width: 100%;
+  }
+  
+  > .row {
+    flex: 1;
+    margin: 0;
+    max-height: 100%;
+  }
 
-.row {
-  flex: 1;
-  margin: 0;
-  max-height: 100%;
-}
-
-@include responsive-media using ($viewport) {
-    .#{$viewport}col\:auto {
+  @include responsive-media using ($viewport) {
+    > .#{$viewport}col\:auto {
       flex: none;
       width: auto;
     }
-    
-    .#{$viewport}row\:auto {
+      
+    > .#{$viewport}row\:auto {
       flex: none;
       height: auto;
     }
-
+  
     $length: get("layout");
     @for $i from 1 through $length {
-        .#{$viewport}col\:#{$i} {
-          flex: none;
-          @if $i == $length {
-            width: 100%;
-          } @else {
-            width: calc(math.div(100% * $i, $length) - ((var(--gap) * $i) / $length));
-          }
-        }
-        .#{$viewport}row\:#{$i} {
-          flex: none;
-          @if $i == $length {
-            height: 100%;
-          } @else {
-            height: calc(math.div(100% * $i, $length) - ((var(--gap) * $i) / $length));
-          }
-        }
+      > .#{$viewport}col\:#{$i} {
+        flex: none;
+        width: calc(
+          ((100% - (#{$length - 1} * var(--gap))) / #{$length}) * #{$i}
+          + (#{$i} - 1) * var(--gap)
+        );
+      }
+
+      > .#{$viewport}row\:#{$i} {
+        flex: none;
+        height: calc(
+          ((100% - (#{$length - 1} * var(--gap))) / #{$length}) * #{$i}
+          + (#{$i} - 1) * var(--gap)
+        );
+      }
     }
 
     @include for-units using ($key, $value) {
-        .#{$viewport}gap\:#{$key} {
-            --gap: #{$value};
-            gap: var(--gap);
+      &.#{$viewport}gap\:#{$key} {
+        gap: #{$value};
+
+        > * {
+          --gap: #{$value};
         }
+      }
     }
+  }
 }

@@ -781,6 +781,13 @@ For more sizes you can use `col:[1-12]`. You can also add `:auto` for automatic 
   <div className="background:auto col:8">col 8</div>
   <div className="background:auto col:5">col 5</div>
   <div className="background:auto col:7">col 7</div>
+  <div className="background:auto col:3">col 3</div>
+  <div className="background:auto col:3">col 3</div>
+  <div className="background:auto col:3">col 3</div>
+  <div className="background:auto col:3">col 3</div>
+  <div className="background:auto col:4">col 4</div>
+  <div className="background:auto col:4">col 4</div>
+  <div className="background:auto col:4">col 4</div>
   <div className="background:auto col:6">col 6</div>
   <div className="background:auto col:6">col 6</div>
   <div className="background:auto col:12">col 12</div>
@@ -819,16 +826,28 @@ Vertical alignment options include `left`, `center`, `right`, `space-around`, `s
 Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:`, `xl:`, or `xxl:` to target specific screen sizes.
 
 ```html preview
-<div className="container align:top:left background:auto" style="height: var(--unit-16);">
+<div
+  className="container align:top:left background:auto"
+  style="height: var(--unit-16);"
+>
   <div class="col:auto background:primary p:1 rounded">top:left</div>
 </div>
-<div className="container align:center background:auto" style="height: var(--unit-16);">
+<div
+  className="container align:center background:auto"
+  style="height: var(--unit-16);"
+>
   <div class="col:auto background:primary p:1 rounded">center</div>
 </div>
-<div className="container align:bottom:right background:auto" style="height: var(--unit-16);">
+<div
+  className="container align:bottom:right background:auto"
+  style="height: var(--unit-16);"
+>
   <div class="col:auto background:primary p:1 rounded">bottom:right</div>
 </div>
-<div className="container align:space-evenly background:auto" style="height: var(--unit-16);">
+<div
+  className="container align:space-evenly background:auto"
+  style="height: var(--unit-16);"
+>
   <div class="col:auto background:primary p:1 rounded">space</div>
   <div class="col:auto background:primary p:1 rounded">evenly</div>
 </div>

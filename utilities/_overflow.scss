@@ -1,6 +1,5 @@
 @use "../mixins/responsive" as *;
 
-
 @mixin overflow($viewport, $direction: "") {
   @if ($direction != "") {
     $direction: "-" + $direction;
