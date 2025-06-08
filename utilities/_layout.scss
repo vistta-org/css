@@ -18,15 +18,15 @@
   gap: var(--unit-2);
   align-content: baseline;
 
-  > * {
+  * {
     --gap: var(--unit-2);
   }
 
   &.container\:fill {
     width: 100%;
   }
-  
-  &:has(> [class~="row"],> [class^="row"],> [class*=" row:"]) {
+
+  &:has(> [class~="row"], > [class^="row"], > [class*=" row:"]) {
     &.container\:fill {
       height: 100%;
     }
@@ -73,8 +73,8 @@
       &.#{$viewport}align\:center\:center,
       &.#{$viewport}align\:top\:center,
       &.#{$viewport}align\:bottom\:center,
-      &.#{$viewport}align\:space-around\:center, 
-      &.#{$viewport}align\:space-between\:center, 
+      &.#{$viewport}align\:space-around\:center,
+      &.#{$viewport}align\:space-between\:center,
       &.#{$viewport}align\:space-evenly\:center {
         align-items: center;
       }
@@ -120,7 +120,7 @@
     }
   }
 
-  &:not(:has(> [class~="row"],> [class^="row"],> [class*=" row:"])) {
+  &:not(:has(> [class~="row"], > [class^="row"], > [class*=" row:"])) {
     @include responsive-media using ($viewport) {
       &.#{$viewport}scroll,
       &:is(#{class.startsWith($viewport + "overflow")}) {
@@ -166,8 +166,8 @@
       &.#{$viewport}align\:center\:center,
       &.#{$viewport}align\:top\:center,
       &.#{$viewport}align\:bottom\:center,
-      &.#{$viewport}align\:space-around\:center, 
-      &.#{$viewport}align\:space-between\:center, 
+      &.#{$viewport}align\:space-around\:center,
+      &.#{$viewport}align\:space-between\:center,
       &.#{$viewport}align\:space-evenly\:center {
         justify-content: center;
       }
@@ -213,44 +213,48 @@
     }
   }
 
-  > .col {
+  .col {
     flex: 1;
     margin: 0;
     max-width: 100%;
   }
-  
-  > .row {
+
+  .row {
     flex: 1;
     margin: 0;
     max-height: 100%;
   }
 
   @include responsive-media using ($viewport) {
-    > .#{$viewport}col\:auto {
+    .#{$viewport}col\:auto {
       flex: none;
       width: auto;
     }
-      
-    > .#{$viewport}row\:auto {
+
+    .#{$viewport}row\:auto {
       flex: none;
       height: auto;
     }
-  
+
     $length: get("layout");
     @for $i from 1 through $length {
-      > .#{$viewport}col\:#{$i} {
+      .#{$viewport}col\:#{$i} {
         flex: none;
         width: calc(
-          ((100% - (#{$length - 1} * var(--gap))) / #{$length}) * #{$i}
-          + (#{$i} - 1) * var(--gap)
+          ((100% - (#{$length - 1} * var(--gap))) / #{$length}) *
+            #{$i} +
+            (#{$i} - 1) *
+            var(--gap)
         );
       }
 
-      > .#{$viewport}row\:#{$i} {
+      .#{$viewport}row\:#{$i} {
         flex: none;
         height: calc(
-          ((100% - (#{$length - 1} * var(--gap))) / #{$length}) * #{$i}
-          + (#{$i} - 1) * var(--gap)
+          ((100% - (#{$length - 1} * var(--gap))) / #{$length}) *
+            #{$i} +
+            (#{$i} - 1) *
+            var(--gap)
         );
       }
     }
@@ -259,7 +263,7 @@
       &.#{$viewport}gap\:#{$key} {
         gap: #{$value};
 
-        > * {
+        * {
           --gap: #{$value};
         }
       }

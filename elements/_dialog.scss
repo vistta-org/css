@@ -29,7 +29,8 @@ dialog {
   }
 
   &.modal {
-    &:not([popover]) {
+    &:not([popover])[open],
+    &:not([popover]):popover-open {
       position: fixed;
       z-index: var(--z-index-4);
       background: unset;
