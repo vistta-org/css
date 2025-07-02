@@ -123,6 +123,7 @@
   &:not(:has(> [class~="row"], > [class^="row"], > [class*=" row:"])) {
     @include responsive-media using ($viewport) {
       &.#{$viewport}scroll,
+      &.#{$viewport}nowrap,
       &:is(#{class.startsWith($viewport + "overflow")}) {
         flex-wrap: nowrap;
       }

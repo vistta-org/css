@@ -38,6 +38,7 @@ $shades: (100, 200, 300, 400, 500, 600, 700, 800, 900);
   @for $i from 0 through get("units") {
     $temp: internal($temp, "z-index-#{$i}", #{$i * 100}, $public);
   }
+  $temp: internal($temp, "z-index-max", 2147483647, $public);
   @return map.merge($vars, $temp);
 }
 
@@ -75,8 +76,7 @@ $shades: (100, 200, 300, 400, 500, 600, 700, 800, 900);
     $temp: internal((), "fore-color", var(--light-color), $public);
     $temp: internal((), "back-color", var(--dark-color), $public);
     $temp: internal((), "accent", white, $public);
-  }
-  @else {
+  } @else {
     $temp: internal((), "fore-color", var(--dark-color), $public);
     $temp: internal((), "back-color", var(--light-color), $public);
     $temp: internal((), "accent", black, $public);
@@ -95,9 +95,19 @@ $shades: (100, 200, 300, 400, 500, 600, 700, 800, 900);
       @if $shade == 500 {
         $temp: internal($temp, "#{$name}-color-#{$shade}", $value, $public);
       } @else if $shade < 500 {
-        $temp: internal($temp, "#{$name}-color-#{$shade}", color.scale($value, $lightness: ((500 - $shade) * 0.1%)), $public);
+        $temp: internal(
+          $temp,
+          "#{$name}-color-#{$shade}",
+          color.scale($value, $lightness: ((500 - $shade) * 0.1%)),
+          $public
+        );
       } @else {
-        $temp: internal($temp, "#{$name}-color-#{$shade}", color.scale($value, $lightness: (($shade - 500) * -0.1%)), $public);
+        $temp: internal(
+          $temp,
+          "#{$name}-color-#{$shade}",
+          color.scale($value, $lightness: (($shade - 500) * -0.1%)),
+          $public
+        );
       }
     }
   }

@@ -2,50 +2,50 @@
 
 @include responsive-media using ($viewport) {
   .#{$viewport}block {
-    display: block;
+    display: block !important;
   }
 
   .#{$viewport}inline-block {
-    display: inline-block;
+    display: inline-block !important;
   }
 
   .#{$viewport}inline {
-    display: inline;
+    display: inline !important;
   }
 
   .#{$viewport}flex {
-    display: flex;
+    display: flex !important;
   }
 
   .#{$viewport}inline-flex {
-    display: inline-flex;
+    display: inline-flex !important;
   }
 
   .#{$viewport}table {
-    display: table;
+    display: table !important;
   }
 
   .#{$viewport}inline-table {
-    display: inline-table;
+    display: inline-table !important;
   }
 
   .#{$viewport}grid {
-    display: grid;
+    display: grid !important;
   }
 
   .#{$viewport}inline-grid {
-    display: inline-grid;
+    display: inline-grid !important;
   }
 
   .#{$viewport}contents {
-    display: contents;
+    display: contents !important;
   }
 
   .#{$viewport}list-item {
-    display: list-item;
+    display: list-item !important;
   }
 
   .#{$viewport}hidden {
-    display: none;
+    display: none !important;
   }
 }

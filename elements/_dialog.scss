@@ -1,16 +1,14 @@
 dialog {
-  position: absolute;
+  &:not([popover]) {
+    position: absolute;
+    z-index: var(--z-index-2);
+  }
   padding: var(--unit-2) var(--unit-4);
   border: none;
   color: var(--fore-color);
   border-radius: var(--border-radius);
   background: var(--back-color);
   box-shadow: var(--box-shadow-2);
-  &:not([popover]) {
-    z-index: var(--z-index-2);
-  }
-  opacity: 0;
-  display: none;
   transition:
     opacity var(--duration),
     overlay var(--duration) allow-discrete,
@@ -22,10 +20,9 @@ dialog {
     }
   }
 
-  &[open],
-  &:popover-open {
-    opacity: 1;
-    display: block;
+  &:not([open]):not(:popover-open) {
+    opacity: 0;
+    display: none;
   }
 
   &.modal {

@@ -2,10 +2,16 @@
 @use "../mixins/responsive" as *;
 @use "../mixins/vars" as *;
 
+$directions: ("inset", "top", "right", "bottom", "left");
+
 .clearfix::after {
   clear: both;
   content: "";
   display: table;
+}
+
+[anchor] {
+  position: fixed;
 }
 
 @include responsive-media using ($viewport) {
@@ -49,7 +55,6 @@
 
   // inset
 
-  $directions: ("inset", "top", "right", "bottom", "left");
   @for $i from 1 through list.length($directions) {
     $direction: list.nth($directions, $i);
     .#{$viewport}#{$direction} {
@@ -62,6 +67,28 @@
     }
   }
 
+  // anchor
+
+  @for $i from 1 through list.length($directions) {
+    $direction: list.nth($directions, $i);
+    .#{$viewport}anchor\:#{$direction} {
+      position-area: #{$direction};
+    }
+
+    @if $direction != "left" and $direction != "right" {
+      .#{$viewport}anchor\:#{$direction}\:left {
+        position-area: #{$direction} span-left;
+      }
+
+      .#{$viewport}anchor\:#{$direction}\:center {
+        position-area: #{$direction} center;
+      }
+
+      .#{$viewport}anchor\:#{$direction}\:right {
+        position-area: #{$direction} span-right;
+      }
+    }
+  }
 
   // Z
 
@@ -73,5 +100,9 @@
     .#{$viewport}z\:#{$key} {
       z-index: #{$value};
     }
+  }
+
+  .#{$viewport}z\:max {
+    z-index: var(--z-index-max);
   }
 }

@@ -56,6 +56,14 @@ Buttons include simple button styles for actions in different types and sizes.
 <a className="button:raw">a.button</a>
 ```
 
+###### Soft
+
+```html preview
+<button className="soft">soft</button>
+<button className="soft" disabled>disabled</button>
+<a className="button:soft">a.button</a>
+```
+
 ###### Outlined
 
 ```html preview
@@ -75,51 +83,14 @@ Buttons include simple button styles for actions in different types and sizes.
 
 ```html preview
 <button className="primary">primary</button>
-<a className="button:primary">a.primary</a>
-<button className="secondary">secondary</button>
-<a className="button:secondary">a.secondary</a>
-<button className="info">info</button>
-<a className="button:info">a.info</a>
-<button className="success">success</button>
-<a className="button:success">a.success</a>
-<button className="warning">error</button>
-<a className="button:warning">a.error</a>
-<button className="error">error</button>
-<a className="button:error">a.error</a>
-```
-
-###### Raw Style Variants
-
-```html preview
-<button className="raw primary">primary</button>
-<a className="button:raw:primary">a.primary</a>
-<button className="raw secondary">secondary</button>
-<a className="button:raw:secondary">a.secondary</a>
-<button className="raw info">info</button>
-<a className="button:raw:info">a.info</a>
-<button className="raw success">success</button>
-<a className="button:raw:success">a.success</a>
-<button className="raw warning">error</button>
-<a className="button:raw:warning">a.error</a>
-<button className="raw error">error</button>
-<a className="button:raw:error">a.error</a>
-```
-
-###### Outlined Style Variants
-
-```html preview
-<button className="outlined primary">primary</button>
-<a className="button:outlined:primary">a.primary</a>
-<button className="outlined secondary">secondary</button>
-<a className="button:outlined:secondary">a.secondary</a>
-<button className="info outlined">info</button>
-<a className="button:outlined:info">a.info</a>
-<button className="success outlined">success</button>
-<a className="button:outlined:success">a.success</a>
-<button className="warning outlined">error</button>
-<a className="button:outlined:warning">a.error</a>
-<button className="error outlined">error</button>
-<a className="button:outlined:error">a.error</a>
+<a className="button:secondary">secondary</a>
+<button className="soft tertiary">tertiary</button>
+<a className="button:soft:light">light</a>
+<button className="raw dark">dark</button>
+<a className="button:raw:info">info</a>
+<button className="outlined success">success</button>
+<a className="button:outlined:warning">warning</a>
+<a className="button:error">error</a>
 ```
 
 #### **Cards**
@@ -569,19 +540,19 @@ You can also use a more dynamic `background` or `background:auto` which adjusts 
 #### **Border**
 
 Border utilities are used for setting border for specific sides and colors.
-You can combine both `border-l:primary`.
+You can combine both `border:left:primary`.
 If color shading is active you can also add `-[100-900]`, `-[100-900]` to each color option for more customization.
 
 ###### Sides
 
 ```html preview
 <p className="border">border all sides</p>
-<p className="border-top">border top</p>
-<p className="border-right">border right</p>
-<p className="border-bottom">border bottom</p>
-<p className="border-left">border left</p>
-<p className="border-x">border top and bottom</p>
-<p className="border-y">border right and left</p>
+<p className="border:top">border top</p>
+<p className="border:right">border right</p>
+<p className="border:bottom">border bottom</p>
+<p className="border:left">border left</p>
+<p className="border:x">border top and bottom</p>
+<p className="border:y">border right and left</p>
 ```
 
 ###### Colors
@@ -602,12 +573,12 @@ If color shading is active you can also add `-[100-900]`, `-[100-900]` to each c
 
 ```html preview
 <p className="border border:none">remove border all sides</p>
-<p className="border border-top:none">remove border top</p>
-<p className="border border-right:none">remove border right</p>
-<p className="border border-bottom:none">remove border bottom</p>
-<p className="border border-left:none">remove border left</p>
-<p className="border border-x:none">remove border top and bottom</p>
-<p className="border border-y:none">remove border right and left</p>
+<p className="border border:top:none">remove border top</p>
+<p className="border border:right:none">remove border right</p>
+<p className="border border:bottom:none">remove border bottom</p>
+<p className="border border:left:none">remove border left</p>
+<p className="border border:x:none">remove border top and bottom</p>
+<p className="border border:y:none">remove border right and left</p>
 ```
 
 #### **Colors**
@@ -886,23 +857,23 @@ You can also add `-x` or `-y` to control just one axis.
 
 ```html
 <!-- visible overflow -->
-<div className="overflow-x"></div>
-<div className="overflow-y"></div>
-<div className="overflow-x:visible"></div>
-<div className="overflow-y:visible"></div>
+<div className="overflow:x"></div>
+<div className="overflow:y"></div>
+<div className="overflow:x:visible"></div>
+<div className="overflow:y:visible"></div>
 <!-- auto overflow -->
-<div className="overflow-x:auto"></div>
-<div className="overflow-y:auto"></div>
+<div className="overflow:x:auto"></div>
+<div className="overflow:y:auto"></div>
 <!-- no overflow -->
-<div className="overflow-x:none"></div>
-<div className="overflow-y:none"></div>
-<div className="overflow-x:clip"></div>
-<div className="overflow-y:clip"></div>
+<div className="overflow:x:none"></div>
+<div className="overflow:y:none"></div>
+<div className="overflow:x:clip"></div>
+<div className="overflow:y:clip"></div>
 <!-- scroll -->
 <div className="scroll-x"></div>
 <div className="scroll-y"></div>
-<div className="overflow-x:scroll"></div>
-<div className="overflow-y:scroll"></div>
+<div className="overflow:x:scroll"></div>
+<div className="overflow:y:scroll"></div>
 ```
 
 #### **Positions**

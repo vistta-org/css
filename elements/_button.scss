@@ -1,66 +1,87 @@
 @use "../utils/class" as class;
 
-@mixin button($name, $var: false) {
-  @if ($var != null) {
-    @if ($var == false) {
-      $var: $name;
+@mixin button($name, $theme: false, $text-color: null, $back-color: null) {
+  @if ($theme != null) {
+    @if ($theme == false) {
+      $theme: $name;
     }
 
     button.#{$name},
     .button\:#{$name} {
-      --button-theme: var(--#{$var}-color);
+      --button-theme: var(--#{$theme}-color);
+      @if ($text-color != null) {
+        --button-text-color: var(--#{$text-color}-color);
+      }
+      @if ($back-color != null) {
+        --button-back-color: var(--#{$back-color}-color);
+      }
+    }
+
+    button.soft.#{$name},
+    .button\:soft\:#{$name},
+    .button\:#{$name}\:raw {
+      --button-theme: var(--#{$theme}-color);
+      @extend .button\:soft;
     }
 
     button.raw.#{$name},
     .button\:raw\:#{$name},
     .button\:#{$name}\:raw {
-      --button-theme: var(--#{$var}-color);
+      --button-theme: var(--#{$theme}-color);
       @extend .button\:raw;
     }
 
     button.outlined.#{$name},
     .button\:outlined\:#{$name},
     .button\:#{$name}\:outlined {
-      --button-theme: var(--#{$var}-color);
+      --button-theme: var(--#{$theme}-color);
       @extend .button\:outlined;
     }
   }
 }
 
-button, #{class.startsWith("button")} {
+button,
+#{class.startsWith("button")} {
   --button-theme: var(--fore-color);
+  --button-text-color: var(--back-color);
+  --button-back-color: var(--button-theme);
   position: relative;
-  color: var(--back-color);
-  background: var(--button-theme);
+  color: var(--button-text-color);
+  background: var(--button-back-color);
   padding: var(--unit-2) var(--unit-6);
   border: var(--border-size) solid rgba(0, 0, 0, 0);
   border-radius: var(--border-radius);
   cursor: pointer;
+  user-select: none;
   transition:
     background var(--duration),
     color var(--duration),
     border var(--duration);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  &:not(:disabled):hover {
+  &:not(:disabled):not(.loading):hover {
     background: color-mix(
       in srgb,
       var(--button-theme) 65%,
-      transparent
+      var(--button-text-color)
     );
   }
 
-  &:not(:disabled):active {
+  &:not(:disabled):not(.loading):active {
     background: color-mix(
       in srgb,
       var(--button-theme) 25%,
-      transparent
+      var(--button-text-color)
     );
   }
 
-  &:disabled {
+  &:disabled,
+  &.loading {
     cursor: default !important;
-    color: var(--neutral-color-dark-4) !important;
-    background: var(--neutral-color) !important;
+    --button-text-color: var(--neutral-color-dark-4) !important;
+    --button-back-color: var(--neutral-color) !important;
     border: none !important;
   }
 
@@ -79,19 +100,83 @@ button, #{class.startsWith("button")} {
     aspect-ratio: 1;
     padding: 0.4rem 0;
   }
+
+  &[data-icon].icon\:left {
+    padding-left: calc(var(--icon-size) + var(--unit-2));
+
+    &::before {
+      position: absolute;
+      left: var(--unit-1);
+    }
+  }
+
+  &[data-icon].icon\:right {
+    padding-right: calc(var(--icon-size) + var(--unit-2));
+
+    &::before {
+      position: absolute;
+      right: var(--unit-1);
+    }
+  }
+
+  &.loading {
+    --_size: 1em;
+    pointer-events: none;
+
+    &:after {
+      border-left-color: var(--button-theme);
+      border-bottom-color: var(--button-theme);
+    }
+  }
+}
+
+button.soft,
+.button\:soft {
+  --button-text-color: var(--button-theme);
+  --button-back-color: var(--back-color);
+
+  &:not(:disabled):hover {
+    background: color-mix(
+      in srgb,
+      var(--button-theme) 10%,
+      var(--button-back-color)
+    );
+  }
+
+  &:not(:disabled):active {
+    background: color-mix(
+      in srgb,
+      var(--button-theme) 40%,
+      var(--button-back-color)
+    );
+  }
+
+  &:disabled {
+    cursor: default !important;
+    color: var(--neutral-color) !important;
+    border: none !important;
+  }
 }
 
 button.raw,
 .button\:raw {
-  color: var(--button-theme);
-  background: rgba(0, 0, 0, 0);
+  --button-text-color: var(--button-theme);
+  --button-back-color: rgba(0, 0, 0, 0);
 
   &:not(:disabled):hover {
-    background: color-mix(in srgb, var(--button-theme) 10%, transparent);
+    background: color-mix(
+      in srgb,
+      var(--button-theme) 10%,
+      var(--button-back-color)
+    );
   }
 
   &:not(:disabled):active {
-    background: color-mix(in srgb, var(--button-theme) 40%, transparent);
+    background: color-mix(
+      in srgb,
+      var(--button-theme) 40%,
+      var(--button-back-color)
+    );
   }
 
   &:disabled {
@@ -104,17 +189,25 @@ button.raw,
 
 button.outlined,
 .button\:outlined {
-  color: var(--button-theme);
-  background: rgba(0, 0, 0, 0);
+  --button-text-color: var(--button-theme);
+  --button-back-color: rgba(0, 0, 0, 0);
   border: var(--border-size) solid var(--button-theme);
 
   &:not(:disabled):hover {
-    background: color-mix(in srgb, var(--button-theme) 10%, transparent);
+    background: color-mix(
+      in srgb,
+      var(--button-theme) 10%,
+      var(--button-back-color)
+    );
     border-color: transparent;
   }
 
   &:not(:disabled):active {
-    background: color-mix(in srgb, var(--button-theme) 40%, transparent);
+    background: color-mix(
+      in srgb,
+      var(--button-theme) 40%,
+      var(--button-back-color)
+    );
     border-color: transparent;
   }
 
@@ -133,6 +226,10 @@ button.outlined,
 @include button("secondary");
 
 @include button("tertiary");
+
+@include button("light", "light", "dark");
+
+@include button("dark", "light", "dark");
 
 @include button("info");
 

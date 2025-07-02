@@ -1,5 +1,5 @@
 @charset "UTF-8";
-$version: "0.0.1";
+$version: "0.1.0";
 $settings: () !default;
 
 @use "vars" with (
@@ -15,7 +15,6 @@ $settings: () !default;
 @use "elements/base";
 
 // Utilities
-@use "utilities/anchors";
 @use "utilities/animations";
 @use "utilities/backgrounds";
 @use "utilities/borders";

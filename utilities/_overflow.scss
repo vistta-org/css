@@ -2,19 +2,18 @@
 
 @mixin overflow($viewport, $direction: "") {
   @if ($direction != "") {
-    $direction: "-" + $direction;
+    $direction: "\\:" + $direction;
   }
-  
+
   .#{$viewport}overflow#{$direction},
   .#{$viewport}overflow#{$direction}\:auto {
     overflow#{$direction}: auto;
     scrollbar-gutter: stable both-edges;
   }
-  
+
   .#{$viewport}overflow#{$direction}\:visible {
     overflow#{$direction}: visible;
   }
-
 
   .#{$viewport}overflow#{$direction}\:clip,
   .#{$viewport}overflow#{$direction}\:none {
