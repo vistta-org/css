@@ -17,7 +17,7 @@ jobs:
         uses: tiagomta/checkout@v1
         with:
           repository: vistta/workspace
-          ref: ${{ gitea.event.pull_request.head.ref }}
+          ref: main
           token: ${{ secrets.TOKEN }}
           fetch-depth: 0
           submodules: true
