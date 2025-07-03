@@ -11,6 +11,12 @@
   initial-value: #c0ffee;
 }
 
+.#{$viewport}content {
+  max-width: var(--content-spacing);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #{class.startsWith("container")} {
   display: flex;
   flex-direction: row;

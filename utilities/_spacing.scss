@@ -1,10 +1,6 @@
 @use "../mixins/responsive" as *;
 @use "../mixins/vars" as *;
 
-.width\:content {
-  max-width: var(--content-spacing);
-}
-
 @mixin spacing($viewport, $type, $key, $value) {
   $t: "";
   @if $type == "margin" {
