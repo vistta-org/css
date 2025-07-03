@@ -1,5 +1,5 @@
 $settings: () !default;
-@use 'sass:color';
+@use "sass:color";
 @use "utils/vars" as * with (
   $settings-map: $settings
 );
@@ -21,13 +21,17 @@ $vars: define("large-spacing", var(--unit-4), true);
 $vars: define-z-indexes();
 
 // Viewport
-$vars: define("viewports", (
-  "sm": 640px,
-  "md": 768px,
-  "lg": 1024px,
-  "xl": 1280px,
-  "xxl": 1536px
-));
+$vars: define("max-content-width", 70ch, true);
+$vars: define(
+  "viewports",
+  (
+    "sm": 640px,
+    "md": 768px,
+    "lg": 1024px,
+    "xl": 1280px,
+    "xxl": 1536px,
+  )
+);
 
 // Color Settings
 $vars: define("color-scheme", "auto");
@@ -39,7 +43,10 @@ $vars: define("color-shades", false);
 $vars: define-system-colors();
 $vars: define-color("dark", #181818);
 $vars: define-color("light", #f5f5f5);
-$vars: define-color("neutral", color.mix(get("dark-color"), get("light-color"), 50%));
+$vars: define-color(
+  "neutral",
+  color.mix(get("dark-color"), get("light-color"), 50%)
+);
 $vars: define-color("primary", #c68346);
 $vars: define-color("primary-contrast", contrast(get("primary-color")));
 $vars: define-color("secondary", #3d3d3d);
@@ -96,8 +103,16 @@ $vars: define("shadow-variance", get("variance"));
 $vars: define("shadow-color", rgba(0, 0, 0, 0.24), true);
 $vars: define("shadow-blur", get("blur"), true);
 $vars: define("shadow-offset", 0px 4px, true);
-$vars: define("box-shadow", var(--shadow-color) var(--shadow-offset) var(--shadow-blur) 0px, true);
-$vars: define("box-shadow-inset", inset var(--shadow-color) var(--shadow-offset) var(--shadow-blur) 0px, true);
+$vars: define(
+  "box-shadow",
+  var(--shadow-color) var(--shadow-offset) var(--shadow-blur) 0px,
+  true
+);
+$vars: define(
+  "box-shadow-inset",
+  inset var(--shadow-color) var(--shadow-offset) var(--shadow-blur) 0px,
+  true
+);
 
 // Export
 @forward "utils/vars";

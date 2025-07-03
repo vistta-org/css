@@ -2,18 +2,11 @@
 @use "../vars" as *;
 @use "../utils/class" as class;
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
+html {
   box-sizing: border-box;
-  scrollbar-color: var(--scroll-color) transparent;
-  scrollbar-width: thin;
-}
-
-*:focus:not(:focus-visible):not(:focus-within) {
-  outline: none;
+  line-height: 1.4;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
@@ -34,22 +27,33 @@ body {
   scrollbar-width: thin;
 }
 
-html {
-  line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-}
-
 body {
   margin: 0;
   text-rendering: optimizeLegibility;
   background: var(--back-color);
 }
 
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  scrollbar-color: var(--scroll-color) transparent;
+  scrollbar-width: thin;
+}
+
+*:focus:not(:focus-visible):not(:focus-within) {
+  outline: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+
 a:not(#{class.startsWith("button")}, #{class.startsWith("label")}) {
   background-color: transparent;
   color: var(--link-color);
-  text-decoration: none;
 
   &:focus,
   &:hover,
