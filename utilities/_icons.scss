@@ -1,7 +1,7 @@
 [data-icon]::before {
   font-family: var(--icon-family);
   content: attr(data-icon);
-  display: block;
+  display: inline-block;
   font-size: var(--icon-size);
   font-weight: normal;
   font-style: normal;

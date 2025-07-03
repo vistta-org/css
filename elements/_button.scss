@@ -69,7 +69,8 @@ button,
     );
   }
 
-  &:not(:disabled):not(.loading):active {
+  &:not(:disabled):not(.loading):active,
+  &:not(:disabled):not(.loading).active {
     background: color-mix(
       in srgb,
       var(--button-theme) 25%,
@@ -101,21 +102,33 @@ button,
     padding: 0.4rem 0;
   }
 
+  &.text\:left {
+    justify-content: flex-start;
+  }
+
+  &.text\:right {
+    justify-content: flex-end;
+  }
+
+  &[data-icon]:not(.action):before {
+    margin: 0 var(--unit-2);
+  }
+
   &[data-icon].icon\:left {
-    padding-left: calc(var(--icon-size) + var(--unit-2));
+    padding-left: calc(var(--icon-size) + var(--unit-4));
 
     &::before {
       position: absolute;
-      left: var(--unit-1);
+      left: var(--unit-2);
     }
   }
 
   &[data-icon].icon\:right {
-    padding-right: calc(var(--icon-size) + var(--unit-2));
+    padding-right: calc(var(--icon-size) + var(--unit-4));
 
     &::before {
       position: absolute;
-      right: var(--unit-1);
+      right: var(--unit-2);
     }
   }
 
@@ -135,7 +148,7 @@ button.soft,
   --button-text-color: var(--button-theme);
   --button-back-color: var(--back-color);
 
-  &:not(:disabled):hover {
+  &:not(:disabled):not(.loading):hover {
     background: color-mix(
       in srgb,
       var(--button-theme) 10%,
@@ -143,7 +156,8 @@ button.soft,
     );
   }
 
-  &:not(:disabled):active {
+  &:not(:disabled):not(.loading):active,
+  &:not(:disabled):not(.loading).active {
     background: color-mix(
       in srgb,
       var(--button-theme) 40%,
@@ -163,7 +177,7 @@ button.raw,
   --button-text-color: var(--button-theme);
   --button-back-color: rgba(0, 0, 0, 0);
 
-  &:not(:disabled):hover {
+  &:not(:disabled):not(.loading):hover {
     background: color-mix(
       in srgb,
       var(--button-theme) 10%,
@@ -171,7 +185,8 @@ button.raw,
     );
   }
 
-  &:not(:disabled):active {
+  &:not(:disabled):not(.loading):active,
+  &:not(:disabled):not(.loading).active {
     background: color-mix(
       in srgb,
       var(--button-theme) 40%,
@@ -193,7 +208,7 @@ button.outlined,
   --button-back-color: rgba(0, 0, 0, 0);
   border: var(--border-size) solid var(--button-theme);
 
-  &:not(:disabled):hover {
+  &:not(:disabled):not(.loading):hover {
     background: color-mix(
       in srgb,
       var(--button-theme) 10%,
@@ -202,7 +217,8 @@ button.outlined,
     border-color: transparent;
   }
 
-  &:not(:disabled):active {
+  &:not(:disabled):not(.loading):active,
+  &:not(:disabled):not(.loading).active {
     background: color-mix(
       in srgb,
       var(--button-theme) 40%,

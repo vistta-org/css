@@ -32,7 +32,7 @@ $vars: define(
     "sm": get("small-viewport"),
     "md": get("viewport"),
     "lg": get("large-viewport"),
-    "xl": get("large-viewport"),
+    "xl": get("xlarge-viewport"),
     "xxl": get("xxlarge-viewport"),
   )
 );
@@ -47,7 +47,7 @@ $vars: define(
       "large-viewport",
     ),
     "xl": (
-      "large-viewport",
+      "xlarge-viewport",
     ),
     "xxl": (
       "xxlarge-viewport",
