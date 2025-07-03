@@ -18,10 +18,10 @@ $vars: define-units();
 $vars: define("small-spacing", var(--unit-1), true);
 $vars: define("spacing", var(--unit-2), true);
 $vars: define("large-spacing", var(--unit-4), true);
+$vars: define("content-spacing", 70ch, true);
 $vars: define-z-indexes();
 
 // Viewport
-$vars: define("max-content-width", 70ch, true);
 $vars: define(
   "viewports",
   (

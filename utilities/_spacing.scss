@@ -1,37 +1,41 @@
 @use "../mixins/responsive" as *;
 @use "../mixins/vars" as *;
 
+.width\:content {
+  max-width: var(--content-spacing);
+}
+
 @mixin spacing($viewport, $type, $key, $value) {
-    $t: ""; 
-    @if $type == "margin" {
-        $t: "m";
-    } @else if $type == "padding" {
-        $t: "p";
-    }
-  
-    .#{$viewport}#{$t}\:#{$key} {
-        #{$type}: #{$value} !important;
-    }
-  
-    .#{$viewport}#{$t}t\:#{$key},
-    .#{$viewport}#{$t}y\:#{$key} {
-        #{$type}-top: #{$value} !important;
-    }
-  
-    .#{$viewport}#{$t}r\:#{$key},
-    .#{$viewport}#{$t}x\:#{$key} {
-        #{$type}-right: #{$value} !important;
-    }
-  
-    .#{$viewport}#{$t}b\:#{$key},
-    .#{$viewport}#{$t}y\:#{$key} {
-        #{$type}-bottom: #{$value} !important;
-    }
-  
-    .#{$viewport}#{$t}l\:#{$key},
-    .#{$viewport}#{$t}x\:#{$key} {
-        #{$type}-left: #{$value} !important;
-    }
+  $t: "";
+  @if $type == "margin" {
+    $t: "m";
+  } @else if $type == "padding" {
+    $t: "p";
+  }
+
+  .#{$viewport}#{$t}\:#{$key} {
+    #{$type}: #{$value} !important;
+  }
+
+  .#{$viewport}#{$t}t\:#{$key},
+  .#{$viewport}#{$t}y\:#{$key} {
+    #{$type}-top: #{$value} !important;
+  }
+
+  .#{$viewport}#{$t}r\:#{$key},
+  .#{$viewport}#{$t}x\:#{$key} {
+    #{$type}-right: #{$value} !important;
+  }
+
+  .#{$viewport}#{$t}b\:#{$key},
+  .#{$viewport}#{$t}y\:#{$key} {
+    #{$type}-bottom: #{$value} !important;
+  }
+
+  .#{$viewport}#{$t}l\:#{$key},
+  .#{$viewport}#{$t}x\:#{$key} {
+    #{$type}-left: #{$value} !important;
+  }
 }
 
 @include responsive-media using ($viewport) {
