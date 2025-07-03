@@ -11,14 +11,10 @@
   initial-value: #c0ffee;
 }
 
-.content {
-  max-width: var(--content-spacing);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#{class.startsWith("container")} {
+$viewports: ("small-", "", "large-", "xlarge-", "xxlarge-");
+.container {
   display: flex;
+  width: 100%;
   flex-direction: row;
   flex-wrap: wrap;
   gap: var(--unit-2);
@@ -28,14 +24,7 @@
     --gap: var(--unit-2);
   }
 
-  &.container\:fill {
-    width: 100%;
-  }
-
   &:has(> [class~="row"], > [class^="row"], > [class*=" row:"]) {
-    &.container\:fill {
-      height: 100%;
-    }
     flex-direction: column;
     flex-wrap: nowrap;
 
@@ -232,6 +221,25 @@
     max-height: 100%;
   }
 
+  @each $viewport, $var in get("viewports-vars") {
+    .col\:#{$viewport} {
+      flex: 1;
+      margin: 0;
+      max-width: var(--#{$var});
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .row\:#{$viewport} {
+      flex: 1;
+      margin: 0;
+      max-height: 100%;
+      max-width: var(--#{$var});
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
   @include responsive-media using ($viewport) {
     .#{$viewport}col\:auto {
       flex: none;
@@ -275,5 +283,13 @@
         }
       }
     }
+  }
+}
+
+@each $viewport, $var in get("viewports-vars") {
+  .container\:#{$viewport} {
+    max-width: var(--#{$var});
+    margin-left: auto;
+    margin-right: auto;
   }
 }

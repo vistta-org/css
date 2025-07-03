@@ -42,7 +42,7 @@ Buttons include simple button styles for actions in different types and sizes.
 
 ###### Basic
 
-```html preview
+```html
 <button>button</button>
 <button disabled>disabled</button>
 <a className="button">a.button</a>
@@ -50,7 +50,7 @@ Buttons include simple button styles for actions in different types and sizes.
 
 ###### Raw
 
-```html preview
+```html
 <button className="raw">raw</button>
 <button className="raw" disabled>disabled</button>
 <a className="button:raw">a.button</a>
@@ -58,7 +58,7 @@ Buttons include simple button styles for actions in different types and sizes.
 
 ###### Soft
 
-```html preview
+```html
 <button className="soft">soft</button>
 <button className="soft" disabled>disabled</button>
 <a className="button:soft">a.button</a>
@@ -66,7 +66,7 @@ Buttons include simple button styles for actions in different types and sizes.
 
 ###### Outlined
 
-```html preview
+```html
 <button className="outlined">outlined</button>
 <button className="outlined" disabled>disabled</button>
 <a className="button:outlined">a.button</a>
@@ -74,14 +74,14 @@ Buttons include simple button styles for actions in different types and sizes.
 
 ###### Size Variants
 
-```html preview
+```html
 <button className="small">small</button>
 <button className="large">large</button>
 ```
 
 ###### Style Variants
 
-```html preview
+```html
 <button className="primary">primary</button>
 <a className="button:secondary">secondary</a>
 <button className="soft tertiary">tertiary</button>
@@ -97,13 +97,13 @@ Buttons include simple button styles for actions in different types and sizes.
 
 Cards are flexible content containers.
 
-```html preview
+```html
 <card>card</card>
 ```
 
 ###### Variants
 
-```html preview
+```html
 <card className="primary">primary</card>
 <div className="card-primary">div.primary</div>
 <card className="secondary">secondary</card>
@@ -122,7 +122,7 @@ Cards are flexible content containers.
 
 ###### Simple dialog
 
-```html preview
+```html
 <div>
   <button id="anchor-3" popovertarget="mypopover1">Open</button>
   <dialog anchor="anchor-3" id="mypopover1" popover>
@@ -134,7 +134,7 @@ Cards are flexible content containers.
 
 ###### Modal dialog
 
-```html preview
+```html
 <div>
   <button popovertarget="mypopover2">Open</button>
   <dialog className="modal" id="mypopover2" popover>
@@ -148,7 +148,7 @@ Cards are flexible content containers.
 
 Forms provide the most common control styles used in forms, including input, textarea, select.
 
-```html preview
+```html
 <input placeholder="text"></input>
 <input placeholder="disabled" disabled></input>
 <input placeholder="readonly" readonly></input>
@@ -156,13 +156,13 @@ Forms provide the most common control styles used in forms, including input, tex
 
 ###### Textarea
 
-```html preview
+```html
 <textarea></textarea>
 ```
 
 ###### Select
 
-```html preview
+```html
 <select>
   <option>1</option>
   <option>2</option>
@@ -172,7 +172,7 @@ Forms provide the most common control styles used in forms, including input, tex
 
 ###### Input Types
 
-```html preview
+```html
 <p>
   <label>Password:</label>
   <input type="password"></input>
@@ -227,11 +227,11 @@ Forms provide the most common control styles used in forms, including input, tex
 
 Labels are formatted text tags for highlighted, informative information.
 
-```html preview
+```html
 <label>label</label>
 ```
 
-```html preview "Variants:" className="gap-6 center">
+```html
 <label className="primary">primary</label>
 <a className="label-primary">a.primary</a>
 <label className="secondary">secondary</label>
@@ -250,7 +250,7 @@ Labels are formatted text tags for highlighted, informative information.
 
 Menus are vertical list of items, links or buttons for information, actions and navigation.
 
-```html preview
+```html
 <div>
   <menu>
     <li>Item 1</li>
@@ -263,7 +263,7 @@ Menus are vertical list of items, links or buttons for information, actions and 
 
 Menus can have sub-menus included
 
-```html preview
+```html
 <div>
   <menu>
     <li>Item 1</li>
@@ -280,9 +280,9 @@ Menus can have sub-menus included
 </div>
 ```
 
-You can also combine it with card for a more unique look.
+Combine it with card for a more unique look.
 
-```html preview
+```html
 <div>
   <menu className="card">
     <li><button>Item 1</button></li>
@@ -298,7 +298,7 @@ You can also combine it with card for a more unique look.
 Meters represent the value within the known range.
 Meter is green when low < value < high.
 
-```html preview
+```html
 <div>
   <meter
     value="30"
@@ -321,7 +321,7 @@ Meter is green when low < value < high.
 
 Meter is yellow when value < low or high < value
 
-```html preview
+```html
 <div>
   <meter value="29" min="0" low="{30}" high="{80}" max="100"></meter>
   <meter value="81" min="0" low="{30}" high="{80}" max="100"></meter>
@@ -330,7 +330,7 @@ Meter is yellow when value < low or high < value
 
 Meter is red when value < low < high < optimum or optimum < low < high < value
 
-```html preview
+```html
 <div>
   <meter
     value="20"
@@ -353,7 +353,7 @@ Meter is red when value < low < high < optimum or optimum < low < high < value
 
 #### **Pre/Code**
 
-```html preview
+```html
 <div>
   <pre data-lang="javascript">
     <code>console.log();</code>
@@ -365,7 +365,7 @@ Meter is red when value < low < high < optimum or optimum < low < high < value
 
 The Progress indicates the progress completion of a task.
 
-```html preview
+```html
 <div>
   <progress value="75" max="100"></progress>
   <progress value="50" max="100"></progress>
@@ -376,7 +376,7 @@ The Progress indicates the progress completion of a task.
 
 #### **Table**
 
-```html preview
+```html
 <table>
   <thead>
     <tr>
@@ -423,7 +423,7 @@ Typography sets default styles for headings, paragraphs, semantic text, blockquo
 
 ###### Headings
 
-```html preview
+```html
 <h1>H1 Heading</h1>
 <h2>H2 Heading</h2>
 <h3>H3 Heading</h3>
@@ -434,7 +434,7 @@ Typography sets default styles for headings, paragraphs, semantic text, blockquo
 
 ###### Paragraphs
 
-```html preview
+```html
 <div>
   <p>Lorem ipsum dolor sit amet, ...</p>
   <p></p>
@@ -443,7 +443,7 @@ Typography sets default styles for headings, paragraphs, semantic text, blockquo
 
 ###### Semantic text elements
 
-```html preview
+```html
 <div className="container gap-6">
   <abbr>I18N</abbr>
   <strong>Bold</strong>
@@ -474,7 +474,7 @@ Typography sets default styles for headings, paragraphs, semantic text, blockquo
 Anchors utilities are used for anchoring fixed or absolute elements to other elements.
 You can either use `anchor` html attribute to reference a element id, if you are using `@vistta/js`, or class `anchor-[1-16]` and `anchor-to-[1-16]`
 
-```html preview
+```html
 <p id="anchor-1">anchor</p>
 <div><div anchor="anchor-1">fixed</div></div>
 <p className="anchor-1">anchor</p>
@@ -483,7 +483,7 @@ You can either use `anchor` html attribute to reference a element id, if you are
 
 ###### Position
 
-```html preview
+```html
 <p id="anchor-2">anchor</p>
 <div>
   <div anchor="anchor-2" className="anchor-top-left">anchor-top-left</div>
@@ -506,7 +506,7 @@ If color shading is active you can also add `-[100-900]`, `-[100-900]` to each c
 
 ###### Background Colors
 
-```html preview
+```html
 <p className="background:default">default background</p>
 <p className="background:primary">primary background</p>
 <p className="background:primary-contrast">primary contrast background</p>
@@ -523,15 +523,15 @@ If color shading is active you can also add `-[100-900]`, `-[100-900]` to each c
 
 ###### Remove
 
-```html preview
+```html
 <p className="background:none">Remove background</p>
 ```
 
 ###### Auto
 
-You can also use a more dynamic `background` or `background:auto` which adjusts with use.
+Using `background` or `background:auto` will dynamicly adjust with use.
 
-```html preview
+```html
 <div className="background">
   <div className="background">auto</div>
 </div>
@@ -545,7 +545,7 @@ If color shading is active you can also add `-[100-900]`, `-[100-900]` to each c
 
 ###### Sides
 
-```html preview
+```html
 <p className="border">border all sides</p>
 <p className="border:top">border top</p>
 <p className="border:right">border right</p>
@@ -557,7 +557,7 @@ If color shading is active you can also add `-[100-900]`, `-[100-900]` to each c
 
 ###### Colors
 
-```html preview
+```html
 <p className="border:primary">border primary</p>
 <p className="border:secondary">border secondary</p>
 <p className="border:light">border light</p>
@@ -571,7 +571,7 @@ If color shading is active you can also add `-[100-900]`, `-[100-900]` to each c
 
 ###### Remove
 
-```html preview
+```html
 <p className="border border:none">remove border all sides</p>
 <p className="border border:top:none">remove border top</p>
 <p className="border border:right:none">remove border right</p>
@@ -588,7 +588,7 @@ If color shading is active you can also add `-[100-900]`, `-[100-900]` to each c
 
 ###### Text Colors
 
-```html preview
+```html
 <p className="color">default color</p>
 <p className="color:primary">primary color</p>
 <p className="color:primary-contrast">primary contrast color</p>
@@ -607,7 +607,7 @@ If color shading is active you can also add `-[100-900]`, `-[100-900]` to each c
 
 Cursor utilities specify which mouse cursor to display when mouseover.
 
-```html preview
+```html
 <p className="cursor">cursor default</p>
 <p className="cursor:pointer">cursor pointer</p>
 <p className="cursor:move">cursor move</p>
@@ -655,7 +655,7 @@ Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:
 Divider is used to separate elements.
 Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:`, `xl:`, or `xxl:` to target specific screen sizes.
 
-```html preview
+```html
 <div>
   <p>Section 1</p>
   <div className="divider"></div>
@@ -663,7 +663,7 @@ Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:
 </div>
 ```
 
-```html preview
+```html
 <div>
   <p>Section 1</p>
   <div className="divider:horizontal" data-content="OR"></div>
@@ -671,7 +671,7 @@ Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:
 </div>
 ```
 
-```html preview
+```html
 <div className="container gap-4">
   <p className="py-8">Section 1</p>
   <div className="divider:vertical" data-content="OR"></div>
@@ -683,11 +683,11 @@ Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:
 
 Group is used to join elements.
 
-```html preview
+```html
 <div className="group">
   <input type="search" />
-  <button className="raw action" data-icon="&#xe8b6;" />
-  <button className="raw action" data-icon="&#xe88e;" />
+  <button className="raw action" data-icon="" />
+  <button className="raw action" data-icon="" />
 </div>
 ```
 
@@ -699,7 +699,7 @@ If color shading is active you can also add `-[100-900]`, `-[100-900]` to each c
 
 ###### Highlight Colors
 
-```html preview
+```html
 <p className="highlight">highlight default</p>
 <p className="highlight:primary">highlight primary</p>
 <p className="highlight:secondary">highlight secondary</p>
@@ -711,17 +711,17 @@ If color shading is active you can also add `-[100-900]`, `-[100-900]` to each c
 
 #### **Icons**
 
-This project uses <a href="https://fonts.google.com/icons?selected=Material+Icons" target="_blank" rel="noreferrer">Google Fonts Material Icons</a>.
+This project uses `<a href="https://fonts.google.com/icons?selected=Material+Icons" target="_blank" rel="noreferrer">`Google Fonts Material Icons`</a>`.
 Use the attribute `data-icon` with the value `&#x«code point»;` (HTML) or `\u«code point»;` (JSX)
 
-```html preview
+```html
 <div className="container gap-4">
-  <button className="action" data-icon="&#xe8b6;" />
-  <button className="action" data-icon="&#xe88a;" />
-  <button className="action" data-icon="&#xe853;" />
-  <button className="action" data-icon="&#xe8b8;" />
-  <button className="action" data-icon="&#xe876;" />
-  <button className="action" data-icon="&#xe88e;" />
+  <button className="action" data-icon="" />
+  <button className="action" data-icon="" />
+  <button className="action" data-icon="" />
+  <button className="action" data-icon="" />
+  <button className="action" data-icon="" />
+  <button className="action" data-icon="" />
 </div>
 ```
 
@@ -729,9 +729,9 @@ Use the attribute `data-icon` with the value `&#x«code point»;` (HTML) or `\u�
 
 Use `.font-s`, `.font-large` classes to increase icon sizes. You can set `font-size` to have different icon sizes.
 
-```html preview
-<p className="font-s" data-icon="&#xe87e;"></p>
-<p className="font-large" data-icon="&#xe87e;"></p>
+```html
+<p className="font-s" data-icon=""></p>
+<p className="font-large" data-icon=""></p>
 ```
 
 #### **Layouts**
@@ -740,7 +740,7 @@ Layout includes auto flex/grid wrap based responsive layout system with 12 colum
 Add `container` to a container element and add any element you want with the `col` to take advantage of it.
 For more sizes you can use `col:[1-12]`. You can also add `:auto` for automatic sizing.
 
-```html preview
+```html
 <div className="container">
   <div className="background:auto col:1">col 1</div>
   <div className="background:auto col:11">col 11</div>
@@ -765,18 +765,18 @@ For more sizes you can use `col:[1-12]`. You can also add `:auto` for automatic 
 </div>
 ```
 
-You can also remove the wrap functionality by adding any overflow option.
+Remove the wrap functionality by adding any overflow option.
 
-```html preview
+```html
 <div className="container overflow">
   <div className="col:8">col 8</div>
   <div className="col:8">col 8</div>
 </div>
 ```
 
-You can also control the gap size with `gap:[o/h/0-16]`.
+Control the gap size with `gap:[o/h/0-16]`.
 
-```html preview
+```html
 <div className="container gap:0">
   <div className="col:6 background:auto">col 6</div>
   <div className="col:6 background:auto">col 6</div>
@@ -796,7 +796,7 @@ Horizontal alignment options include `top`, `center`, `bottom`, `space-around`, 
 Vertical alignment options include `left`, `center`, `right`, `space-around`, `space-between`, and `space-evenly`.
 Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:`, `xl:`, or `xxl:` to target specific screen sizes.
 
-```html preview
+```html
 <div
   className="container align:top:left background:auto"
   style="height: var(--unit-16);"
@@ -824,12 +824,23 @@ Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:
 </div>
 ```
 
+Controlling the with is possible in either the container, row or col by adding `:sm`, `:md`, `:lg`, `:xl`, or `:xxl`
+
+```html
+<div className="container:xl" style="height: var(--unit-16);">
+  <div class="col:md background:primary p:1 rounded">top:left</div>
+</div>
+<div className="container:md" style="height: var(--unit-16);">
+  <div class="row:sm background:primary p:1 rounded">center</div>
+</div>
+```
+
 #### **Loading**
 
 Loading indicator is used for loading or updating. You can add the `loading` class to a container for loading status.
-You can also add `:[small/large]` for more sizes.
+Add `:[small/large]` for more sizes.
 
-```html preview
+```html
 <div className="loading"></div>
 <div className="loading:small"></div>
 <div className="loading:large"></div>
@@ -853,7 +864,7 @@ Overflow utilities are used for changing element overflow.
 <div className="overflow:scroll"></div>
 ```
 
-You can also add `-x` or `-y` to control just one axis.
+Add `-x` or `-y` to control just one axis.
 
 ```html
 <!-- visible overflow -->
@@ -925,7 +936,7 @@ Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:
 
 Radius utilities are used for changing element radius.
 
-```html preview
+```html
 <div>
   <div className="background:neutral edged">edged</div>
   <div className="background:neutral radius:edged">edged</div>
@@ -936,9 +947,9 @@ Radius utilities are used for changing element radius.
 </div>
 ```
 
-You can also use a more dynamic `radius:auto` which adjusts with use.
+Use `radius:auto` to dynamicly adjust with use.
 
-```html preview
+```html
 <div className="background:neutral radius:auto">
   <div className="background:dark radius:auto">auto</div>
 </div>
@@ -948,7 +959,7 @@ You can also use a more dynamic `radius:auto` which adjusts with use.
 
 Shadow utilities are used for adding shadow to elements.
 
-```html preview
+```html
 <div className="shadow">shadow</div>
 <div className="shadow:inset">inset shadow</div>
 ```
@@ -985,7 +996,7 @@ Text utilities are used for text alignment, styles and overflow things.
 
 ###### Alignment
 
-```html preview
+```html
 <div className="text:left">left aligned text</div>
 <div className="text:center">center aligned text</div>
 <div className="text:right">right aligned text</div>
@@ -996,7 +1007,7 @@ Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:
 
 ###### Transformation
 
-```html preview
+```html
 <div className="text:lowercase">Lowercased text</div>
 <div className="text:uppercase">Uppercased text</div>
 <div className="text:capitalize">Capitalized text</div>
@@ -1004,7 +1015,7 @@ Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:
 
 ###### Size
 
-```html preview
+```html
 <div className="font:default">default font size</div>
 <div className="font:large">Large font size</div>
 <div className="font:small">Small font size</div>
@@ -1014,7 +1025,7 @@ Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:
 
 ###### Weight/Style
 
-```html preview
+```html
 <div className="font:normal">Normal weight font</div>
 <div className="font:lighter">Lighter weight font</div>
 <div className="font:light">Light weight font</div>
@@ -1028,7 +1039,7 @@ Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:
 
 ###### Other
 
-```html preview
+```html
 <div className="ellipsis">Text Ellipsis</div>
 <div className="clip">Text Clip</div>
 <div className="break">Text Break</div>
@@ -1041,14 +1052,14 @@ Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:
 Tooltips provide context information labels that appear on hover and focus. Tooltips component is built entirely in CSS.
 Add the `data-tooltip` attribute with the text that you want to display.
 
-```html preview
+```html
 <button data-tooltip="Tooltip Text">tooltip</button>
 ```
 
 Or for a different positioning you can add the `tooltip:top`, `tooltip:right`, `tooltip:bottom` or `tooltip:left` class to define the position of a tooltip.
 By default, the tooltip appears above the element.
 
-```html preview
+```html
 <button className="tooltip:top" data-tooltip="Top Tooltip Text">
   top tooltip
 </button>
@@ -1067,7 +1078,7 @@ By default, the tooltip appears above the element.
 
 Add the `\n` string between any text for multiline tooltips.
 
-```html preview
+```html
 <button
   data-tooltip="First Line Tooltip Text\nSecond Line Tooltip Text\nThird Line Tooltip Text"
 >

@@ -18,18 +18,40 @@ $vars: define-units();
 $vars: define("small-spacing", var(--unit-1), true);
 $vars: define("spacing", var(--unit-2), true);
 $vars: define("large-spacing", var(--unit-4), true);
-$vars: define("content-spacing", 70ch, true);
 $vars: define-z-indexes();
 
 // Viewport
+$vars: define("small-viewport", 64ch, true);
+$vars: define("viewport", 78ch, true);
+$vars: define("large-viewport", 102ch, true);
+$vars: define("xlarge-viewport", 128ch, true);
+$vars: define("xxlarge-viewport", 154ch, true);
 $vars: define(
   "viewports",
   (
-    "sm": 640px,
-    "md": 768px,
-    "lg": 1024px,
-    "xl": 1280px,
-    "xxl": 1536px,
+    "sm": get("small-viewport"),
+    "md": get("viewport"),
+    "lg": get("large-viewport"),
+    "xl": get("large-viewport"),
+    "xxl": get("xxlarge-viewport"),
+  )
+);
+$vars: define(
+  "viewports-vars",
+  (
+    "sm": "small-viewport",
+    "md": (
+      "viewport",
+    ),
+    "lg": (
+      "large-viewport",
+    ),
+    "xl": (
+      "large-viewport",
+    ),
+    "xxl": (
+      "xxlarge-viewport",
+    ),
   )
 );
 
