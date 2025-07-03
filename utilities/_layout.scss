@@ -11,7 +11,7 @@
   initial-value: #c0ffee;
 }
 
-.#{$viewport}content {
+.content {
   max-width: var(--content-spacing);
   margin-left: auto;
   margin-right: auto;
