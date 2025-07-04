@@ -1,12 +1,20 @@
 @use "../vars" as *;
 
-@mixin responsive-media($ignoreDefault: false) {
-    @if not $ignoreDefault {
-        @content("");
-    }
+@mixin responsive-media($ignoreDefault: false, $reversed: false) {
+  @if not $ignoreDefault {
+    @content ("");
+  }
+  @if not $reversed {
     @each $viewport, $value in get("viewports") {
-        @media (min-width: #{$value}) {
-            @content($viewport + "\\\:");
-        }
+      @media (min-width: #{$value}) {
+        @content ($viewport + "\\\:");
+      }
     }
+  } @else {
+    @each $viewport, $value in get("viewports") {
+      @media (max-width: #{$value}) {
+        @content ($viewport + "\\\:");
+      }
+    }
+  }
 }

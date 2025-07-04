@@ -49,3 +49,9 @@
     display: none !important;
   }
 }
+
+@include responsive-media(true, true) using ($viewport) {
+  .#{$viewport}show {
+    display: none !important;
+  }
+}
