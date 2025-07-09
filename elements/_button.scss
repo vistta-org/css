@@ -119,7 +119,7 @@ button,
 
     &::before {
       position: absolute;
-      left: var(--unit-2);
+      left: 0;
     }
   }
 
@@ -128,7 +128,7 @@ button,
 
     &::before {
       position: absolute;
-      right: var(--unit-2);
+      right: 0;
     }
   }
 
