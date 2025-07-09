@@ -17,7 +17,11 @@
     font-size: var(--font-size-small);
     line-height: var(--line-height);
     white-space: break-spaces;
-    background: color-mix(in srgb, transparent get("color-transparency"), var(--secondary-color));
+    background: color-mix(
+      in srgb,
+      transparent var(--color-transparency),
+      var(--secondary-color)
+    );
     backdrop-filter: blur(var(--blur));
     border-radius: var(--border-radius);
     opacity: 0;

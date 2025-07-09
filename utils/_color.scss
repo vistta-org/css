@@ -32,27 +32,27 @@
   );
 }
 
-@function transparency($color, $opacity, $type: "default") {
+@function transparency($color, $transparency, $type: "default") {
   @if $type == "add" {
     @return rgba(
       color.channel($color, "red", $space: rgb),
       color.channel($color, "green", $space: rgb),
       color.channel($color, "blue", $space: rgb),
-      (color.opacity($color) + $opacity)
+      (color.opacity($color) - $transparency)
     );
   } @else if $type == "remove" {
     @return rgba(
       color.channel($color, "red", $space: rgb),
       color.channel($color, "green", $space: rgb),
       color.channel($color, "blue", $space: rgb),
-      (color.opacity($color) - $opacity)
+      (color.opacity($color) + $transparency)
     );
   } @else {
     @return rgba(
       color.channel($color, "red", $space: rgb),
       color.channel($color, "green", $space: rgb),
       color.channel($color, "blue", $space: rgb),
-      $opacity
+      100% - $transparency
     );
   }
 }

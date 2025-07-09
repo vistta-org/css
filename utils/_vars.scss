@@ -63,7 +63,7 @@ $shades: (100, 200, 300, 400, 500, 600, 700, 800, 900);
       $inset
         get("shadow-offset")
         (get("shadow-blur") + (($variance * $i) + 1))
-        transparency(get("shadow-color"), ($variance * $i), "add"),
+        transparency(get("shadow-color"), ($variance * $i), "remove"),
       $public
     );
   }
@@ -89,23 +89,27 @@ $shades: (100, 200, 300, 400, 500, 600, 700, 800, 900);
     @return $vars;
   }
   $temp: internal((), "#{$name}-color", $value, $public);
-  $value: map.get($temp, "#{$name}-color", "value");
   @if get("color-shades") {
     @each $shade in $shades {
       @if $shade == 500 {
-        $temp: internal($temp, "#{$name}-color-#{$shade}", $value, $public);
+        $temp: internal(
+          $temp,
+          "#{$name}-color-#{$shade}",
+          "var(--#{$name}-color)",
+          $public
+        );
       } @else if $shade < 500 {
         $temp: internal(
           $temp,
           "#{$name}-color-#{$shade}",
-          color.scale($value, $lightness: ((500 - $shade) * 0.1%)),
+          "color-mix(in srgb, var(--#{$name}-color) #{(500 - $shade) * 0.1%}, white)",
           $public
         );
       } @else {
         $temp: internal(
           $temp,
           "#{$name}-color-#{$shade}",
-          color.scale($value, $lightness: (($shade - 500) * -0.1%)),
+          "color-mix(in srgb, var(--#{$name}-color) #{($shade - 500) * 0.1%}, black)",
           $public
         );
       }

@@ -10,7 +10,7 @@ $vars: define("layout", 12);
 $vars: define("units", 16);
 $vars: define("size", 4px);
 $vars: define("duration", 0.4s, true);
-$vars: define("transparency", 40%, true);
+$vars: define("transparency", 60%, true);
 $vars: define("blur", get("size") * 2, true);
 
 // Units
@@ -58,7 +58,7 @@ $vars: define(
 // Color Settings
 $vars: define("color-scheme", "auto");
 $vars: define("color-variance", 4%);
-$vars: define("color-transparency", get("transparency"));
+$vars: define("color-transparency", get("transparency"), true);
 $vars: define("color-shades", false);
 
 // Colors
@@ -67,7 +67,7 @@ $vars: define-color("dark", #181818);
 $vars: define-color("light", #f5f5f5);
 $vars: define-color(
   "neutral",
-  color.mix(get("dark-color"), get("light-color"), 50%)
+  "color-mix(in srgb, var(--dark-color) 50%, var(--light-color))"
 );
 $vars: define-color("primary", #c68346);
 $vars: define-color("primary-contrast", contrast(get("primary-color")));
@@ -100,14 +100,14 @@ $vars: define("icon-family", "Material Symbols", true);
 $vars: define("icon-size", 1.5em, true);
 
 // Border Settings
-$vars: define("border-transparency", get("transparency"));
+$vars: define("border-transparency", 75%);
 
 // Border
 $vars: define("border-size", 1px, true);
 $vars: define("border-radius", get("size") * 2, true);
 $vars: define(
   "border-color",
-  transparency(get("neutral-color"), get("border-transparency"), "add"),
+  "color-mix(in srgb, var(--fore-color) 25%, var(--back-color))",
   true
 );
 
@@ -115,7 +115,7 @@ $vars: define(
 $vars: define("scroll-radius", get("border-radius"), true);
 $vars: define("scroll-size", get("size") * 3, true);
 $vars: define("scroll-color", get("neutral-color"), true);
-$vars: define("scroll-contrast-color", contrast(get("neutral-color")), true);
+$vars: define("scroll-contrast-color", "var(--back-color)", true);
 
 // Shadows Settings
 $vars: define("shadow-variants", get("variants"));

@@ -15,6 +15,10 @@
     overflow#{$direction}: visible;
   }
 
+  .#{$viewport}overflow#{$direction}\:hidden {
+    overflow#{$direction}: hidden;
+  }
+
   .#{$viewport}overflow#{$direction}\:clip,
   .#{$viewport}overflow#{$direction}\:none {
     overflow#{$direction}: clip;
