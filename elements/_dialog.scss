@@ -1,3 +1,5 @@
+@use "../mixins/vars" as *;
+
 dialog {
   &:not([popover]) {
     position: absolute;
@@ -34,12 +36,15 @@ dialog {
       box-shadow: unset;
     }
     &[popover] {
-      box-shadow: var(--box-shadow-4);
+      box-shadow: var(--box-shadow);
     }
     min-height: 20rem;
     min-width: 20rem;
     inset: 0;
     margin: auto;
+    padding: var(--unit-2);
+    border-radius: var(--border-radius);
+    @include auto-background("back");
 
     &::backdrop {
       backdrop-filter: var(--blur);

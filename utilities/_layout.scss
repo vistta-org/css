@@ -117,9 +117,10 @@ $viewports: ("small-", "", "large-", "xlarge-", "xxlarge-");
 
   &:not(:has(> [class~="row"], > [class^="row"], > [class*=" row:"])) {
     @include responsive-media using ($viewport) {
-      &.#{$viewport}scroll,
       &.#{$viewport}nowrap,
-      &:is(#{class.startsWith($viewport + "overflow")}) {
+      &.#{$viewport}scroll\:x,
+      &.#{$viewport}overflow\:x\:auto,
+      &.#{$viewport}overflow\:x\:scroll {
         flex-wrap: nowrap;
       }
 
