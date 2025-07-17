@@ -48,8 +48,7 @@
   @media (min-width: #{get("font-min-breakpoint")}) and (max-width: #{get("font-max-breakpoint")}) {
     --font-size: #{math.div((get("font-max-size") + get("font-size")), 2)};
     --font-size: calc(
-      #{get("font-size")} + (#{get("font-max-size")} - #{get("font-size")}) *
-        (100vw - #{get("font-min-breakpoint")}) /
+      #{get("font-size")} + (#{get("font-max-size")} - #{get("font-size")}) * (100vw - #{get("font-min-breakpoint")}) /
         (#{get("font-max-breakpoint")} - #{get("font-min-breakpoint")})
     );
   }

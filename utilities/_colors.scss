@@ -5,9 +5,9 @@
   $name: "\\\:default";
   @if ($color != false) {
     $var: $color + "-color" + $shade;
-    $name: "\\\:" + $color  + $shade;
+    $name: "\\\:" + $color + $shade;
   }
-  
+
   @if (get($var) != null or $color == false) {
     .color#{$name} {
       color: var(--#{$var});

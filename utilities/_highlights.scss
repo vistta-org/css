@@ -5,22 +5,14 @@
   $name: "";
   @if ($color != false) {
     $var: $color + "-color" + $shade;
-    $name: "\\\:" + $color  + $shade;
+    $name: "\\\:" + $color + $shade;
   }
-  
+
   @if (get($var) != null) {
     .highlight#{$name} {
       box-shadow:
-        color-mix(in srgb, var(--#{$var}) 50%, transparent)
-          0px
-          0px
-          6px
-          1px,
-        color-mix(in srgb, var(--#{$var}) 50%, transparent)
-          0px
-          0px
-          2px
-          0px;
+        color-mix(in srgb, var(--#{$var}) 50%, transparent) 0px 0px 6px 1px,
+        color-mix(in srgb, var(--#{$var}) 50%, transparent) 0px 0px 2px 0px;
     }
 
     @if $color != false and get("color-shades") {

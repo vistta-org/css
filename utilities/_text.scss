@@ -3,21 +3,21 @@
 
 // Text alignment utilities
 @include responsive-media using ($viewport) {
-    .#{$viewport}text\:left {
-      text-align: left;
-    }
+  .#{$viewport}text\:left {
+    text-align: left;
+  }
 
-    .#{$viewport}text\:right {
-      text-align: right;
-    }
-    
-    .#{$viewport}text\:center {
-      text-align: center;
-    }
-    
-    .#{$viewport}text\:justify {
-      text-align: justify;
-    }
+  .#{$viewport}text\:right {
+    text-align: right;
+  }
+
+  .#{$viewport}text\:center {
+    text-align: center;
+  }
+
+  .#{$viewport}text\:justify {
+    text-align: justify;
+  }
 }
 
 // Text transform utilities
@@ -39,11 +39,11 @@
   .#{$viewport}font\:default {
     font-size: var(--font-size);
   }
-  
+
   .#{$viewport}font\:large {
     font-size: var(--font-size-large);
   }
-  
+
   .#{$viewport}font\:small {
     font-size: var(--font-size-small);
   }
@@ -70,7 +70,8 @@
   font-weight: 500;
 }
 
-.font\:bold, .bold {
+.font\:bold,
+.bold {
   font-weight: 700;
 }
 
@@ -78,7 +79,8 @@
   font-weight: 800;
 }
 
-.font\:italic, .italic {
+.font\:italic,
+.italic {
   font-style: italic;
 }
 

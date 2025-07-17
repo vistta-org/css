@@ -10,7 +10,8 @@ ul,
   border-radius: var(--border-radius);
   list-style-type: none;
 
-  card, #{class.startsWith("card")} {
+  card,
+  #{class.startsWith("card")} {
     padding: var(--unit-2);
 
     & *:is(menu, ul, .menu),

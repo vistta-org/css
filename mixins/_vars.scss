@@ -2,14 +2,14 @@
 
 @mixin for-units($auto: false, $prefix: "unit") {
   @if $auto {
-      @content("auto", "auto");
+    @content ("auto", "auto");
   }
   @if $prefix == "unit" {
-    @content("o", "var(--unit-o)");
-    @content("h", "var(--unit-h)");
+    @content ("o", "var(--unit-o)");
+    @content ("h", "var(--unit-h)");
   }
   @for $i from 0 through get("units") {
-      @content($i, "var(--#{$prefix}-#{$i})");
+    @content ($i, "var(--#{$prefix}-#{$i})");
   }
 }
 
@@ -25,13 +25,13 @@
     --#{$var}--inherited: var(--#{$var}--inherited--even);
   }
   --#{$var}--count: calc(var(--#{$var}--inherited, 0) + 1);
-  @content("var(--" + $var + "--count)");
+  @content ("var(--" + $var + "--count)");
 }
 
 @mixin auto-background($color: false) {
   $name: "";
   $var: "back-color";
-  @if($color != false) {
+  @if ($color != false) {
     $name: "-" + $color;
     $var: $color + "-color";
   }

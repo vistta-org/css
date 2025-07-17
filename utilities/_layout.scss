@@ -256,22 +256,12 @@ $viewports: ("small-", "", "large-", "xlarge-", "xxlarge-");
     @for $i from 1 through $length {
       .#{$viewport}col\:#{$i} {
         flex: none;
-        width: calc(
-          ((100% - (#{$length - 1} * var(--gap))) / #{$length}) *
-            #{$i} +
-            (#{$i} - 1) *
-            var(--gap)
-        );
+        width: calc(((100% - (#{$length - 1} * var(--gap))) / #{$length}) * #{$i} + (#{$i} - 1) * var(--gap));
       }
 
       .#{$viewport}row\:#{$i} {
         flex: none;
-        height: calc(
-          ((100% - (#{$length - 1} * var(--gap))) / #{$length}) *
-            #{$i} +
-            (#{$i} - 1) *
-            var(--gap)
-        );
+        height: calc(((100% - (#{$length - 1} * var(--gap))) / #{$length}) * #{$i} + (#{$i} - 1) * var(--gap));
       }
     }
 

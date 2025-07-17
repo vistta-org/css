@@ -9,8 +9,7 @@ pre,
   background: color-mix(in srgb, var(--back-color) 96%, color var(--accent));
 
   &[data-lang] {
-    padding: calc(var(--font-size-small) + var(--unit-5)) var(--unit-2)
-      var(--unit-3);
+    padding: calc(var(--font-size-small) + var(--unit-5)) var(--unit-2) var(--unit-3);
 
     &::before {
       position: absolute;

@@ -8,9 +8,7 @@
 
     card.#{$name},
     .card-#{$name} {
-      border-left: calc(var(--border-size) * 4)
-        solid
-        var(--#{$var}-color) !important;
+      border-left: calc(var(--border-size) * 4) solid var(--#{$var}-color) !important;
     }
   }
 }

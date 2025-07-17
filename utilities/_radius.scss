@@ -1,14 +1,17 @@
 @use "../mixins/vars" as *;
 
-.radius\:edged, .edged {
+.radius\:edged,
+.edged {
   border-radius: 0;
 }
 
-.radius\:circle, .circle {
+.radius\:circle,
+.circle {
   border-radius: 50%;
 }
 
-.radius\:rounded, .rounded {
+.radius\:rounded,
+.rounded {
   border-radius: var(--border-radius);
 }
 

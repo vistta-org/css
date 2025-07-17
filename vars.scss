@@ -65,10 +65,7 @@ $vars: define("color-shades", false);
 $vars: define-system-colors();
 $vars: define-color("dark", #181818);
 $vars: define-color("light", #f5f5f5);
-$vars: define-color(
-  "neutral",
-  "color-mix(in srgb, var(--dark-color) 50%, var(--light-color))"
-);
+$vars: define-color("neutral", "color-mix(in srgb, var(--dark-color) 50%, var(--light-color))");
 $vars: define-color("primary", #c68346);
 $vars: define-color("primary-contrast", contrast(get("primary-color")));
 $vars: define-color("secondary", #3d3d3d);
@@ -105,11 +102,7 @@ $vars: define("border-transparency", 75%);
 // Border
 $vars: define("border-size", 1px, true);
 $vars: define("border-radius", get("size") * 2, true);
-$vars: define(
-  "border-color",
-  "color-mix(in srgb, var(--fore-color) 25%, var(--back-color))",
-  true
-);
+$vars: define("border-color", "color-mix(in srgb, var(--fore-color) 25%, var(--back-color))", true);
 
 // Scroll
 $vars: define("scroll-radius", get("border-radius"), true);
@@ -125,16 +118,8 @@ $vars: define("shadow-variance", get("variance"));
 $vars: define("shadow-color", rgba(0, 0, 0, 0.24), true);
 $vars: define("shadow-blur", get("blur"), true);
 $vars: define("shadow-offset", 0px 4px, true);
-$vars: define(
-  "box-shadow",
-  var(--shadow-color) var(--shadow-offset) var(--shadow-blur) 0px,
-  true
-);
-$vars: define(
-  "box-shadow-inset",
-  inset var(--shadow-color) var(--shadow-offset) var(--shadow-blur) 0px,
-  true
-);
+$vars: define("box-shadow", var(--shadow-color) var(--shadow-offset) var(--shadow-blur) 0px, true);
+$vars: define("box-shadow-inset", inset var(--shadow-color) var(--shadow-offset) var(--shadow-blur) 0px, true);
 
 // Export
 @forward "utils/vars";

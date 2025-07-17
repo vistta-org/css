@@ -6,9 +6,9 @@
   $name: "\\\:default";
   @if ($color != false) {
     $var: $color + "-color" + $shade;
-    $name: "\\\:" + $color  + $shade;
+    $name: "\\\:" + $color + $shade;
   }
-  
+
   @if (get($var) != null or $color == false) {
     .background#{$name} {
       background: var(--#{$var});
@@ -26,7 +26,8 @@
   background: none !important;
 }
 
-.background, .background\:auto {
+.background,
+.background\:auto {
   @include auto-background("back");
 }
 
