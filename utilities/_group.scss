@@ -3,9 +3,14 @@
   display: flex;
   align-items: stretch !important;
   border-radius: var(--border-radius) !important;
-  border: var(--border-size) solid var(--border-color) !important;
+  --border: var(--border-color);
+  border: var(--border-color) !important;
   gap: 0 !important;
   overflow: clip;
+
+  &.border\:none {
+    --border: var(--border-size) solid transparent;
+  }
 
   > * {
     flex: none;
@@ -20,7 +25,7 @@
   > * {
     width: auto;
     &:not(:last-child) {
-      border-right: var(--border-size) solid var(--border-color) !important;
+      border-right: var(--border) !important;
     }
 
     &:first-child {
@@ -41,7 +46,7 @@
   > * {
     height: auto;
     &:not(:last-child) {
-      border-bottom: var(--border-size) solid var(--border-color) !important;
+      border-bottom: var(--border) !important;
     }
 
     &:first-child {
