@@ -75,8 +75,7 @@ Buttons include simple button styles for actions in different types and sizes.
 ###### Size Variants
 
 ```html
-<button className="small">small</button>
-<button className="large">large</button>
+<button className="small">small</button> <button className="large">large</button>
 ```
 
 ###### Style Variants
@@ -300,22 +299,8 @@ Meter is green when low < value < high.
 
 ```html
 <div>
-  <meter
-    value="30"
-    min="0"
-    low="{30}"
-    optimum="{60}"
-    high="{80}"
-    max="100"
-  ></meter>
-  <meter
-    value="60"
-    min="0"
-    low="{30}"
-    optimum="{60}"
-    high="{80}"
-    max="100"
-  ></meter>
+  <meter value="30" min="0" low="{30}" optimum="{60}" high="{80}" max="100"></meter>
+  <meter value="60" min="0" low="{30}" optimum="{60}" high="{80}" max="100"></meter>
 </div>
 ```
 
@@ -332,22 +317,8 @@ Meter is red when value < low < high < optimum or optimum < low < high < value
 
 ```html
 <div>
-  <meter
-    value="20"
-    min="0"
-    low="{30}"
-    optimum="{90}"
-    high="{80}"
-    max="100"
-  ></meter>
-  <meter
-    value="90"
-    min="0"
-    low="{30}"
-    optimum="{20}"
-    high="{80}"
-    max="100"
-  ></meter>
+  <meter value="20" min="0" low="{30}" optimum="{90}" high="{80}" max="100"></meter>
+  <meter value="90" min="0" low="{30}" optimum="{20}" high="{80}" max="100"></meter>
 </div>
 ```
 
@@ -492,9 +463,7 @@ You can either use `anchor` html attribute to reference a element id, if you are
   <div anchor="anchor-2" className="anchor-right">anchor-right</div>
   <div anchor="anchor-2" className="anchor-bottom-left">anchor-bottom-left</div>
   <div anchor="anchor-2" className="anchor-bottom">anchor-bottom</div>
-  <div anchor="anchor-2" className="anchor-bottom-right">
-    anchor-bottom-right
-  </div>
+  <div anchor="anchor-2" className="anchor-bottom-right">anchor-bottom-right</div>
   <div anchor="anchor-2" className="anchor-left">anchor-left</div>
 </div>
 ```
@@ -797,28 +766,16 @@ Vertical alignment options include `left`, `center`, `right`, `space-around`, `s
 Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:`, `xl:`, or `xxl:` to target specific screen sizes.
 
 ```html
-<div
-  className="container align:top:left background:auto"
-  style="height: var(--unit-16);"
->
+<div className="container align:top:left background:auto" style="height: var(--unit-16);">
   <div class="col:auto background:primary p:1 rounded">top:left</div>
 </div>
-<div
-  className="container align:center background:auto"
-  style="height: var(--unit-16);"
->
+<div className="container align:center background:auto" style="height: var(--unit-16);">
   <div class="col:auto background:primary p:1 rounded">center</div>
 </div>
-<div
-  className="container align:bottom:right background:auto"
-  style="height: var(--unit-16);"
->
+<div className="container align:bottom:right background:auto" style="height: var(--unit-16);">
   <div class="col:auto background:primary p:1 rounded">bottom:right</div>
 </div>
-<div
-  className="container align:space-evenly background:auto"
-  style="height: var(--unit-16);"
->
+<div className="container align:space-evenly background:auto" style="height: var(--unit-16);">
   <div class="col:auto background:primary p:1 rounded">space</div>
   <div class="col:auto background:primary p:1 rounded">evenly</div>
 </div>
@@ -1060,18 +1017,10 @@ Or for a different positioning you can add the `tooltip:top`, `tooltip:right`, `
 By default, the tooltip appears above the element.
 
 ```html
-<button className="tooltip:top" data-tooltip="Top Tooltip Text">
-  top tooltip
-</button>
-<button className="tooltip:right" data-tooltip="Right Tooltip Text">
-  right tooltip
-</button>
-<button className="tooltip:bottom" data-tooltip="Bottom Tooltip Text">
-  bottom tooltip
-</button>
-<button className="tooltip:left" data-tooltip="Left Tooltip Text ">
-  left tooltip
-</button>
+<button className="tooltip:top" data-tooltip="Top Tooltip Text">top tooltip</button>
+<button className="tooltip:right" data-tooltip="Right Tooltip Text">right tooltip</button>
+<button className="tooltip:bottom" data-tooltip="Bottom Tooltip Text">bottom tooltip</button>
+<button className="tooltip:left" data-tooltip="Left Tooltip Text ">left tooltip</button>
 ```
 
 ###### Multiline tooltips
@@ -1079,11 +1028,7 @@ By default, the tooltip appears above the element.
 Add the `\n` string between any text for multiline tooltips.
 
 ```html
-<button
-  data-tooltip="First Line Tooltip Text\nSecond Line Tooltip Text\nThird Line Tooltip Text"
->
-  tooltip
-</button>
+<button data-tooltip="First Line Tooltip Text\nSecond Line Tooltip Text\nThird Line Tooltip Text">tooltip</button>
 ```
 
 #### **Visibility**
@@ -1111,7 +1056,7 @@ Responsive design can be achieved by prefixing the class with `sm:`, `md:`, `lg:
 
 ## **License**
 
-Attribution-NonCommercial-NoDerivatives 4.0 International
+Apache 2.0 with Commons Clause
 
 ## **Contributing**
 

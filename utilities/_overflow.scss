@@ -1,32 +1,34 @@
 @use "../mixins/responsive" as *;
 
 @mixin overflow($viewport, $direction: "") {
+  $property: "";
   @if ($direction != "") {
+    $property: "-" + $direction;
     $direction: "\\:" + $direction;
   }
 
   .#{$viewport}overflow#{$direction},
   .#{$viewport}overflow#{$direction}\:auto {
-    overflow#{$direction}: auto;
+    overflow#{$property}: auto;
     scrollbar-gutter: stable both-edges;
   }
 
   .#{$viewport}overflow#{$direction}\:visible {
-    overflow#{$direction}: visible;
+    overflow#{$property}: visible;
   }
 
   .#{$viewport}overflow#{$direction}\:hidden {
-    overflow#{$direction}: hidden;
+    overflow#{$property}: hidden;
   }
 
   .#{$viewport}overflow#{$direction}\:clip,
   .#{$viewport}overflow#{$direction}\:none {
-    overflow#{$direction}: clip;
+    overflow#{$property}: clip;
   }
 
   .#{$viewport}scroll#{$direction},
   .#{$viewport}overflow#{$direction}\:scroll {
-    overflow#{$direction}: scroll;
+    overflow#{$property}: scroll;
     scrollbar-gutter: stable both-edges;
   }
 }
