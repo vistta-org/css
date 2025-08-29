@@ -9,9 +9,17 @@
   @if ($light-color and $dark-color) {
     @return if(color.channel($color, "lightness", $space: hsl) < $threshold, $light-color, $dark-color);
   } @else if ($light-color) {
-    @return if(color.channel($color, "lightness", $space: hsl) < $threshold, $light-color, color.scale($color, $lightness: ($contrast * 1)));
+    @return if(
+      color.channel($color, "lightness", $space: hsl) < $threshold,
+      $light-color,
+      color.scale($color, $lightness: ($contrast * 1))
+    );
   } @else if ($dark-color) {
-    @return if(color.channel($color, "lightness", $space: hsl) < $threshold, color.scale($color, $lightness: $contrast), $dark-color);
+    @return if(
+      color.channel($color, "lightness", $space: hsl) < $threshold,
+      color.scale($color, $lightness: $contrast),
+      $dark-color
+    );
   }
   @return if(
     color.channel($color, "lightness", $space: hsl) < $threshold,

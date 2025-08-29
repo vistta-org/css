@@ -55,7 +55,10 @@ $shades: (100, 200, 300, 400, 500, 600, 700, 800, 900);
     $temp: internal(
       $temp,
       "#{$key}-#{$i}",
-      $inset get("shadow-offset") (get("shadow-blur") + (($variance * $i) + 1)) transparency(get("shadow-color"), ($variance * $i), "remove"),
+      $inset
+        get("shadow-offset")
+        (get("shadow-blur") + (($variance * $i) + 1))
+        transparency(get("shadow-color"), ($variance * $i), "remove"),
       $public
     );
   }
@@ -86,9 +89,19 @@ $shades: (100, 200, 300, 400, 500, 600, 700, 800, 900);
       @if $shade == 500 {
         $temp: internal($temp, "#{$name}-color-#{$shade}", "var(--#{$name}-color)", $public);
       } @else if $shade < 500 {
-        $temp: internal($temp, "#{$name}-color-#{$shade}", "color-mix(in srgb, var(--#{$name}-color) #{(500 - $shade) * 0.1%}, white)", $public);
+        $temp: internal(
+          $temp,
+          "#{$name}-color-#{$shade}",
+          "color-mix(in srgb, var(--#{$name}-color) #{(500 - $shade) * 0.1%}, white)",
+          $public
+        );
       } @else {
-        $temp: internal($temp, "#{$name}-color-#{$shade}", "color-mix(in srgb, var(--#{$name}-color) #{($shade - 500) * 0.1%}, black)", $public);
+        $temp: internal(
+          $temp,
+          "#{$name}-color-#{$shade}",
+          "color-mix(in srgb, var(--#{$name}-color) #{($shade - 500) * 0.1%}, black)",
+          $public
+        );
       }
     }
   }
