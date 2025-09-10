@@ -213,7 +213,7 @@ button.outlined,
 
 @include button("light", "light", "dark");
 
-@include button("dark", "light", "dark");
+@include button("dark", "dark", "light");
 
 @include button("info");
 

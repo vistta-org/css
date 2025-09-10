@@ -11,11 +11,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://git.vistta.org/vistta/css.git"
+    "url": "https://github.com/vistta-org/css.git"
   },
   "scripts": {
     "postinstall": ""
   },
   "author": "Tiago Terenas Almeida",
-  "license": "CC BY-NC-ND 4.0 DEED"
+  "license": "Apache 2.0 with Commons Clause"
 }
