@@ -97,7 +97,7 @@ jobs:
         with:
           target: inline
           run: |
-            const version = (`${{ steps.npm.outputs.result }}`);
+            const version = (`${{ steps.npm.outputs.result }}`).trim();
             const milestone = await gitea.milestones.create("${{ inputs.type }} (" + version + ")");
             const issues = await gitea.issues.list({ state: "closed" });
             const types = {};
