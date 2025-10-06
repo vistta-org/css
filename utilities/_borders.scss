@@ -63,6 +63,30 @@
 
 @include border("error");
 
+.border\:transparent {
+  border: var(--border-size) solid transparent !important;
+}
+
+.border\:top\:transparent,
+.border\:x\:transparent {
+  border-top: var(--border-size) solid transparent !important;
+}
+
+.border\:right\:transparent,
+.border\:y\:transparent {
+  border-right: var(--border-size) solid transparent !important;
+}
+
+.border\:bottom\:transparent,
+.border\:x\:transparent {
+  border-bottom: var(--border-size) solid transparent !important;
+}
+
+.border\:left\:transparent,
+.border\:y\:transparent {
+  border-left: var(--border-size) solid transparent !important;
+}
+
 .border\:none {
   border: none !important;
 }

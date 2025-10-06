@@ -57,9 +57,6 @@ $directions: ("inset", "top", "right", "bottom", "left");
 
   @for $i from 1 through list.length($directions) {
     $direction: list.nth($directions, $i);
-    .#{$viewport}#{$direction} {
-      #{$direction}: 0;
-    }
     @include for-units using ($key, $value) {
       .#{$viewport}#{$direction}\:#{$key} {
         #{$direction}: #{$value};
