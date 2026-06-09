@@ -26,7 +26,7 @@ jobs:
           working-directory: ./packages/${{ env.module }}
           command: issues close --fromCommit
       - name: Setup Node
-        run: npm ci
+        run: npm ci --legacy-peer-deps
       - name: Module Validation
         working-directory: ./packages/${{ env.module }}
         run: npx vistta project outdated
