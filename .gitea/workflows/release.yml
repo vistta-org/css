@@ -39,7 +39,7 @@ jobs:
           fetch-depth: 0
           submodules: true
       - name: Setup Node
-        run: npm ci --legacy-peer-deps
+        run: npm ci
       - name: Module Validation
         working-directory: ./packages/${{ env.module }}
         run: npx vistta project outdated
