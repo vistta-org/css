@@ -19,6 +19,10 @@ jobs:
           token: ${{ secrets.TOKEN }}
           fetch-depth: 0
           submodules: true
+      - name: Configure Registry
+        run: |
+          npm config set @vistta:registry https://git.vistta.org/api/packages/vistta/npm/
+          npm config set //git.vistta.org/api/packages/vistta/npm/:_authToken ${{ secrets.TOKEN }}
       - name: Close Issues
         uses: tiagomta/gitea@v1
         with:
@@ -42,21 +46,3 @@ jobs:
       - name: Unit Tests
         working-directory: ./packages/${{ env.module }}
         run: npx vistta test
-
-  PreRelease:
-    needs: Validation
-    runs-on: ubuntu-latest
-    container:
-      image: node:latest
-    steps:
-      - name: Checkout
-        uses: tiagomta/checkout@v1
-      - name: PreRelease
-        uses: tiagomta/npm@v1
-        with:
-          command: version prerelease SNAPSHOT-${{ gitea.run_id }} --email devops@vistta.org
-      - name: Publish PreRelease (Gitea)
-        uses: tiagomta/npm@v1
-        with:
-          command: publish --scope vistta --registry https://git.vistta.org/api/packages/vistta/npm/ --tag snapshot
-          token: ${{ secrets.TOKEN }}
