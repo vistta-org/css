@@ -89,7 +89,7 @@ jobs:
             if (`${{ inputs.npm_publish }}`.toLowerCase() === "true") {
               await npm.config("set", "@vistta:registry", "https://registry.npmjs.org/");
               await npm.config("set", "--", "//registry.npmjs.org/:_authToken", "${{ secrets.NPM_TOKEN }}");
-              await npm.publish(...(channel ? ["--tag", channel] : []), "--stage", "--access", "public");
+              await npm.stage("publish", ...(channel ? ["--tag", channel] : []), "--access", "public");
             }
             // Update Branches
             await git.push("origin", "${{ env.ref }}", "--tags");
