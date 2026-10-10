@@ -19,30 +19,30 @@ jobs:
           token: ${{ secrets.TOKEN }}
           fetch-depth: 0
           submodules: true
+
       - name: Configure Registry
         run: |
           npm config set @vistta:registry https://git.vistta.org/api/packages/vistta/npm/
           npm config set //git.vistta.org/api/packages/vistta/npm/:_authToken ${{ secrets.TOKEN }}
+
       - name: Close Issues
         uses: tiagomta/gitea@v1
         with:
           token: ${{ secrets.TOKEN }}
           working-directory: ./packages/${{ env.module }}
           command: issues close --fromCommit
+
       - name: Setup Node
         run: npm ci
+
       - name: Module Validation
         working-directory: ./packages/${{ env.module }}
         run: npx vistta project outdated
-        continue-on-error: true
+
       - name: Eslint Validation
         working-directory: ./packages/${{ env.module }}
         run: npx eslint .
-        continue-on-error: true
-      - name: Typescript Validation
-        working-directory: ./packages/${{ env.module }}
-        run: npx tsc
-        continue-on-error: true
+
       - name: Unit Tests
         working-directory: ./packages/${{ env.module }}
         run: npx vistta test
