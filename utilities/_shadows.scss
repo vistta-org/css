@@ -1,9 +1,0 @@
-@use "../vars" as *;
-
-.shadow {
-  box-shadow: var(--box-shadow);
-}
-
-.shadow\:inset {
-  box-shadow: var(--box-shadow-inset);
-}

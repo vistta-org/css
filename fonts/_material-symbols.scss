@@ -1,9 +1,0 @@
-@use "../vars" as *;
-
-@if get("icon-family") == "Material Symbols" {
-  @font-face {
-    font-family: "Material Symbols";
-    src: url("./MaterialSymbols.ttf") format("truetype");
-    font-display: swap;
-  }
-}

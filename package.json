@@ -1,17 +1,13 @@
 {
-  "name": "@vistta/css",
-  "version": "0.1.0-snapshot.1",
-  "description": "Vistta CSS Library",
+  "name": "@vistta/css-loader",
+  "version": "0.0.0",
+  "description": "Vistta CSS Loader Library",
   "main": "index.js",
   "type": "module",
-  "exports": {
-    ".": "./index.scss",
-    "./style": "./index.js",
-    "./vars": "./vars.scss"
-  },
+  "exports": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/vistta-org/css.git"
+    "url": "https://github.com/vistta-org/css-loader.git"
   },
   "scripts": {
     "postinstall": ""
