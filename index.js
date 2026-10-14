@@ -19,9 +19,13 @@ import { BoundClass, join } from "@vistta/utils";
  * @property {(value: string) => string} [createAnimation]
  */
 
+let sheetCount = 0;
+
 export class VirtualStyleSheet extends BoundClass {
   #instance;
-  #styleGroups = {};
+  // Unique per sheet, including across separate copies of this module in one document.
+  #prefix = (sheetCount++).toString(36) + Math.random().toString(36).slice(2, 7);
+  #styleRefs = {};
   #count = 0;
   #animations = {};
   #properties = {};
@@ -192,6 +196,15 @@ export class VirtualStyleSheet extends BoundClass {
   }
 
   resolve(value) {
+    try {
+      return this.#resolve(value);
+    } catch (error) {
+      console.warn("Invalid style ignored:", error);
+      return "";
+    }
+  }
+
+  #resolve(value) {
     let style;
     const typeofValue = typeof value;
     const flags = /** @type {Object<string, boolean>} */ ({});
@@ -221,11 +234,12 @@ export class VirtualStyleSheet extends BoundClass {
           createAnimation: (value) => this.createAnimation(value),
         });
     } else return "";
-    if (!style) return "";
-    if (this.#styleGroups[style]) return this.#styleGroups[style];
-    const id = this.#count++;
-    this.#insertRule(`[style-group="${id}"] { ${style}}`);
-    return (this.#styleGroups[style] = [id, flags]);
+    if (!style?.trim()) return "";
+    if (this.#styleRefs[style]) return this.#styleRefs[style];
+    const id = `${this.#prefix}-${this.#count}`;
+    this.#insertRule(`[style-ref="${id}"] { ${style}}`);
+    this.#count++;
+    return (this.#styleRefs[style] = [id, flags]);
   }
 
   createAnimation(value) {
@@ -252,9 +266,9 @@ export class VirtualStyleSheet extends BoundClass {
     }
     value = value.trim();
     if (!this.#animations[value]) {
-      const name = "custom-animation-" + Object.keys(this.#animations).length;
-      this.#animations[value] = name;
+      const name = `custom-animation-${this.#prefix}-${Object.keys(this.#animations).length}`;
       this.#insertRule(`@keyframes ${name} { ${value}}`);
+      this.#animations[value] = name;
     }
     return `animation-name: ${this.#animations[value]}; ${style}`;
   }
@@ -317,13 +331,15 @@ function format(key, value, options = /** @type {StyleFormatOptions} */ ({})) {
     createAnimation,
   } = options;
   key = camelToKebab(key);
+  if (!isSafe(key)) return "";
   if (!selector) {
+    value = formatValue(value, false, functions);
+    if (!isSafe(value)) return "";
     if (properties[key]) {
-      const property = properties[key](formatValue(value, false, functions));
+      const property = properties[key](value);
       Object.assign(flags, property.flags);
       return property.value;
     }
-    value = formatValue(value, false, functions);
 
     return `${key.startsWith("$") ? "--" + key.slice(1) : key}:${key === "content" && value === "" ? `""` : value};`;
   }
@@ -345,6 +361,25 @@ function format(key, value, options = /** @type {StyleFormatOptions} */ ({})) {
   );
   if (key.startsWith(":")) return `&${key} { ${value} } `;
   return `${key} { ${value}}`;
+}
+
+// Rejects text that could close or open a block, or end a declaration, outside strings and parentheses.
+function isSafe(value) {
+  let quote = null;
+  let depth = 0;
+  for (let i = 0, len = value.length; i < len; i++) {
+    const char = value[i];
+    if (char === "\\") i++;
+    else if (quote) {
+      if (char === quote) quote = null;
+    } else if (char === "$" && value[i + 1] === "{" && value[i + 2] === "}") i += 2;
+    else if (char === '"' || char === "'") quote = char;
+    else if (char === "{" || char === "}") return false;
+    else if (char === "(") depth++;
+    else if (char === ")") depth--;
+    else if (char === ";" && depth <= 0) return false;
+  }
+  return true;
 }
 
 function replaceFunction(value, regex, template) {

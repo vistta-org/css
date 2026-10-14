@@ -23,24 +23,23 @@ suite("CSS Loader", () => {
     add({ ".button": { fontSize: "16px" } });
     expect(css(sheet)).toMatch(/\.button \{ font-size:\s*16px;/);
     const resolved = resolve("color: red");
-    if (resolved === "") throw new Error("Expected a style group");
-    expect(resolved[0]).toEqual(0);
+    if (resolved === "") throw new Error("Expected a style ref");
+    expect(typeof resolved[0]).toEqual("string");
     expect(Object.keys(resolved[1]).length).toEqual(0);
   });
 
   test("resolves strings, objects, and arrays and reuses identical groups", () => {
     const sheet = new VirtualStyleSheet();
     const result = sheet.resolve({ color: "red", fontSize: "16px" });
-    if (result === "") throw new Error("Expected a style group");
-    expect(result[0]).toEqual(0);
+    if (result === "") throw new Error("Expected a style ref");
     expect(Object.keys(result[1]).length).toEqual(0);
     expect(sheet.resolve("color: red; font-size: 16px") === result).toEqual(true);
     expect(sheet.resolve(["color: red", "font-size: 16px"]) === result).toEqual(true);
     expect(sheet.rules.length).toEqual(1);
-    expect(css(sheet)).toMatch(/\[style-group="0"\]/);
+    expect(css(sheet)).toInclude(`[style-ref="${result[0]}"]`);
     const blue = sheet.resolve({ color: "blue" });
-    if (blue === "") throw new Error("Expected a style group");
-    expect(blue[0]).toEqual(1);
+    if (blue === "") throw new Error("Expected a style ref");
+    expect(blue[0] !== result[0]).toEqual(true);
     expect(Object.keys(blue[1]).length).toEqual(0);
     for (const value of ["", {}, [], null, undefined, false]) {
       expect(sheet.resolve(value)).toEqual("");
@@ -56,8 +55,7 @@ suite("CSS Loader", () => {
       ":initial": { opacity: 0 },
       ":exit": { opacity: 0 },
     });
-    if (result === "") throw new Error("Expected a style group");
-    expect(result[0]).toEqual(0);
+    if (result === "") throw new Error("Expected a style ref");
     expect(result[1]["exiting-style"]).toEqual(true);
     expect(css(sheet)).toMatch(/background-color:\s*var\(--accent\) !important;/);
     expect(css(sheet)).toMatch(/&:hover/);
@@ -140,6 +138,57 @@ suite("CSS Loader", () => {
     expect(() => sheet.add({ ".button": { color: "red" } })).toThrow("Invalid CSS");
   });
 
+  test("ignores invalid styles in resolve instead of throwing", () => {
+    const sheet = new VirtualStyleSheet();
+    const insertRule = sheet.content.insertRule.bind(sheet.content);
+    sheet.content.insertRule = () => {
+      throw new SyntaxError("Invalid CSS");
+    };
+    const warn = console.warn;
+    console.warn = () => {};
+    try {
+      expect(sheet.resolve({ color: "red" })).toEqual("");
+      expect(sheet.resolve({ animation: "from { opacity: 0; } to { opacity: 1; }" })).toEqual("");
+    } finally {
+      console.warn = warn;
+    }
+    sheet.content.insertRule = insertRule;
+    const resolved = sheet.resolve({ color: "red" });
+    if (resolved === "") throw new Error("Expected a style ref");
+    expect(sheet.rules.length).toEqual(1);
+  });
+
+  test("drops declarations and selectors that would escape their rule", () => {
+    const sheet = new VirtualStyleSheet();
+    sheet.add({ properties: { space: { "*": "padding: ${}" } } });
+    const resolved = sheet.resolve({
+      color: "red; & ~ * { display: none",
+      width: "1px } body { margin: 0",
+      "& * { display: none } &": { color: "blue" },
+      space: "1rem; margin: 0",
+      background: 'url("a;b{c}.png")',
+      content: '";"',
+      height: "1px",
+    });
+    if (resolved === "") throw new Error("Expected a style ref");
+    const content = css(sheet);
+    expect(content).not.toMatch(/display|margin|blue|padding/);
+    expect(content).toMatch(/height:\s*1px;/);
+    expect(content).toInclude("a;b{c}.png");
+    expect(sheet.resolve({ color: "red }" })).toEqual("");
+  });
+
+  test("generates distinct IDs and animation names for independent sheets", () => {
+    const first = new VirtualStyleSheet();
+    const second = new VirtualStyleSheet();
+    const a = first.resolve({ color: "red" });
+    const b = second.resolve({ color: "red" });
+    if (a === "" || b === "") throw new Error("Expected style refs");
+    expect(a[0] !== b[0]).toEqual(true);
+    const value = "from { opacity: 0; } to { opacity: 1; }";
+    expect(first.createAnimation(value) !== second.createAnimation(value)).toEqual(true);
+  });
+
   test("applies native styles and preserves unrelated sheets on cleanup", () => {
     const original = [...document.adoptedStyleSheets];
     const unrelated = new CSSStyleSheet();
@@ -149,8 +198,8 @@ suite("CSS Loader", () => {
     try {
       sheet.add({ vars: { accent: "rebeccapurple" } });
       const resolved = sheet.resolve({ color: "$accent", borderRadius: "8px" });
-      if (resolved === "") throw new Error("Expected a style group");
-      node.setAttribute("style-group", String(resolved[0]));
+      if (resolved === "") throw new Error("Expected a style ref");
+      node.setAttribute("style-ref", String(resolved[0]));
       document.adoptedStyleSheets = [...original, unrelated, sheet.content];
       document.body.append(node);
       expect(getComputedStyle(node).color).toEqual("rgb(102, 51, 153)");

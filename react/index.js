@@ -94,6 +94,6 @@ export function getStyledType(type) {
  * @param {import("../index.js").ResolvedStyle} resolved
  */
 function applyStyle(node, resolved) {
-  if (resolved === "") node.removeAttribute("style-group");
-  else node.setAttribute("style-group", String(resolved[0]));
+  if (resolved === "") node.removeAttribute("style-ref");
+  else node.setAttribute("style-ref", String(resolved[0]));
 }

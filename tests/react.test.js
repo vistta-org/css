@@ -44,7 +44,7 @@ suite("CSS Loader React", () => {
       expect(getComputedStyle(span).padding).toEqual("12px");
       expect(getComputedStyle(span).color).toEqual("rgb(0, 0, 255)");
       expect(button.hasAttribute("style")).toEqual(false);
-      expect(div.hasAttribute("style-group")).toEqual(true);
+      expect(div.hasAttribute("style-ref")).toEqual(true);
     });
   });
 
@@ -69,7 +69,7 @@ suite("CSS Loader React", () => {
       expect(getComputedStyle(node).color).toEqual("rgb(0, 0, 255)");
       render(undefined);
       expect(host.firstElementChild === node).toEqual(true);
-      expect(node.hasAttribute("style-group")).toEqual(false);
+      expect(node.hasAttribute("style-ref")).toEqual(false);
       expect(ref.current.value).toEqual("kept");
       render({ color: "red" });
       expect(host.firstElementChild === node).toEqual(true);

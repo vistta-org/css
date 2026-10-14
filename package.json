@@ -36,7 +36,7 @@
   },
   "scripts": {
     "postinstall": "",
-    "test": "vistta test"
+    "test": "vistta test --environment=browser"
   },
   "author": "Tiago Terenas Almeida",
   "license": "GPL-3.0-only",
@@ -54,6 +54,9 @@
   "devDependencies": {
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@vistta/cli": "^1.1.0",
+    "@vistta/js": "*",
+    "@vistta/js-testing": "*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   }

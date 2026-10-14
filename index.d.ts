@@ -7,7 +7,7 @@ export interface StyleDefinition {
 export type StyleInput = string | StyleDefinition | StyleInput[];
 
 export type StyleFlags = Record<string, boolean>;
-export type ResolvedStyle = [id: number, flags: StyleFlags] | "";
+export type ResolvedStyle = [id: string, flags: StyleFlags] | "";
 
 export class VirtualStyleSheet {
   constructor();
