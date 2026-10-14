@@ -52,7 +52,10 @@ The package does not provide a Node.js SSR implementation.
 
 ## API
 
-Named exports include `VirtualStyleSheet` and `Style`, with TypeScript declarations.
+Named exports include `VirtualStyleSheet`, `Style`, and `STYLE_REF_ATTRIBUTE`
+(the `"style-ref"` attribute name used for generated rules), with TypeScript
+declarations. Custom renderers should use `STYLE_REF_ATTRIBUTE` rather than
+hard-coding the attribute name.
 
 ### `VirtualStyleSheet`
 

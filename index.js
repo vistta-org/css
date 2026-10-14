@@ -19,6 +19,8 @@ import { BoundClass, join } from "@vistta/utils";
  * @property {(value: string) => string} [createAnimation]
  */
 
+export const STYLE_REF_ATTRIBUTE = "style-ref";
+
 let sheetCount = 0;
 
 export class VirtualStyleSheet extends BoundClass {
@@ -237,7 +239,7 @@ export class VirtualStyleSheet extends BoundClass {
     if (!style?.trim()) return "";
     if (this.#styleRefs[style]) return this.#styleRefs[style];
     const id = `${this.#prefix}-${this.#count}`;
-    this.#insertRule(`[style-ref="${id}"] { ${style}}`);
+    this.#insertRule(`[${STYLE_REF_ATTRIBUTE}="${id}"] { ${style}}`);
     this.#count++;
     return (this.#styleRefs[style] = [id, flags]);
   }

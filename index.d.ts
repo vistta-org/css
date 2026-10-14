@@ -1,3 +1,5 @@
+export const STYLE_REF_ATTRIBUTE: "style-ref";
+
 export type StyleValue = string | number | boolean | null | undefined | StyleValue[] | StyleDefinition;
 
 export interface StyleDefinition {

@@ -9,7 +9,7 @@ import {
   useMemo,
   useRef,
 } from "react";
-import { VirtualStyleSheet } from "../index.js";
+import { STYLE_REF_ATTRIBUTE, VirtualStyleSheet } from "../index.js";
 
 const SheetContext = createContext(/** @type {VirtualStyleSheet | null} */ (null));
 /** @type {readonly import("../index.js").StyleDefinition[]} */
@@ -94,6 +94,6 @@ export function getStyledType(type) {
  * @param {import("../index.js").ResolvedStyle} resolved
  */
 function applyStyle(node, resolved) {
-  if (resolved === "") node.removeAttribute("style-ref");
-  else node.setAttribute("style-ref", String(resolved[0]));
+  if (resolved === "") node.removeAttribute(STYLE_REF_ATTRIBUTE);
+  else node.setAttribute(STYLE_REF_ATTRIBUTE, String(resolved[0]));
 }

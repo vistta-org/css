@@ -1,3 +1,4 @@
+import { STYLE_REF_ATTRIBUTE } from "@vistta/css-loader";
 import { StyleSheetProvider } from "@vistta/css-loader/react";
 import { jsxDEV } from "@vistta/css-loader/react/jsx-dev-runtime";
 import { Fragment, jsx, jsxs } from "@vistta/css-loader/react/jsx-runtime";
@@ -44,7 +45,7 @@ suite("CSS Loader React", () => {
       expect(getComputedStyle(span).padding).toEqual("12px");
       expect(getComputedStyle(span).color).toEqual("rgb(0, 0, 255)");
       expect(button.hasAttribute("style")).toEqual(false);
-      expect(div.hasAttribute("style-ref")).toEqual(true);
+      expect(div.hasAttribute(STYLE_REF_ATTRIBUTE)).toEqual(true);
     });
   });
 
@@ -69,7 +70,7 @@ suite("CSS Loader React", () => {
       expect(getComputedStyle(node).color).toEqual("rgb(0, 0, 255)");
       render(undefined);
       expect(host.firstElementChild === node).toEqual(true);
-      expect(node.hasAttribute("style-ref")).toEqual(false);
+      expect(node.hasAttribute(STYLE_REF_ATTRIBUTE)).toEqual(false);
       expect(ref.current.value).toEqual("kept");
       render({ color: "red" });
       expect(host.firstElementChild === node).toEqual(true);

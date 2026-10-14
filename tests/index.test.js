@@ -1,4 +1,4 @@
-import { Style, VirtualStyleSheet } from "@vistta/css-loader";
+import { STYLE_REF_ATTRIBUTE, Style, VirtualStyleSheet } from "@vistta/css-loader";
 import { Style as FrameworkStyle } from "@vistta/js";
 
 function css(sheet) {
@@ -36,7 +36,7 @@ suite("CSS Loader", () => {
     expect(sheet.resolve("color: red; font-size: 16px") === result).toEqual(true);
     expect(sheet.resolve(["color: red", "font-size: 16px"]) === result).toEqual(true);
     expect(sheet.rules.length).toEqual(1);
-    expect(css(sheet)).toInclude(`[style-ref="${result[0]}"]`);
+    expect(css(sheet)).toInclude(`[${STYLE_REF_ATTRIBUTE}="${result[0]}"]`);
     const blue = sheet.resolve({ color: "blue" });
     if (blue === "") throw new Error("Expected a style ref");
     expect(blue[0] !== result[0]).toEqual(true);
@@ -199,7 +199,7 @@ suite("CSS Loader", () => {
       sheet.add({ vars: { accent: "rebeccapurple" } });
       const resolved = sheet.resolve({ color: "$accent", borderRadius: "8px" });
       if (resolved === "") throw new Error("Expected a style ref");
-      node.setAttribute("style-ref", String(resolved[0]));
+      node.setAttribute(STYLE_REF_ATTRIBUTE, resolved[0]);
       document.adoptedStyleSheets = [...original, unrelated, sheet.content];
       document.body.append(node);
       expect(getComputedStyle(node).color).toEqual("rgb(102, 51, 153)");
