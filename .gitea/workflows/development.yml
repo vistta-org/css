@@ -4,7 +4,7 @@ on:
     branches:
       - development
 env:
-  module: css
+  module: css-loader
 jobs:
   Validation:
     runs-on: ubuntu-latest
@@ -20,11 +20,6 @@ jobs:
           fetch-depth: 0
           submodules: true
 
-      - name: Configure Registry
-        run: |
-          npm config set @vistta:registry https://git.vistta.org/api/packages/vistta/npm/
-          npm config set //git.vistta.org/api/packages/vistta/npm/:_authToken ${{ secrets.TOKEN }}
-
       - name: Close Issues
         uses: tiagomta/gitea@v1
         with:
@@ -33,7 +28,7 @@ jobs:
           command: issues close --fromCommit
 
       - name: Setup Node
-        run: npm ci
+        run: npm run setup:ci
 
       - name: Module Validation
         working-directory: ./packages/${{ env.module }}

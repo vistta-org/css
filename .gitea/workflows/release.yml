@@ -24,7 +24,7 @@ on:
         type: boolean
 
 env:
-  module: css
+  module: css-loader
   ref: refs/heads/development
 jobs:
   Validation:
@@ -42,7 +42,7 @@ jobs:
           submodules: true
 
       - name: Setup Node
-        run: npm ci
+        run: npm run setup:ci
 
       - name: Module Validation
         working-directory: ./packages/${{ env.module }}
