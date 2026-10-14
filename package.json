@@ -1,17 +1,60 @@
 {
   "name": "@vistta/css-loader",
   "version": "0.0.0",
-  "description": "Vistta CSS Loader Library",
+  "description": "Framework-independent runtime stylesheet engine for VISTTA JS, React, and custom renderers",
   "main": "index.js",
+  "types": "index.d.ts",
   "type": "module",
-  "exports": {},
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    },
+    "./react": {
+      "types": "./react/index.d.ts",
+      "import": "./react/index.js"
+    },
+    "./react/jsx-runtime": {
+      "types": "./react/jsx-runtime.d.ts",
+      "import": "./react/jsx-runtime.js"
+    },
+    "./react/jsx-dev-runtime": {
+      "types": "./react/jsx-dev-runtime.d.ts",
+      "import": "./react/jsx-dev-runtime.js"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "react",
+    "README.md",
+    "LICENSE"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/vistta-org/css-loader.git"
   },
   "scripts": {
-    "postinstall": ""
+    "postinstall": "",
+    "test": "vistta test"
   },
   "author": "Tiago Terenas Almeida",
-  "license": "GPL-3.0-only"
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "@vistta/utils": "^1.1.0"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0 <20.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
 }
