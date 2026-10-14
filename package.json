@@ -41,7 +41,7 @@
   "author": "Tiago Terenas Almeida",
   "license": "GPL-3.0-only",
   "dependencies": {
-    "@vistta/utils": "^1.1.0"
+    "@vistta/utils": "latest"
   },
   "peerDependencies": {
     "react": ">=18.0.0 <20.0.0"
