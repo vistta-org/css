@@ -148,9 +148,7 @@ function App() {
   return (
     <>
       <button style="color: $accent; :hover:(opacity: 0.8)">Save</button>
-      <div style={{ padding: "1rem", ":initial": { opacity: 0 } }}>
-        Object styles
-      </div>
+      <div style={{ padding: "1rem", ":initial": { opacity: 0 } }}>Object styles</div>
       <span style={["color: $accent", { fontWeight: 600 }]}>Array styles</span>
     </>
   );
@@ -204,34 +202,6 @@ to remove it. The engine does not intercept React's unmount lifecycle.
    completes. Call `Style.stopExit(node)` if that removal is cancelled.
 4. On teardown, unadopt only this sheet. New definitions and resolved rules are
    reflected automatically in the adopted native stylesheet.
-
-## VISTTA JS
-
-VISTTA JS depends on this package and manages the sheet and exit lifecycle
-automatically. Existing `config.styles`, `style` props, and
-`import { Style } from "@vistta/js"` remain supported. No application migration
-is required. React-specific entry points and dependencies are not loaded by
-VISTTA JS.
-
-## Workspace linking
-
-In the development workspace, npm links package names under
-`node_modules/@vistta` to their directories under `packages`. Renaming
-`packages/css` to `packages/css-loader` does not update an existing installed
-`css` link automatically.
-
-From the workspace root, refresh dependencies and links:
-
-```sh
-npm install --ignore-scripts
-```
-
-VISTTA JS uses a version range that accepts the local CSS Loader workspace,
-rather than the npm `latest` tag, because the renamed package may not yet be
-published. The engine requires `@vistta/utils` 1.1.0 or newer for its `join`
-helper. A stale nested installation of an older utilities package can shadow
-the workspace link; the workspace setup script also removes package-local
-`node_modules` after linking.
 
 ## Development
 
