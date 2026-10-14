@@ -44,6 +44,9 @@ jobs:
       - name: Setup Node
         run: npm run setup:ci
 
+      - name: Install Browser Dependencies
+        run: npx playwright install-deps chromium
+
       - name: Module Validation
         working-directory: ./packages/${{ env.module }}
         run: npx vistta project outdated
