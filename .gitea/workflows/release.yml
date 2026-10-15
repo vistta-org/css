@@ -24,7 +24,7 @@ on:
         type: boolean
 
 env:
-  module: css-loader
+  module: css
   ref: refs/heads/development
 jobs:
   Validation:

@@ -1,7 +1,7 @@
-import { STYLE_REF_ATTRIBUTE } from "@vistta/css-loader";
-import { StyleSheetProvider } from "@vistta/css-loader/react";
-import { jsxDEV } from "@vistta/css-loader/react/jsx-dev-runtime";
-import { Fragment, jsx, jsxs } from "@vistta/css-loader/react/jsx-runtime";
+import { STYLE_REF_ATTRIBUTE } from "@vistta/css";
+import { StyleSheetProvider } from "@vistta/css/react";
+import { jsxDEV } from "@vistta/css/react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "@vistta/css/react/jsx-runtime";
 import { createRef, forwardRef, StrictMode, Suspense, useLayoutEffect } from "react";
 import { flushSync } from "react-dom";
 import { createRoot } from "react-dom/client";
@@ -22,7 +22,7 @@ function withRoot(callback) {
   }
 }
 
-suite("CSS Loader React", () => {
+suite("CSS React", () => {
   test("automatically handles string, object, and array style props", () => {
     withRoot((root, host) => {
       flushSync(() =>

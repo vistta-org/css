@@ -22,7 +22,7 @@ const elements = new Map();
 export function StyleSheetProvider({ styles = emptyStyles, children }) {
   const sheet = useMemo(() => {
     if (typeof CSSStyleSheet === "undefined") {
-      throw new Error("@vistta/css-loader/react requires a client browser with constructable stylesheets.");
+      throw new Error("@vistta/css/react requires a client browser with constructable stylesheets.");
     }
     const value = new VirtualStyleSheet();
     for (const style of styles) value.add(style);
@@ -59,7 +59,7 @@ export function getStyledType(type) {
       /** @type {import("react").MutableRefObject<import("../index.js").ResolvedStyle>} */
       const resolved = useRef("");
       if (style != null && style !== false && !sheet) {
-        throw new Error("Wrap styled React elements in @vistta/css-loader/react's StyleSheetProvider.");
+        throw new Error("Wrap styled React elements in @vistta/css/react's StyleSheetProvider.");
       }
 
       useInsertionEffect(() => {

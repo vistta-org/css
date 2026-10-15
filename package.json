@@ -1,6 +1,6 @@
 {
-  "name": "@vistta/css-loader",
-  "version": "0.1.0",
+  "name": "@vistta/css",
+  "version": "0.0.0",
   "description": "Framework-independent runtime stylesheet engine for VISTTA JS, React, and custom renderers",
   "main": "index.js",
   "types": "index.d.ts",
@@ -32,7 +32,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/vistta-org/css-loader.git"
+    "url": "https://github.com/vistta-org/css.git"
   },
   "scripts": {
     "postinstall": "",

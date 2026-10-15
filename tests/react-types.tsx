@@ -1,4 +1,4 @@
-import { StyleSheetProvider } from "@vistta/css-loader/react";
+import { StyleSheetProvider } from "@vistta/css/react";
 import { createRef, type CSSProperties } from "react";
 
 const ref = createRef<HTMLButtonElement>();

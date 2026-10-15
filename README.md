@@ -1,6 +1,6 @@
-# VISTTA CSS Loader
+# VISTTA CSS
 
-`@vistta/css-loader` is the framework-independent runtime stylesheet engine used
+`@vistta/css` is the framework-independent runtime stylesheet engine used
 by VISTTA JS. Use the same style definitions in React, vanilla JavaScript, or your
 own renderer without depending on `@vistta/js`. The base engine does not depend
 on React; the optional React adapter uses React 18 or 19.
@@ -11,13 +11,13 @@ VISTTA JS's CLI provides its separate build-time `.css` import loader.
 ## Install
 
 ```sh
-npm install @vistta/css-loader
+npm install @vistta/css
 ```
 
 ## Standalone usage
 
 ```js
-import { VirtualStyleSheet, Style } from "@vistta/css-loader";
+import { VirtualStyleSheet, Style } from "@vistta/css";
 
 const sheet = new VirtualStyleSheet();
 sheet.add({
@@ -346,7 +346,7 @@ needed. Configure the automatic JSX runtime once and wrap your application in a
 `StyleSheetProvider`.
 
 ```sh
-npm install @vistta/css-loader react react-dom
+npm install @vistta/css react react-dom
 ```
 
 For TypeScript, set these compiler options:
@@ -355,21 +355,21 @@ For TypeScript, set these compiler options:
 {
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "@vistta/css-loader/react"
+    "jsxImportSource": "@vistta/css/react"
   }
 }
 ```
 
 The development mode `"jsx": "react-jsxdev"` is also supported. Your JSX compiler
 must use this import source too: for Babel's React preset, use
-`{ "runtime": "automatic", "importSource": "@vistta/css-loader/react" }`; for
-Vite's React plugin, use `react({ jsxImportSource: "@vistta/css-loader/react" })`.
+`{ "runtime": "automatic", "importSource": "@vistta/css/react" }`; for
+Vite's React plugin, use `react({ jsxImportSource: "@vistta/css/react" })`.
 Alternatively, opt in per file with
-`/** @jsxImportSource @vistta/css-loader/react */` when your compiler supports it.
+`/** @jsxImportSource @vistta/css/react */` when your compiler supports it.
 The classic `React.createElement` transform does not use this adapter.
 
 ```jsx
-import { StyleSheetProvider } from "@vistta/css-loader/react";
+import { StyleSheetProvider } from "@vistta/css/react";
 
 const styles = [
   {

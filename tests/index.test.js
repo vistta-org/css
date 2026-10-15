@@ -1,11 +1,11 @@
-import { STYLE_REF_ATTRIBUTE, Style, VirtualStyleSheet } from "@vistta/css-loader";
+import { STYLE_REF_ATTRIBUTE, Style, VirtualStyleSheet } from "@vistta/css";
 import { Style as FrameworkStyle } from "@vistta/js";
 
 function css(sheet) {
   return Array.from(sheet.rules, (rule) => rule.cssText).join(" ");
 }
 
-suite("CSS Loader", () => {
+suite("CSS", () => {
   test("preserves VISTTA JS's public Style export", () => {
     const merged = FrameworkStyle.assign({}, "color: red", { padding: "8px" });
     expect(merged.color).toEqual("red");

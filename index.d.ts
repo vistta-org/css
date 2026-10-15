@@ -1,5 +1,3 @@
-export const STYLE_REF_ATTRIBUTE: "style-ref";
-
 export type StyleValue = string | number | boolean | null | undefined | StyleValue[] | StyleDefinition;
 
 export interface StyleDefinition {
@@ -22,7 +20,7 @@ export class VirtualStyleSheet {
 
 export class Style {
   static assign(target: StyleInput, ...sources: StyleInput[]): StyleDefinition;
-  static ensureObject(target: StyleInput): StyleDefinition;
+  static ensureObject(target: StyleValue): StyleDefinition;
   static waitForExit(node: Element): Promise<void>;
   static stopExit(node: Element): void;
 }
