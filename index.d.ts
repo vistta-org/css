@@ -4,6 +4,8 @@ export interface StyleDefinition {
   [key: string]: StyleValue;
 }
 
+export const STYLE_REF_ATTRIBUTE: string;
+
 export type StyleInput = string | StyleDefinition | StyleInput[];
 
 export type StyleFlags = Record<string, boolean>;
