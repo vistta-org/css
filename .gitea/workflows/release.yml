@@ -44,8 +44,8 @@ jobs:
       - name: Setup Node
         run: npm run setup:ci
 
-      - name: Install Browser Dependencies
-        run: npx playwright install-deps chromium
+      - name: Install Chromium and Browser Dependencies
+        run: npx playwright install --with-deps chromium
 
       - name: Module Validation
         working-directory: ./packages/${{ env.module }}

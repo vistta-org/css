@@ -105,14 +105,14 @@ These six keys configure the engine; other keys passed to `add()` are CSS
 selectors. For example, `root` becomes `:root`, while `.button` registers a
 normal class selector.
 
-| Option | Purpose |
-| --- | --- |
+| Option       | Purpose                                                   |
+| ------------ | --------------------------------------------------------- |
 | `properties` | Custom declaration aliases and value-based style presets. |
-| `functions` | Custom function-like aliases inside CSS values. |
-| `queries` | Named media-query aliases for nested style blocks. |
-| `vars` | CSS custom-property registrations and initial values. |
-| `fonts` | Named font-family registrations. |
-| `animations` | Named keyframe animations. |
+| `functions`  | Custom function-like aliases inside CSS values.           |
+| `queries`    | Named media-query aliases for nested style blocks.        |
+| `vars`       | CSS custom-property registrations and initial values.     |
+| `fonts`      | Named font-family registrations.                          |
+| `animations` | Named keyframe animations.                                |
 
 Register definitions before using them in selectors or `resolve()`. They belong
 to that `VirtualStyleSheet` instance. Updating definitions does not rewrite CSS
@@ -450,6 +450,13 @@ dependencies. Its `jsconfig.json` extends `@vistta/js/config`, selecting the
 VISTTA JS test command; the test script explicitly selects Chromium with
 `--environment=browser`. The test tools are development dependencies only and
 are not required by applications consuming the stylesheet engine.
+
+Install Chromium explicitly with `npx playwright install chromium` before the
+first browser test run. On Linux CI, use
+`npx playwright install --with-deps chromium` to download Chromium and install
+its system libraries. Both CSS workflows run this step after workspace setup:
+the shared npm policy disables installation scripts, and `install-deps` alone
+does not download the browser executable.
 
 Both suites require a real browser: they check native CSS parsing, computed
 styles, stylesheet adoption, DOM lifecycle helpers, and React rendering. Keep
