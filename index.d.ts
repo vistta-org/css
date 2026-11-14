@@ -21,7 +21,7 @@ export class VirtualStyleSheet {
 }
 
 export class Style {
-  static assign(target: StyleInput, ...sources: StyleInput[]): StyleDefinition;
+  static assign(target: StyleInput, ...sources: StyleValue[]): StyleDefinition;
   static ensureObject(target: StyleValue): StyleDefinition;
   static waitForExit(node: Element): Promise<void>;
   static stopExit(node: Element): void;

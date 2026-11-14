@@ -120,6 +120,12 @@ suite("CSS", () => {
     expect(assigned === source).toEqual(true);
     expect(source.color).toEqual("blue");
     expect(assigned.padding).toEqual("1rem");
+    /** @type {JSX.Style} */
+    const conditional = ["color: green", false, null, undefined, 0, true, [{ padding: "2rem" }]];
+    const merged = Style.assign({}, conditional, false, null, undefined, 1, true);
+    expect(merged.color).toEqual("green");
+    expect(merged.padding).toEqual("2rem");
+    expect(Object.keys(merged).length).toEqual(2);
   });
 
   test("exposes exit lifecycle helpers without a framework", async () => {

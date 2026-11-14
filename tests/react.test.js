@@ -89,10 +89,16 @@ suite("CSS React", () => {
       };
       const style = { color: "red" };
       let receivedStyle;
-      const Button = forwardRef(function Button(props, ref) {
-        receivedStyle = props.style;
-        return jsx("button", { ...props, ref });
-      });
+      const Button = forwardRef(
+        /**
+         * @param {import("react").ComponentPropsWithoutRef<"button">} props
+         * @param {import("react").ForwardedRef<HTMLButtonElement>} ref
+         */
+        function Button(props, ref) {
+          receivedStyle = props.style;
+          return jsx("button", { ...props, ref });
+        },
+      );
       const render = (reverse) =>
         flushSync(() =>
           root.render(
@@ -200,6 +206,7 @@ suite("CSS React", () => {
       const sheet = document.adoptedStyleSheets[document.adoptedStyleSheets.length - 1];
       const before = sheet.cssRules.length;
       const pending = new Promise(() => {});
+      /** @returns {never} */
       function Pending() {
         throw pending;
       }

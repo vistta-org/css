@@ -51,9 +51,9 @@ jobs:
         working-directory: ./packages/${{ env.module }}
         run: npx vistta project outdated
 
-      - name: Eslint Validation
+      - name: Project Validation
         working-directory: ./packages/${{ env.module }}
-        run: npx eslint .
+        run: npx vistta check .
 
       - name: Unit Tests
         working-directory: ./packages/${{ env.module }}

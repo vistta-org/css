@@ -330,7 +330,8 @@ as `.button` or `root`, are not automatically scoped to a `style-ref` rule.
 - `Style.assign(target, ...sources)` merges string, object, or array styles into
   an object, with later properties overwriting earlier ones. An object target
   is mutated and returned, matching `Object.assign`; use `{}` as the first
-  argument when you need a new object.
+  argument when you need a new object. Boolean, numeric, null, and undefined
+  sources are ignored, including conditional entries in style arrays.
 - `Style.ensureObject(value)` converts a string or array style to an object.
 - `Style.waitForExit(node)` sets `exiting-style` and waits for the exit animation
   to finish before your renderer removes the node.
