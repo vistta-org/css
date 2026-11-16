@@ -7,6 +7,7 @@ on:
         required: true
         type: choice
         options:
+          - Manual
           - Patch
           - Minor
           - Major
@@ -121,7 +122,9 @@ jobs:
             await git.config("user.email", "devops@vistta.org");
             const type = "${{ inputs.type }}".toLowerCase();
             const channel = ["alpha", "beta"].includes(type) ? type : null;
-            const version = await npm.version(...(channel ? ["prerelease", "--preid=" + channel] : [type]));
+            const version = type === "manual"
+              ? (await npm.exec("pkg", ["get", "version"])).trim().replaceAll('"', '')
+              : await npm.version(...(channel ? ["prerelease", "--preid=" + channel] : [type]));
             // Release Gitea
             if (`${{ inputs.gitea_publish }}`.toLowerCase() === "true") {
               await npm.config("set", "@vistta:registry", "https://git.vistta.org/api/packages/vistta/npm/");
