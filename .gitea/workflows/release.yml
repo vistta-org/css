@@ -139,10 +139,10 @@ jobs:
             }
             // Update Branches
             await git.push("origin", "${{ env.ref }}", "--tags");
-            await git.fetch("origin", "master");
-            await git.checkout("master");
+            await git.fetch("origin", "main");
+            await git.checkout("main");
             await git.reset("--hard", "${{ env.ref }}");
-            await git.push("origin", "master", "--force");
+            await git.push("origin", "main", "--force");
             global.result = version;
 
       - name: Gitea Release
