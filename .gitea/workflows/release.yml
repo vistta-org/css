@@ -13,6 +13,11 @@ on:
           - Major
           - Beta
           - Alpha
+      skip_release_notes:
+        description: "Skip AI release notes generation"
+        required: false
+        default: false
+        type: boolean
       npm_publish:
         description: "Publish to NPM Registry"
         required: false
@@ -75,6 +80,7 @@ jobs:
           fetch-depth: 0
 
       - name: Generate Release Notes
+        if: ${{ inputs.skip_release_notes != true && inputs.skip_release_notes != 'true' }}
         uses: tiagomta/runjs@v1
         id: notes
         env:
