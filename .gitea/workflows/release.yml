@@ -160,7 +160,7 @@ jobs:
           run: |
             const version = (`${{ steps.npm.outputs.result }}`).trim();
             const isPrerelease = ["alpha", "beta"].includes("${{ inputs.type }}".toLowerCase());
-            const milestone = await gitea.milestones.create("${{ inputs.type }} (" + version + ")");
+            const milestone = await gitea.milestones.create("v" + version);
             const issues = await gitea.issues.list({ state: "closed" });
             const types = {};
             for (let issue of issues) {
@@ -180,7 +180,7 @@ jobs:
             }
             await gitea.releases.create({
               tag_name: version,
-              name: "${{ inputs.type }} (" + version + ")",
+              name: "v" + version,
               body: [process.env.RELEASE_NOTES, ...Object.values(types)].join("\n\n"),
               prerelease: isPrerelease
             });
