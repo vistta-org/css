@@ -129,7 +129,7 @@ jobs:
             const type = "${{ inputs.type }}".toLowerCase();
             const channel = ["alpha", "beta"].includes(type) ? type : null;
             const version = type === "manual"
-              ? (await npm.exec("pkg", ["get", "version"])).trim().replaceAll('"', '')
+              ? (await npm.exec("get", "version")).trim().replaceAll('"', '')
               : await npm.version(...(channel ? ["prerelease", "--preid=" + channel] : [type]));
             // Release Gitea
             if (`${{ inputs.gitea_publish }}`.toLowerCase() === "true") {
