@@ -149,7 +149,7 @@ jobs:
             await git.checkout("main");
             await git.reset("--hard", "${{ env.ref }}");
             await git.push("origin", "main", "--force");
-            global.result = version;
+            global.result = version.trim().replace(/^v/, "");
 
       - name: Gitea Release
         uses: tiagomta/runjs@v1
@@ -185,7 +185,7 @@ jobs:
               }
             }
             await gitea.releases.create({
-              tag_name: version,
+              tag_name: "v" + version,
               name: "v" + version,
               body: [process.env.RELEASE_NOTES, ...Object.values(types)].join("\n\n"),
               prerelease: isPrerelease
