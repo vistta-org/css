@@ -90,7 +90,7 @@ jobs:
         with:
           target: inline
           run: |
-            const previousTag = (await git.describe("--tags", "--abbrev=0", "--match", "v[0-9]*")).trim();
+            const previousTag = (await git.describe("--tags", "--abbrev=0", "--match", "v[0-9]*", "--match", "[0-9]*")).trim();
             const messages = (await git.log("--format=%s%n%b%x00", `${previousTag}..HEAD`, "--"))
               .split("\0")
               .map((message) => message.trim())
